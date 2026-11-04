@@ -119,14 +119,16 @@ Una forma sencilla de diferenciarlas:
 > - **Cuantitativas**: discretas y continuas.
 
 {: .clase }
-> **Actividad rápida.** Clasifiquemos las siguientes variables. La idea es que los estudiantes expliquen por qué clasifican cada variable de una determinada manera.
+> **Actividad rápida.** Clasifiquemos las siguientes variables.
 >
-> 1. Número de seguidores en Instagram.
-> 2. Nivel de confianza en el Congreso.
-> 3. Edad de los estudiantes.
-> 4. Partido político con el que se identifica una persona.
-> 5. Tiempo que tarda una persona en llegar al trabajo.
-> 6. Número de veces que una persona consulta noticias al día.
+> 1. Número de tintos que te tomas en el día.
+> 2. Barrio donde vives.
+> 3. Talla de camisa que usas (S, M, L, XL).
+> 4. Minutos que pasas en el trancón para llegar a la universidad.
+> 5. Marca de tu celular.
+> 6. Número de mensajes de WhatsApp sin leer que tienes ahora mismo.
+> 7. Cómo calificas el almuerzo de la cafetería (malo, regular, bueno, excelente).
+> 8. Temperatura en Barranquilla al mediodía.
 
 ### 2. Población y muestra: ¿a quiénes estamos estudiando? {#poblacion-muestra}
 
