@@ -23,34 +23,91 @@ heading_anchors: true
 back_to_top: true
 back_to_top_text: "Volver arriba"
 
-aux_links:
-  "Repositorio en GitHub":
-    - "https://github.com/USUARIO/periodismo-de-precision"
-aux_links_new_tab: true
+# Menú lateral: enlaces a las secciones de la página única.
+# Si cambia el nombre del repositorio, cambie también "/periodismo-de-precision/" en cada enlace.
+nav_external_links:
+  - title: "¿Qué es la visualización de datos?"
+    url: "/periodismo-de-precision/#visualizacion"
+    hide_icon: true
+    opens_in_new_tab: false
+  - title: "¿Qué es la estadística?"
+    url: "/periodismo-de-precision/#estadistica"
+    hide_icon: true
+    opens_in_new_tab: false
+  - title: "El método estadístico"
+    url: "/periodismo-de-precision/#metodo"
+    hide_icon: true
+    opens_in_new_tab: false
+  - title: "Conocimientos previos"
+    url: "/periodismo-de-precision/#conocimientos-previos"
+    hide_icon: true
+    opens_in_new_tab: false
+  - title: "1. Variables"
+    url: "/periodismo-de-precision/#variables"
+    hide_icon: true
+    opens_in_new_tab: false
+  - title: "2. Población y muestra"
+    url: "/periodismo-de-precision/#poblacion-muestra"
+    hide_icon: true
+    opens_in_new_tab: false
+  - title: "3. Unidad de análisis"
+    url: "/periodismo-de-precision/#unidad-analisis"
+    hide_icon: true
+    opens_in_new_tab: false
+  - title: "4. Parámetros y estadísticos"
+    url: "/periodismo-de-precision/#parametros"
+    hide_icon: true
+    opens_in_new_tab: false
+  - title: "5. Descriptiva e inferencial"
+    url: "/periodismo-de-precision/#descriptiva-inferencial"
+    hide_icon: true
+    opens_in_new_tab: false
+  - title: "6. Error y sesgo"
+    url: "/periodismo-de-precision/#error-sesgo"
+    hide_icon: true
+    opens_in_new_tab: false
+  - title: "7. Error muestral frente a sesgo"
+    url: "/periodismo-de-precision/#error-vs-sesgo"
+    hide_icon: true
+    opens_in_new_tab: false
+  - title: "8. Validez y reproducibilidad"
+    url: "/periodismo-de-precision/#validez"
+    hide_icon: true
+    opens_in_new_tab: false
+  - title: "Referencias"
+    url: "/periodismo-de-precision/#referencias"
+    hide_icon: true
+    opens_in_new_tab: false
 
-footer_content: "Módulo de periodismo de precisión y visualización de datos. Universidad del Norte. Los datos de la historia de Puerto Arena son simulados con fines didácticos."
+footer_content: "Módulo de periodismo de precisión y visualización de datos. Universidad del Norte."
 
 callouts_level: quiet
 callouts:
-  idea:
-    title: Idea clave
-    color: blue
-  historia:
-    title: En la redacción
-    color: purple
   ojo:
     title: "¡Ojo!"
     color: red
-  puente:
-    title: Puente hacia la visualización
-    color: green
-  construccion:
-    title: Sección en construcción
-    color: yellow
+  recordar:
+    title: Para recordar
+    color: blue
+  clase:
+    title: Para discutir en clase
+    color: purple
 
+# Las páginas anteriores quedan guardadas en el repositorio, pero no se publican.
 exclude:
   - README.md
   - Gemfile
   - Gemfile.lock
+  - antecedentes.md
+  - que-es.md
+  - precision-e-investigacion.md
+  - estadistica.md
+  - del-hallazgo-al-grafico.md
+  - referencias.md
+  - fundamentos
+  - eda
+  - inferencia
+  - talleres
+  - assets/datos
 
 permalink: pretty
