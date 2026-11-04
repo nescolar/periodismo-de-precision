@@ -1,0 +1,56 @@
+title: Periodismo de precisión y visualización de datos
+description: Cuaderno del módulo. Del dato a la noticia con método estadístico.
+lang: es
+
+# Tema: Just the Docs, cargado directamente por GitHub Pages
+remote_theme: just-the-docs/just-the-docs@v0.10.1
+plugins:
+  - jekyll-remote-theme
+  - jekyll-seo-tag
+
+# Cambie esta línea si su repositorio se llama distinto
+baseurl: "/periodismo-de-precision"
+url: ""
+
+color_scheme: light
+search_enabled: true
+search:
+  heading_level: 2
+  previews: 2
+  button: true
+
+heading_anchors: true
+back_to_top: true
+back_to_top_text: "Volver arriba"
+
+aux_links:
+  "Repositorio en GitHub":
+    - "https://github.com/USUARIO/periodismo-de-precision"
+aux_links_new_tab: true
+
+footer_content: "Módulo de periodismo de precisión y visualización de datos. Universidad del Norte. Los datos de la historia de Puerto Arena son simulados con fines didácticos."
+
+callouts_level: quiet
+callouts:
+  idea:
+    title: Idea clave
+    color: blue
+  historia:
+    title: En la redacción
+    color: purple
+  ojo:
+    title: "¡Ojo!"
+    color: red
+  puente:
+    title: Puente hacia la visualización
+    color: green
+  construccion:
+    title: Sección en construcción
+    color: yellow
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+
+permalink: pretty
