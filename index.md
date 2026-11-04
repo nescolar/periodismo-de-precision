@@ -166,8 +166,6 @@ Es una parte de esa población que seleccionamos para recoger información y rea
 - **Población**: los 14.000 estudiantes de la universidad (cifra hipotética).
 - **Muestra**: 400 estudiantes seleccionados para responder una encuesta.
 
-¿Por qué no encuestamos a los 14.000? Porque hacerlo puede tomar demasiado tiempo y recursos. Si seleccionamos adecuadamente a 400 estudiantes, podemos obtener información que nos permita aproximarnos a lo que piensa el conjunto de la población.
-
 | Investigación | Población | Muestra |
 |:--|:--|:--|
 | Intención de voto presidencial | Ciudadanos habilitados para votar | 1.500 ciudadanos encuestados |
@@ -181,6 +179,28 @@ Es una parte de esa población que seleccionamos para recoger información y rea
 
 {: .ojo }
 > Una muestra grande no necesariamente es una buena muestra. Lo importante no es solamente cuántas personas participan, sino **cómo fueron seleccionadas**. Si encuestamos a 1.000 personas que siguen una misma cuenta política en Instagram, no podemos afirmar que sus opiniones representan a todos los colombianos.
+
+{: .clase }
+> **Actividad rápida.** En cada caso, identifica la población y la muestra.
+>
+> 1. La tienda de la esquina quiere saber si sus clientes están contentos con la atención y le pregunta a 50 personas que compran durante una semana.
+> 2. Un colegio de 1.200 estudiantes quiere saber cuántas horas al día ven series sus alumnos y encuesta a 120 de ellos.
+> 3. Una emisora quiere saber qué canción de champeta prefieren sus oyentes en Barranquilla y llama a 300 oyentes elegidos al azar.
+> 4. Una cuenta de Instagram pregunta "¿Estás de acuerdo con el pico y placa?" y responden 2.000 personas. ¿Sirven esas respuestas para saber qué piensan todos los conductores de la ciudad?
+
+<details markdown="1">
+<summary>Ver respuesta</summary>
+
+| Caso | Población | Muestra |
+|:--|:--|:--|
+| 1. Tienda de la esquina | Todos los clientes de la tienda | Los 50 clientes consultados durante la semana |
+| 2. Colegio | Los 1.200 estudiantes del colegio | Los 120 estudiantes encuestados |
+| 3. Emisora | Todos los oyentes de la emisora en Barranquilla | Los 300 oyentes elegidos al azar |
+| 4. Encuesta en Instagram | Todos los conductores de la ciudad | Las 2.000 personas que respondieron |
+
+En el caso 4, la respuesta es no: aunque son muchas respuestas, solo participaron quienes siguen esa cuenta y quisieron opinar, y no todos son necesariamente conductores. Es una muestra grande, pero no representa a la población.
+
+</details>
 
 ### 3. Unidad de análisis: ¿sobre quién o sobre qué recogemos información? {#unidad-analisis}
 
