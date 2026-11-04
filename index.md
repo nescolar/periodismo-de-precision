@@ -130,6 +130,22 @@ Una forma sencilla de diferenciarlas:
 > 7. Cómo calificas el almuerzo de la cafetería (malo, regular, bueno, excelente).
 > 8. Temperatura en Barranquilla al mediodía.
 
+<details markdown="1">
+<summary>Ver respuesta</summary>
+
+| Variable | Tipo | Por qué |
+|:--|:--|:--|
+| 1. Número de tintos al día | Cuantitativa discreta | Se cuenta: 0, 1, 2, 3 tintos. No hay 2,5 tintos en el conteo. |
+| 2. Barrio donde vives | Cualitativa nominal | Son categorías sin orden: ningún barrio va "antes" que otro. |
+| 3. Talla de camisa | Cualitativa ordinal | Son categorías con un orden claro: S < M < L < XL. |
+| 4. Minutos en el trancón | Cuantitativa continua | Se mide y admite decimales: 32,5 minutos. |
+| 5. Marca del celular | Cualitativa nominal | Son categorías sin orden. |
+| 6. Mensajes de WhatsApp sin leer | Cuantitativa discreta | Se cuenta: 0, 1, 2, 3 mensajes. |
+| 7. Calificación del almuerzo | Cualitativa ordinal | Las categorías tienen orden (malo < regular < bueno < excelente), pero no son cantidades. |
+| 8. Temperatura al mediodía | Cuantitativa continua | Se mide y admite decimales: 33,4 °C. |
+
+</details>
+
 ### 2. Población y muestra: ¿a quiénes estamos estudiando? {#poblacion-muestra}
 
 Cuando queremos investigar un fenómeno, generalmente nos interesa conocer algo sobre un grupo de personas, países, instituciones o situaciones. Sin embargo, no siempre podemos estudiar a todos los integrantes de ese grupo. Por eso, utilizamos los conceptos de población y muestra.
