@@ -146,63 +146,7 @@ Una forma sencilla de diferenciarlas:
 
 </details>
 
-### 2. Población y muestra: ¿a quiénes estamos estudiando? {#poblacion-muestra}
-
-Cuando queremos investigar un fenómeno, generalmente nos interesa conocer algo sobre un grupo de personas, países, instituciones o situaciones. Sin embargo, no siempre podemos estudiar a todos los integrantes de ese grupo. Por eso, utilizamos los conceptos de población y muestra.
-
-#### A. Población
-
-Es el conjunto completo de personas, objetos o casos sobre los que queremos obtener información y sacar conclusiones. Por ejemplo:
-
-- Si queremos conocer la opinión de los universitarios sobre la educación pública, la población serían los estudiantes universitarios que definamos como objeto de estudio.
-- Si queremos conocer la intención de voto para las elecciones presidenciales en Colombia, la población serían los ciudadanos habilitados para votar.
-- Si queremos estudiar la confianza en las instituciones democráticas de América Latina, la población serían las personas de los países incluidos en el estudio.
-- Si queremos conocer el nivel de satisfacción de los estudiantes de una universidad, la población serían todos sus estudiantes.
-
-#### B. Muestra
-
-Es una parte de esa población que seleccionamos para recoger información y realizar el estudio. Imaginemos que queremos conocer qué piensan los estudiantes de la Universidad del Norte sobre el uso de la inteligencia artificial en sus clases.
-
-- **Población**: los 14.000 estudiantes de la universidad (cifra hipotética).
-- **Muestra**: 400 estudiantes seleccionados para responder una encuesta.
-
-| Investigación | Población | Muestra |
-|:--|:--|:--|
-| Intención de voto presidencial | Ciudadanos habilitados para votar | 1.500 ciudadanos encuestados |
-| Opinión sobre el transporte público en Barranquilla | Usuarios del transporte público | 600 usuarios |
-| Confianza en el Congreso | Ciudadanos colombianos | 2.000 ciudadanos |
-| Hábitos de consumo de noticias | Jóvenes colombianos de 18 a 28 años | 500 jóvenes |
-
-**Visualicemos la diferencia.** La muestra es una parte de la población que seleccionamos para estudiarla.
-
-![La muestra es una parte de la población que seleccionamos para estudiarla]({{ '/assets/img/poblacion_muestra.svg' | relative_url }})
-
-{: .ojo }
-> Una muestra grande no necesariamente es una buena muestra. Lo importante no es solamente cuántas personas participan, sino **cómo fueron seleccionadas**. Si encuestamos a 1.000 personas que siguen una misma cuenta política en Instagram, no podemos afirmar que sus opiniones representan a todos los colombianos.
-
-{: .clase }
-> **Actividad rápida.** En cada caso, identifica la población y la muestra.
->
-> 1. La tienda de la esquina quiere saber si sus clientes están contentos con la atención y le pregunta a 50 personas que compran durante una semana.
-> 2. Un colegio de 1.200 estudiantes quiere saber cuántas horas al día ven series sus alumnos y encuesta a 120 de ellos.
-> 3. Una emisora quiere saber qué canción de champeta prefieren sus oyentes en Barranquilla y llama a 300 oyentes elegidos al azar.
-> 4. Una cuenta de Instagram pregunta "¿Estás de acuerdo con el pico y placa?" y responden 2.000 personas. ¿Sirven esas respuestas para saber qué piensan todos los conductores de la ciudad?
-
-<details markdown="1">
-<summary>Ver respuesta</summary>
-
-| Caso | Población | Muestra |
-|:--|:--|:--|
-| 1. Tienda de la esquina | Todos los clientes de la tienda | Los 50 clientes consultados durante la semana |
-| 2. Colegio | Los 1.200 estudiantes del colegio | Los 120 estudiantes encuestados |
-| 3. Emisora | Todos los oyentes de la emisora en Barranquilla | Los 300 oyentes elegidos al azar |
-| 4. Encuesta en Instagram | Todos los conductores de la ciudad | Las 2.000 personas que respondieron |
-
-En el caso 4, la respuesta es no: aunque son muchas respuestas, solo participaron quienes siguen esa cuenta y quisieron opinar, y no todos son necesariamente conductores. Es una muestra grande, pero no representa a la población.
-
-</details>
-
-### 3. Unidad de análisis: ¿sobre quién o sobre qué recogemos información? {#unidad-analisis}
+### 2. Unidad de análisis: ¿sobre quién o sobre qué recogemos información? {#unidad-analisis}
 
 Es el elemento concreto que estamos estudiando, es decir, aquello sobre lo que registramos información. Por ejemplo:
 
@@ -232,6 +176,70 @@ Es el valor específico que encontramos cuando observamos una variable en una un
 | Colombia | Tasa de desempleo | El porcentaje registrado en un periodo determinado |
 
 En otras palabras, una variable es lo que queremos conocer y un dato es el valor que encontramos.
+
+### 3. Población y muestra: ¿a quiénes estamos estudiando? {#poblacion-muestra}
+
+Cuando queremos investigar un fenómeno, generalmente nos interesa conocer algo sobre un grupo de personas, países, instituciones o situaciones. Sin embargo, no siempre podemos estudiar a todos los integrantes de ese grupo. Por eso, utilizamos los conceptos de población y muestra.
+
+#### A. Población
+
+Es el conjunto completo de personas, objetos o casos sobre los que queremos obtener información y sacar conclusiones. Por ejemplo:
+
+- Si queremos conocer la opinión de los universitarios sobre la educación pública, la población serían los estudiantes universitarios que definamos como objeto de estudio.
+- Si queremos conocer la intención de voto para las elecciones presidenciales en Colombia, la población serían los ciudadanos habilitados para votar.
+- Si queremos estudiar la confianza en las instituciones democráticas de América Latina, la población serían las personas de los países incluidos en el estudio.
+- Si queremos conocer el nivel de satisfacción de los estudiantes de una universidad, la población serían todos sus estudiantes.
+
+#### B. Muestra
+
+Es una parte de esa población que seleccionamos para recoger información y realizar el estudio. Imaginemos que queremos conocer qué piensan los estudiantes de la Universidad del Norte sobre el uso de la inteligencia artificial en sus clases.
+
+- **Población**: los 14.000 estudiantes de la universidad (cifra hipotética).
+- **Muestra**: 400 estudiantes seleccionados para responder una encuesta.
+
+**Tres ideas para entender qué es una muestra**
+
+1. Una muestra es una fotografía de la población: un grupo más pequeño que estudiamos para conocer las características del conjunto.
+2. Para que sea representativa, sus participantes deben seleccionarse mediante un método aleatorio, de modo que todos los integrantes de la población tengan una probabilidad conocida de ser elegidos y se reduzca el sesgo de selección.
+3. Si la población tiene grupos con características diferentes, conviene que la muestra refleje su composición: por ejemplo, la proporción de hombres y mujeres, de habitantes por estrato socioeconómico o de personas por región.
+
+**Una precisión.** Si en una población el 60 % son mujeres y el 40 % hombres, una muestra que busca reflejar esa composición debería mantener proporciones similares: en una muestra de 400 personas, unas 240 mujeres y 160 hombres. Esto se conoce como **muestreo estratificado** cuando se seleccionan participantes al azar dentro de cada grupo. Cuadrar las proporciones no basta: si dentro de cada grupo las personas se eligen a conveniencia, la muestra puede seguir sesgada. Y cuando una muestra no queda con la composición de la población, las encuestas corrigen esa diferencia mediante la **ponderación**.
+
+| Investigación | Población | Muestra |
+|:--|:--|:--|
+| Intención de voto presidencial | Ciudadanos habilitados para votar | 1.500 ciudadanos encuestados |
+| Opinión sobre el transporte público en Barranquilla | Usuarios del transporte público | 600 usuarios |
+| Confianza en el Congreso | Ciudadanos colombianos | 2.000 ciudadanos |
+| Hábitos de consumo de noticias | Jóvenes colombianos de 18 a 28 años | 500 jóvenes |
+
+**Visualicemos la diferencia.** La muestra es una parte de la población que seleccionamos para estudiarla.
+
+![La muestra es una parte de la población que seleccionamos para estudiarla]({{ '/assets/img/poblacion_muestra.svg' | relative_url }})
+
+{: .recordar }
+No se trata simplemente de tener muchos participantes, sino de seleccionar a las personas adecuadas y de una manera que permita que la muestra se parezca a la población que queremos estudiar. Si encuestamos a 1.000 personas que siguen una misma cuenta política en Instagram, no podemos afirmar que sus opiniones representan a todos los colombianos.
+
+{: .clase }
+> **Actividad rápida.** En cada caso, identifica la población y la muestra.
+>
+> 1. La tienda de la esquina quiere saber si sus clientes están contentos con la atención y le pregunta a 50 personas que compran durante una semana.
+> 2. Un colegio de 1.200 estudiantes quiere saber cuántas horas al día ven series sus alumnos y encuesta a 120 de ellos.
+> 3. Una emisora quiere saber qué canción de champeta prefieren sus oyentes en Barranquilla y llama a 300 oyentes elegidos al azar.
+> 4. Una cuenta de Instagram pregunta "¿Estás de acuerdo con el pico y placa?" y responden 2.000 personas. ¿Sirven esas respuestas para saber qué piensan todos los conductores de la ciudad?
+
+<details markdown="1">
+<summary>Ver respuesta</summary>
+
+| Caso | Población | Muestra |
+|:--|:--|:--|
+| 1. Tienda de la esquina | Todos los clientes de la tienda | Los 50 clientes consultados durante la semana |
+| 2. Colegio | Los 1.200 estudiantes del colegio | Los 120 estudiantes encuestados |
+| 3. Emisora | Todos los oyentes de la emisora en Barranquilla | Los 300 oyentes elegidos al azar |
+| 4. Encuesta en Instagram | Todos los conductores de la ciudad | Las 2.000 personas que respondieron |
+
+En el caso 4, la respuesta es no: aunque son muchas respuestas, solo participaron quienes siguen esa cuenta y quisieron opinar, y no todos son necesariamente conductores. Es una muestra grande, pero no representa a la población.
+
+</details>
 
 ### 4. Estadísticos de la población y de la muestra {#parametros}
 

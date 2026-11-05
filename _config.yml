@@ -46,12 +46,12 @@ nav_external_links:
     url: "/periodismo-de-precision/#variables"
     hide_icon: true
     opens_in_new_tab: false
-  - title: "2. Población y muestra"
-    url: "/periodismo-de-precision/#poblacion-muestra"
+  - title: "2. Unidad de análisis"
+    url: "/periodismo-de-precision/#unidad-analisis"
     hide_icon: true
     opens_in_new_tab: false
-  - title: "3. Unidad de análisis"
-    url: "/periodismo-de-precision/#unidad-analisis"
+  - title: "3. Población y muestra"
+    url: "/periodismo-de-precision/#poblacion-muestra"
     hide_icon: true
     opens_in_new_tab: false
   - title: "4. Parámetros y estadísticos"
