@@ -38,6 +38,9 @@ callouts:
   clase:
     title: Para discutir en clase
     color: purple
+  construccion:
+    title: En construcción
+    color: yellow
 
 # Las páginas anteriores quedan guardadas en el repositorio, pero no se publican.
 exclude:

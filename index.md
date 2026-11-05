@@ -410,6 +410,130 @@ El sexto rasgo de Dader, la **transparencia del método**, coincide con un princ
 
 La metodología de la visualización de datos nos obliga a pensar qué se quiere comunicar con ellos, qué es importante y cómo se tiene que hacer.
 
+### 9. Frecuencias y porcentajes {#frecuencias}
+
+A partir de aquí veremos las medidas que usamos para **describir** los datos. Son las que aparecen, de forma explícita o implícita, en casi todos los gráficos.
+
+La **frecuencia** es cuántas veces aparece cada categoría. El **porcentaje** es esa frecuencia dividida por el total y multiplicada por 100. Los porcentajes permiten comparar grupos de distinto tamaño; por eso, casi siempre dicen más que los conteos. Al publicar un porcentaje, conviene decir sobre cuántos casos se calculó.
+
+**Ejemplo.** Preguntamos a 200 estudiantes cómo llegan a la universidad:
+
+| Medio | Frecuencia | Porcentaje |
+|:--|:--:|:--:|
+| Bus | 90 | 45 % |
+| Moto | 50 | 25 % |
+| Carro | 30 | 15 % |
+| Bicicleta o a pie | 30 | 15 % |
+| **Total** | **200** | **100 %** |
+
+**En Excel:** `=CONTAR.SI(rango;"Bus")` cuenta cuántas veces aparece una categoría. Una tabla dinámica (Insertar > Tabla dinámica) lo hace para todas las categorías a la vez y puede mostrar el resultado como porcentaje del total.
+
+**En el gráfico:** se muestran con un [gráfico de barras](#barras).
+
+### 10. Tablas cruzadas {#tablas-cruzadas}
+
+Una **tabla cruzada** muestra cómo se combinan dos variables cualitativas. Responde preguntas como "¿el porcentaje de X es distinto según el grupo Y?". Lo importante es calcular el porcentaje **dentro de cada grupo**, no sobre el total.
+
+**Ejemplo.** ¿Trabajan más los estudiantes de la jornada nocturna?
+
+| Jornada | Estudiantes | Trabajan | Porcentaje que trabaja |
+|:--|:--:|:--:|:--:|
+| Diurna | 80 | 20 | 25 % |
+| Nocturna | 40 | 28 | 70 % |
+
+En números absolutos la diferencia parece pequeña (20 frente a 28), pero en porcentaje es enorme: en la jornada nocturna trabaja casi tres de cada cuatro estudiantes.
+
+**En Excel:** en una tabla dinámica, ponga una variable en filas y otra en columnas, y en Valores elija *Mostrar valores como > % del total de filas*.
+
+**En el gráfico:** se muestran con [barras agrupadas](#barras-agrupadas) o barras apiladas al 100 %.
+
+### 11. Tendencia central: media, mediana y moda {#tendencia-central}
+
+Son medidas que resumen en un solo número el valor "típico" de una variable.
+
+- La **media** (o promedio) es la suma de todos los valores dividida por cuántos son.
+- La **mediana** es el valor del centro cuando ordenamos los datos de menor a mayor: la mitad queda por debajo y la otra mitad por encima.
+- La **moda** es el valor o la categoría que más se repite. Es la única que sirve para variables nominales.
+
+La media se deja arrastrar por los valores extremos; la mediana no. Cuando hay unos pocos valores muy altos, como en salarios o precios de vivienda, la mediana describe mejor la situación típica.
+
+**Ejemplo.** En una empresa de 10 personas, nueve ganan 2 millones de pesos y el gerente gana 20 millones. La media es (9 × 2 + 20) ÷ 10 = **3,8 millones**, pero nadie en la empresa gana eso. La mediana es **2 millones**, que sí describe a la mayoría. Y si en una tienda de ropa la talla más vendida es la M, la moda es M.
+
+**En Excel:** `=PROMEDIO(rango)`, `=MEDIANA(rango)` y `=MODA.UNO(rango)`.
+
+**En el gráfico:** la media o la mediana se pueden agregar como una línea de referencia sobre barras o histogramas.
+
+### 12. Dispersión: qué tan distintos son los datos entre sí {#dispersion-datos}
+
+Dos grupos pueden tener el mismo promedio y ser muy distintos. La **dispersión** mide qué tan separados están los valores.
+
+- El **rango** es la diferencia entre el valor más alto y el más bajo.
+- La **desviación estándar** indica, aproximadamente, cuánto se aleja un valor típico del promedio. Cuanto más grande, más dispersos están los datos.
+- Los **cuartiles** dividen los datos ordenados en cuatro partes iguales. El primer cuartil (Q1) deja por debajo el 25 % de los datos y el tercer cuartil (Q3) deja por debajo el 75 %.
+- El **rango intercuartílico (RIC)** es Q3 menos Q1: el ancho de la mitad central de los datos. A diferencia del rango, no lo afectan los valores extremos.
+
+**Ejemplo.** Dos rutas de bus tienen una espera promedio de 12 minutos. En la ruta A siempre se espera entre 11 y 13 minutos; en la ruta B, a veces 2 minutos y a veces 23. El promedio es igual, pero la ruta A es predecible y la B no.
+
+Si medimos nueve esperas en un paradero, ordenadas: 6, 7, 8, 9, 10, 11, 12, 13 y 15 minutos, el rango es 15 − 6 = 9 minutos, Q1 es 8, la mediana es 10 y Q3 es 12. El RIC es 12 − 8 = 4: **la mitad central de las esperas está entre 8 y 12 minutos**.
+
+**En Excel:** `=MIN(rango)`, `=MAX(rango)`, `=DESVEST.M(rango)`, `=CUARTIL.INC(rango;1)` para Q1 y `=CUARTIL.INC(rango;3)` para Q3.
+
+**En el gráfico:** la dispersión se ve en el [histograma](#histograma) y en el [diagrama de caja](#caja), cuya caja es justamente el rango intercuartílico.
+
+### 13. Forma de los datos y valores atípicos {#forma-atipicos}
+
+La **forma** de una variable describe cómo se reparten sus valores. Es **simétrica** si se parece a ambos lados del centro, y **asimétrica** si tiene una cola larga hacia un lado. Por ejemplo, los ingresos tienen una cola hacia la derecha: muchos ingresos modestos y pocos muy altos. En ese caso, la media queda por encima de la mediana.
+
+Un **valor atípico** es un dato muy alejado del resto. Una regla común lo define así: es atípico todo valor mayor que **Q3 + 1,5 × RIC** o menor que **Q1 − 1,5 × RIC**.
+
+**Ejemplo.** En las nueve esperas del punto anterior, Q3 = 12 y RIC = 4, así que el límite superior es 12 + 1,5 × 4 = **18 minutos**. Si un día alguien espera 30 minutos, ese valor es atípico.
+
+{: .ojo }
+Un atípico puede ser un error de digitación o un caso real y excepcional, que a veces es la historia más interesante de la base. Por eso se verifica antes de decidir qué hacer con él: nunca se borra sin revisarlo.
+
+**En el gráfico:** el [histograma](#histograma) muestra la forma completa; el [diagrama de caja](#caja) muestra los atípicos como puntos sueltos.
+
+### 14. Relación entre variables: la correlación {#correlacion}
+
+La **correlación** mide si dos variables cuantitativas se mueven juntas. Se resume con el coeficiente **r**, que va de −1 a 1:
+
+- Cerca de **1**: relación positiva fuerte. Cuando una sube, la otra también (horas de estudio y nota).
+- Cerca de **−1**: relación negativa fuerte. Cuando una sube, la otra baja (precio de un producto y cantidad que se compra).
+- Cerca de **0**: no hay relación lineal (talla de zapato y nota de matemáticas en adultos).
+
+{: .ojo }
+**Correlación no es causalidad.** Que dos cosas se muevan juntas no significa que una cause la otra. Las ventas de helado y los ahogamientos en la playa suben juntos en verano, pero el helado no causa ahogamientos: los dos aumentan por el calor.
+
+**En Excel:** `=COEF.DE.CORREL(rango1;rango2)`.
+
+**En el gráfico:** se muestra con un [gráfico de dispersión](#dispersion), o con uno de [burbujas](#burbujas) si se quiere agregar una tercera variable.
+
+### 15. Volumen frente a tasa {#volumen-tasa}
+
+Un **volumen** es una cifra absoluta (número de casos). Una **tasa** es esa cifra dividida por el tamaño del grupo, para poder comparar grupos de distinto tamaño (casos por cada 100 personas, por cada 10.000 habitantes). Comparar volúmenes entre grupos de distinto tamaño es uno de los errores más frecuentes del periodismo con datos.
+
+**Ejemplo.** El municipio X tuvo 45 casos de dengue y tiene 30.000 habitantes. El municipio Y tuvo 120 casos y tiene 400.000 habitantes. En volumen, Y parece estar peor. En tasa, X tiene 15 casos por cada 10.000 habitantes e Y tiene 3: **el problema es cinco veces más grave en X**.
+
+**En el gráfico:** los [mapas de coropletas](#coropletas) siempre deben usar tasas o porcentajes. Un mapa de volúmenes solo muestra dónde vive más gente.
+
+{: .clase }
+> **Actividad rápida.** Un restaurante registró cuánto tardaron siete domicilios, en minutos: 20, 25, 25, 30, 35, 40 y 90.
+>
+> 1. Calcula la media, la mediana y la moda.
+> 2. ¿Cuál de las tres describe mejor el tiempo típico de un domicilio? ¿Por qué?
+> 3. Con Q1 = 25 y Q3 = 37,5, ¿hay algún valor atípico?
+> 4. En el barrio A hubo 30 robos y viven 10.000 personas; en el barrio B hubo 12 robos y viven 2.000. ¿Dónde es más grave el problema?
+
+<details markdown="1">
+<summary>Ver respuesta</summary>
+
+1. Media: 265 ÷ 7 ≈ **37,9 minutos**. Mediana: el cuarto valor ordenado, **30 minutos**. Moda: **25 minutos** (aparece dos veces).
+2. La **mediana**. El domicilio de 90 minutos arrastra la media hacia arriba; la mediana no se ve afectada.
+3. Sí. El RIC es 37,5 − 25 = 12,5 y el límite superior es 37,5 + 1,5 × 12,5 = 56,25 minutos. El domicilio de **90 minutos es atípico**: vale la pena averiguar qué pasó.
+4. En el **barrio B**. Aunque tiene menos robos, su tasa es de 60 por cada 10.000 habitantes, frente a 30 en el barrio A.
+
+</details>
+
 ---
 
 ## Ejercicio práctico 1: redes sociales y productividad {#ejercicio-1}
@@ -1014,6 +1138,13 @@ plt.show()
 
 Mapas: elaboración propia a partir del mapa de departamentos de Castañeda (2023), basado en el Marco Geoestadístico Nacional del DANE (licencia MIT). Para facilitar la lectura, el archipiélago de San Andrés, Providencia y Santa Catalina aparece desplazado hacia la costa.
 {: .fs-2 }
+
+---
+
+## Ejercicio práctico 2 {#ejercicio-2}
+
+{: .construccion }
+Este ejercicio está en preparación.
 
 ---
 
