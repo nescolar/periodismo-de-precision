@@ -699,6 +699,17 @@ En las cuatro variables la media y la mediana son casi iguales: hay pocos valore
 
 </details>
 
+### El mismo ejercicio en Google Colab {#ejercicio-1-colab}
+
+Después de hacer el ejercicio en Excel, repita el análisis con Python en Google Colab. El cuaderno lee la base directamente desde este sitio, así que no necesita descargar nada ni instalar programas. Tiene dos partes:
+
+1. **Variable por variable:** frecuencias y gráficos de barras para las variables cualitativas; media, mediana, desviación estándar, cuartiles, asimetría, valores atípicos, histograma y diagrama de caja para cada variable cuantitativa.
+2. **Relaciones entre variables:** matriz de correlaciones, las correlaciones más fuertes, diagramas de dispersión para la pregunta guía, una comprobación con la correlación de Spearman y la comparación de la productividad por grupos.
+
+Cada resultado viene con una pregunta para comentar y, al final, un espacio para escribir las conclusiones.
+
+[Abrir el EDA en Google Colab](https://colab.research.google.com/github/nescolar/periodismo-de-precision/blob/main/notebooks/eda_redes_productividad.ipynb){: .btn .btn-primary }
+
 ---
 
 ## Gráficos: ¿cuál usar? {#graficos}
