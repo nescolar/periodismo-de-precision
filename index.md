@@ -412,6 +412,171 @@ La metodología de la visualización de datos nos obliga a pensar qué se quiere
 
 ---
 
+## Ejercicio práctico 1: redes sociales y productividad {#ejercicio-1}
+
+### Contexto {#ejercicio-1-contexto}
+
+Existe una percepción muy repetida en conversaciones, columnas de opinión y redes: **pasar mucho tiempo en redes sociales nos hace menos productivos**. Antes de escribir sobre eso, un periodista de precisión se pregunta qué dicen los datos.
+
+Para practicar vamos a usar una base publicada en Kaggle, *Social Media vs Productivity: Realistic Behavioral Dataset*, con 30.000 registros de personas y 19 variables sobre su uso de redes sociales, su trabajo, su descanso y su productividad. De esa base tomamos una **muestra aleatoria de 500 registros completos**.
+
+[Descargar la base en Excel]({{ '/assets/datos/Dataset_redes_sociales_productividad_muestra500.xlsx' | relative_url }}){: .btn .btn-primary }
+
+El archivo tiene tres hojas: **Leeme** (origen de los datos, cómo se tomó la muestra y diccionario de variables), **Datos** (los 500 registros, en formato de tabla) y **Resumen** (medidas descriptivas ya calculadas, para comprobar resultados).
+
+{: .ojo }
+> Los datos son **simulados**. Según su ficha en Kaggle, los registros imitan patrones de comportamiento y su autor les agregó a propósito datos faltantes, ruido y valores atípicos para que sirvan de práctica. No describen a personas reales: los usamos para entrenar el método, no para sacar conclusiones sobre la población.
+
+Estas son las variables principales:
+
+| Variable | Qué mide | Tipo |
+|:--|:--|:--|
+| edad | Edad en años | Cuantitativa discreta |
+| genero | Hombre, Mujer, Otro | Cualitativa nominal |
+| sector_laboral | Estudiante, Educación, Salud, Finanzas, Tecnología, Desempleado | Cualitativa nominal |
+| horas_redes_dia | Horas diarias en redes sociales | Cuantitativa continua |
+| red_preferida | Facebook, Instagram, TikTok, Telegram, Twitter | Cualitativa nominal |
+| notificaciones_dia | Notificaciones recibidas al día | Cuantitativa discreta |
+| productividad_percibida | Qué tan productiva se cree la persona (0 a 10) | Cuantitativa continua |
+| productividad_real | Productividad medida (0 a 10) | Cuantitativa continua |
+| nivel_estres | Estrés autorreportado (1 a 10) | Cualitativa ordinal codificada con números |
+| horas_sueno | Horas de sueño por noche | Cuantitativa continua |
+| usa_apps_concentracion | Usa aplicaciones de concentración (Sí o No) | Cualitativa nominal |
+
+### ¿Qué vamos a hacer? {#ejercicio-1-tareas}
+
+Vamos a hacer un **análisis exploratorio de datos (EDA)**: resumir y graficar las variables para conocer los datos **antes** de afirmar algo. La pregunta que guía el ejercicio es:
+
+> ¿Las personas que pasan más horas al día en redes sociales tienen una productividad real menor?
+
+Trabaje en Excel, en la hoja **Datos**. Como los datos están en formato de tabla, puede usar el nombre de cada columna dentro de las fórmulas, por ejemplo `=PROMEDIO(Datos[horas_redes_dia])`.
+
+#### Paso 1. Reconocer la base
+
+1. ¿Cuántas filas y cuántas variables tiene la hoja Datos?
+2. ¿Cuál es la unidad de análisis?
+3. Clasifique cada variable de la tabla anterior según su tipo y compare con la columna *Tipo*. ¿Está de acuerdo con que `nivel_estres` se trate como ordinal?
+
+<details markdown="1">
+<summary>Ver respuesta</summary>
+
+1. 500 filas y 20 columnas: 19 variables más `fila_original`, que solo sirve para ubicar el registro en el archivo de Kaggle.
+2. Cada persona (simulada). Cada fila es una persona.
+3. Es discutible, y vale la pena discutirlo: el estrés tiene números del 1 al 10, pero son categorías ordenadas de una escala de autorreporte. La distancia entre 2 y 3 no es necesariamente igual a la distancia entre 8 y 9.
+
+</details>
+
+#### Paso 2. Frecuencias: ¿cuántos hay en cada categoría?
+
+1. Con una tabla dinámica (Insertar > Tabla dinámica), calcule el porcentaje de personas por `red_preferida`, por `sector_laboral` y por `usa_apps_concentracion`. En Valores, elija *Mostrar valores como > % del total general*.
+2. Haga un gráfico de barras de `red_preferida`, ordenado de mayor a menor y con el eje desde cero.
+
+<details markdown="1">
+<summary>Valores para comprobar</summary>
+
+| red_preferida | % | sector_laboral | % |
+|:--|:--:|:--|:--:|
+| Facebook | 25,2 | Estudiante | 18,0 |
+| TikTok | 20,8 | Educación | 18,0 |
+| Instagram | 19,4 | Desempleado | 17,6 |
+| Telegram | 19,4 | Tecnología (TI) | 16,2 |
+| Twitter | 15,2 | Salud | 16,0 |
+| | | Finanzas | 14,2 |
+
+El 30,6 % usa aplicaciones de concentración.
+
+</details>
+
+#### Paso 3. Resumen numérico: valor típico y dispersión
+
+Para `horas_redes_dia`, `productividad_real`, `horas_sueno` y `notificaciones_dia`, calcule:
+
+| Medida | Fórmula en Excel |
+|:--|:--|
+| Media | `=PROMEDIO(Datos[horas_redes_dia])` |
+| Mediana | `=MEDIANA(Datos[horas_redes_dia])` |
+| Desviación estándar | `=DESVEST.M(Datos[horas_redes_dia])` |
+| Mínimo y máximo | `=MIN(...)` y `=MAX(...)` |
+| Primer y tercer cuartil | `=CUARTIL.INC(Datos[horas_redes_dia];1)` y `=CUARTIL.INC(Datos[horas_redes_dia];3)` |
+
+Luego responda: ¿en qué variables la media y la mediana se parecen? ¿Qué le dice eso sobre la presencia de valores extremos?
+
+<details markdown="1">
+<summary>Valores para comprobar</summary>
+
+| Variable | Media | Mediana | Desv. estándar | Mín. | Máx. | Q1 | Q3 |
+|:--|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+| horas_redes_dia | 3,20 | 3,16 | 1,96 | 0 | 15,04 | 1,75 | 4,47 |
+| productividad_real | 5,05 | 5,06 | 1,86 | 0,60 | 9,15 | 3,49 | 6,57 |
+| horas_sueno | 6,59 | 6,62 | 1,47 | 3 | 10 | 5,51 | 7,66 |
+| notificaciones_dia | 60,33 | 60 | 8,21 | 36 | 88 | 55 | 66 |
+
+En las cuatro variables la media y la mediana son casi iguales: hay pocos valores extremos o están compensados. La hoja **Resumen** del archivo trae estos mismos cálculos.
+
+</details>
+
+#### Paso 4. Forma y valores atípicos
+
+1. Haga un histograma de `horas_redes_dia` y otro de `notificaciones_dia` (Insertar > Gráfico estadístico > Histograma). Describa su forma.
+2. Con Q1, Q3 y la regla de 1,5 × RIC, calcule los límites a partir de los cuales un valor es atípico: `Q1 − 1,5 × (Q3 − Q1)` y `Q3 + 1,5 × (Q3 − Q1)`.
+3. ¿Cuántos valores atípicos hay en cada variable? ¿Los eliminaría? ¿Por qué?
+
+<details markdown="1">
+<summary>Ver respuesta</summary>
+
+- **horas_redes_dia:** el límite superior es 4,47 + 1,5 × 2,72 ≈ 8,6 horas. Hay **1** valor atípico: una persona con 15,04 horas diarias.
+- **notificaciones_dia:** los límites son 38,5 y 82,5. Hay **8** valores atípicos.
+- No se eliminan sin verificarlos. Con datos reales habría que consultar la fuente; aquí, además, la ficha de Kaggle advierte que se agregaron atípicos a propósito en el uso de redes y en las notificaciones.
+
+</details>
+
+#### Paso 5. Comparar grupos
+
+1. Con una tabla dinámica, calcule el promedio de `productividad_real` según `usa_apps_concentracion` y según `sector_laboral`.
+2. Haga un diagrama de caja de `productividad_real` por `sector_laboral` (Insertar > Gráfico estadístico > Cuadro y bigotes).
+3. ¿Qué grupo tiene la productividad más baja? ¿La diferencia le parece grande?
+
+<details markdown="1">
+<summary>Valores para comprobar</summary>
+
+- Usa apps de concentración: 5,03. No usa: 5,06.
+- Por sector, los promedios van de 4,75 (Tecnología) a 5,17 (Estudiante y Desempleado).
+- Las diferencias son pequeñas frente a una desviación estándar de 1,86. Con grupos de 71 a 90 personas, pueden deberse al azar de la muestra.
+
+</details>
+
+#### Paso 6. Relaciones entre variables
+
+1. Haga un gráfico de dispersión con `horas_redes_dia` en el eje horizontal y `productividad_real` en el vertical. Calcule la correlación con `=COEF.DE.CORREL(Datos[horas_redes_dia];Datos[productividad_real])`.
+2. Repita con `productividad_percibida` y `productividad_real`.
+3. Cree una columna nueva, `brecha`, con la fórmula `=[@productividad_percibida]-[@productividad_real]`. ¿Qué porcentaje de personas tiene una brecha positiva, es decir, se cree más productiva de lo que es?
+
+<details markdown="1">
+<summary>Valores para comprobar</summary>
+
+- Horas en redes y productividad real: r = −0,004, prácticamente cero. Los puntos forman una nube sin dirección.
+- Productividad percibida y real: r = 0,96, una relación muy fuerte.
+- El 84,6 % de las personas tiene una brecha positiva; en promedio, se califican 0,56 puntos por encima de su productividad real.
+
+</details>
+
+#### Paso 7. Concluir
+
+1. Escriba los tres hallazgos más importantes de su exploración.
+2. Responda la pregunta guía con los datos.
+3. Proponga un titular honesto y el gráfico que usaría para acompañarlo.
+
+<details markdown="1">
+<summary>Ver respuesta</summary>
+
+1. Las horas en redes no se relacionan con la productividad real; las personas se califican por encima de su productividad real; hay pocos valores atípicos, concentrados en horas en redes y notificaciones.
+2. En estos datos, **no**: quienes pasan más horas en redes no tienen una productividad real menor. La sospecha no se confirma, y eso también es un hallazgo. Como los datos son simulados, el resultado refleja cómo se construyó la simulación, no cómo se comporta la gente.
+3. Por ejemplo: "En 500 registros simulados, pasar más horas en redes no se asocia con menor productividad", acompañado de un gráfico de dispersión con una nota que aclare que los datos son simulados.
+
+</details>
+
+---
+
 ## Gráficos: ¿cuál usar? {#graficos}
 
 Para visualizar datos, ya sea para explorarlos, analizarlos o explicarlos, hay múltiples opciones. Sin embargo, para cada tipo de variable y acorde a lo que se pretende contar, hay gráficos sugeridos. A continuación se presentan los más utilizados, en función de: comparar, mostrar tendencias, distribuciones, correlaciones y mapas.
@@ -869,5 +1034,7 @@ López, P. J. (2016). Antecedentes y fundamentos del periodismo de datos. En *Pe
 Meyer, P. (2002). *Precision journalism: A reporter's introduction to social science methods* (4.ª ed.). Lanham: Rowman & Littlefield.
 
 Protess, D. L., Cook, F. L., Doppelt, J. C., Ettema, J. S., Gordon, M. T., Leff, D. R. y Miller, P. (1991). *The journalism of outrage: Investigative reporting and agenda building in America*. Nueva York: Guilford Press.
+
+*Social Media vs Productivity: Realistic Behavioral Dataset (30,000 Users)* [Conjunto de datos simulado]. (s. f.). Kaggle. Consultado en noviembre de 2026.
 
 Salón Acosta, E. P. (s. f.). *Herramientas estadísticas para el mejoramiento continuo* [Material de clase]. Departamento de Matemáticas, Física y Ciencia de Datos, Universidad del Norte.

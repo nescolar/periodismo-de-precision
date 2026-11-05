@@ -1,0 +1,50 @@
+{%- comment -%}
+  Menú lateral personalizado: cinco secciones de la página única, con subsecciones desplegables.
+  Para agregar un enlace, copie un <li class="nav-list-item"> y cambie el ancla (#...) y el texto.
+{%- endcomment -%}
+{%- assign inicio = '/' | relative_url -%}
+{%- capture flecha -%}<button class="nav-list-expander btn-reset" aria-label="Mostrar u ocultar subsecciones" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg></button>{%- endcapture -%}
+<nav aria-label="Main" id="site-nav" class="site-nav">
+  <ul class="nav-list">
+    <li class="nav-list-item">
+      <a href="{{ inicio }}#visualizacion" class="nav-list-link">1. ¿Qué es la visualización de datos?</a>
+    </li>
+    <li class="nav-list-item">
+      {{ flecha }}
+      <a href="{{ inicio }}#estadistica" class="nav-list-link">2. ¿Qué es la estadística?</a>
+      <ul class="nav-list">
+        <li class="nav-list-item"><a href="{{ inicio }}#metodo" class="nav-list-link">El método estadístico</a></li>
+        <li class="nav-list-item"><a href="{{ inicio }}#variables" class="nav-list-link">2.1 Variables</a></li>
+        <li class="nav-list-item"><a href="{{ inicio }}#unidad-analisis" class="nav-list-link">2.2 Unidad de análisis</a></li>
+        <li class="nav-list-item"><a href="{{ inicio }}#poblacion-muestra" class="nav-list-link">2.3 Población y muestra</a></li>
+        <li class="nav-list-item"><a href="{{ inicio }}#parametros" class="nav-list-link">2.4 Parámetros y estadísticos</a></li>
+        <li class="nav-list-item"><a href="{{ inicio }}#descriptiva-inferencial" class="nav-list-link">2.5 Descriptiva e inferencial</a></li>
+        <li class="nav-list-item"><a href="{{ inicio }}#error-sesgo" class="nav-list-link">2.6 Error y sesgo</a></li>
+        <li class="nav-list-item"><a href="{{ inicio }}#error-vs-sesgo" class="nav-list-link">2.7 Error muestral frente a sesgo</a></li>
+        <li class="nav-list-item"><a href="{{ inicio }}#validez" class="nav-list-link">2.8 Validez y reproducibilidad</a></li>
+      </ul>
+    </li>
+    <li class="nav-list-item">
+      {{ flecha }}
+      <a href="{{ inicio }}#ejercicio-1" class="nav-list-link">3. Ejercicio práctico 1</a>
+      <ul class="nav-list">
+        <li class="nav-list-item"><a href="{{ inicio }}#ejercicio-1-contexto" class="nav-list-link">Contexto</a></li>
+        <li class="nav-list-item"><a href="{{ inicio }}#ejercicio-1-tareas" class="nav-list-link">¿Qué vamos a hacer?</a></li>
+      </ul>
+    </li>
+    <li class="nav-list-item">
+      {{ flecha }}
+      <a href="{{ inicio }}#graficos" class="nav-list-link">4. Gráficos: ¿cuál usar?</a>
+      <ul class="nav-list">
+        <li class="nav-list-item"><a href="{{ inicio }}#comparar" class="nav-list-link">Comparar</a></li>
+        <li class="nav-list-item"><a href="{{ inicio }}#tendencias" class="nav-list-link">Tendencias</a></li>
+        <li class="nav-list-item"><a href="{{ inicio }}#distribuciones" class="nav-list-link">Distribuciones</a></li>
+        <li class="nav-list-item"><a href="{{ inicio }}#correlaciones" class="nav-list-link">Correlaciones</a></li>
+        <li class="nav-list-item"><a href="{{ inicio }}#mapas" class="nav-list-link">Mapas</a></li>
+      </ul>
+    </li>
+    <li class="nav-list-item">
+      <a href="{{ inicio }}#referencias" class="nav-list-link">5. Referencias</a>
+    </li>
+  </ul>
+</nav>

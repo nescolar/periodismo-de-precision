@@ -23,85 +23,7 @@ heading_anchors: true
 back_to_top: true
 back_to_top_text: "Volver arriba"
 
-# Menú lateral: enlaces a las secciones de la página única.
-# Si cambia el nombre del repositorio, cambie también "/periodismo-de-precision/" en cada enlace del menú.
-nav_external_links:
-  - title: "¿Qué es la visualización de datos?"
-    url: "https://nescolar.github.io/periodismo-de-precision/#visualizacion"
-    hide_icon: true
-    opens_in_new_tab: false
-  - title: "¿Qué es la estadística?"
-    url: "https://nescolar.github.io/periodismo-de-precision/#estadistica"
-    hide_icon: true
-    opens_in_new_tab: false
-  - title: "El método estadístico"
-    url: "https://nescolar.github.io/periodismo-de-precision/#metodo"
-    hide_icon: true
-    opens_in_new_tab: false
-  - title: "Conocimientos previos"
-    url: "https://nescolar.github.io/periodismo-de-precision/#conocimientos-previos"
-    hide_icon: true
-    opens_in_new_tab: false
-  - title: "1. Variables"
-    url: "https://nescolar.github.io/periodismo-de-precision/#variables"
-    hide_icon: true
-    opens_in_new_tab: false
-  - title: "2. Unidad de análisis"
-    url: "https://nescolar.github.io/periodismo-de-precision/#unidad-analisis"
-    hide_icon: true
-    opens_in_new_tab: false
-  - title: "3. Población y muestra"
-    url: "https://nescolar.github.io/periodismo-de-precision/#poblacion-muestra"
-    hide_icon: true
-    opens_in_new_tab: false
-  - title: "4. Parámetros y estadísticos"
-    url: "https://nescolar.github.io/periodismo-de-precision/#parametros"
-    hide_icon: true
-    opens_in_new_tab: false
-  - title: "5. Descriptiva e inferencial"
-    url: "https://nescolar.github.io/periodismo-de-precision/#descriptiva-inferencial"
-    hide_icon: true
-    opens_in_new_tab: false
-  - title: "6. Error y sesgo"
-    url: "https://nescolar.github.io/periodismo-de-precision/#error-sesgo"
-    hide_icon: true
-    opens_in_new_tab: false
-  - title: "7. Error muestral frente a sesgo"
-    url: "https://nescolar.github.io/periodismo-de-precision/#error-vs-sesgo"
-    hide_icon: true
-    opens_in_new_tab: false
-  - title: "8. Validez y reproducibilidad"
-    url: "https://nescolar.github.io/periodismo-de-precision/#validez"
-    hide_icon: true
-    opens_in_new_tab: false
-  - title: "Gráficos: ¿cuál usar?"
-    url: "https://nescolar.github.io/periodismo-de-precision/#graficos"
-    hide_icon: true
-    opens_in_new_tab: false
-  - title: "· Comparar"
-    url: "https://nescolar.github.io/periodismo-de-precision/#comparar"
-    hide_icon: true
-    opens_in_new_tab: false
-  - title: "· Tendencias"
-    url: "https://nescolar.github.io/periodismo-de-precision/#tendencias"
-    hide_icon: true
-    opens_in_new_tab: false
-  - title: "· Distribuciones"
-    url: "https://nescolar.github.io/periodismo-de-precision/#distribuciones"
-    hide_icon: true
-    opens_in_new_tab: false
-  - title: "· Correlaciones"
-    url: "https://nescolar.github.io/periodismo-de-precision/#correlaciones"
-    hide_icon: true
-    opens_in_new_tab: false
-  - title: "· Mapas"
-    url: "https://nescolar.github.io/periodismo-de-precision/#mapas"
-    hide_icon: true
-    opens_in_new_tab: false
-  - title: "Referencias"
-    url: "https://nescolar.github.io/periodismo-de-precision/#referencias"
-    hide_icon: true
-    opens_in_new_tab: false
+# El menú lateral está en _includes/components/site_nav.html
 
 footer_content: "Módulo de periodismo de precisión y visualización de datos. Universidad del Norte."
 
@@ -132,6 +54,5 @@ exclude:
   - eda
   - inferencia
   - talleres
-  - assets/datos
 
 permalink: pretty

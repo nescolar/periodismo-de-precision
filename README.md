@@ -7,7 +7,8 @@ Sitio: https://nescolar.github.io/periodismo-de-precision/
 ## Estructura
 
 - `index.md`: página única del cuaderno (todo el contenido publicado está aquí).
-- `_config.yml`: configuración del sitio y menú lateral, que enlaza a las secciones de `index.md`.
+- `_includes/components/site_nav.html`: menú lateral desplegable (cinco secciones con sus subsecciones).
+- `_config.yml`: configuración del sitio.
 - `assets/img/`: imágenes (las de `graficos/` se generan con el código de `notebooks/graficos.ipynb`).
 - `assets/datos/colombia_departamentos.geojson`: mapa de departamentos que usan los ejemplos de mapas.
 - `notebooks/graficos.ipynb`: cuaderno de Colab con los ejemplos de gráficos.
@@ -15,8 +16,8 @@ Sitio: https://nescolar.github.io/periodismo-de-precision/
 
 ## Cómo agregar una sección al menú
 
-1. En `index.md`, ponga un identificador al título: `### 9. Nueva sección {#nueva-seccion}`.
-2. En `_config.yml`, agregue un elemento a `nav_external_links` con `url: "https://nescolar.github.io/periodismo-de-precision/#nueva-seccion"`.
+1. En `index.md`, ponga un identificador al título: `### Nueva sección {#nueva-seccion}`.
+2. En `_includes/components/site_nav.html`, copie una línea `<li class="nav-list-item">` dentro de la sección que corresponda y cambie el ancla (`#nueva-seccion`) y el texto.
 
 ## Cajas disponibles
 
