@@ -14,7 +14,7 @@ Sitio: https://nescolar.github.io/periodismo-de-precision/
 ## Cómo agregar una sección al menú
 
 1. En `index.md`, ponga un identificador al título: `### 9. Nueva sección {#nueva-seccion}`.
-2. En `_config.yml`, agregue un elemento a `nav_external_links` con `url: "/periodismo-de-precision/#nueva-seccion"`.
+2. En `_config.yml`, agregue un elemento a `nav_external_links` con `url: "https://nescolar.github.io/periodismo-de-precision/#nueva-seccion"`.
 
 ## Cajas disponibles
 
