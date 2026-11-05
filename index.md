@@ -1152,10 +1152,173 @@ Mapas: elaboración propia a partir del mapa de departamentos de Castañeda (202
 
 ---
 
-## Ejercicio práctico 2 {#ejercicio-2}
+## Ejercicio práctico 2: clima y violencia en Barranquilla {#ejercicio-2}
 
-{: .construccion }
-Este ejercicio está en preparación.
+### Contexto {#ejercicio-2-contexto}
+
+"Con este calor, la gente anda de mal genio." En una ciudad como Barranquilla, la frase se oye a menudo, y algunas notas de prensa sugieren que los días más calientes son también los más violentos. Antes de repetirlo, un periodista de precisión se pregunta qué dicen los datos.
+
+Para comprobarlo vamos a usar una base publicada por Juan C. Trujillo y Peter Howley en Mendeley Data: *Dataset for weather and crime in Barranquilla, Colombia*. Tiene **2.557 días seguidos**, del 1 de enero de 2010 al 31 de diciembre de 2016, sin valores faltantes. Cada fila es **un día** en Barranquilla, con el número de casos de violencia y de homicidios, el clima de ese día, la fase de la luna y otras variables del calendario y de la ciudad.
+
+[Descargar la base en Excel]({{ '/assets/datos/Dataset_clima_violencia_barranquilla.xlsx' | relative_url }}){: .btn .btn-primary }
+
+El archivo tiene tres hojas: **Leeme** (origen de los datos y diccionario de variables), **Datos** (los 2.557 días, en formato de tabla) y **Resumen** (medidas descriptivas ya calculadas, para comprobar resultados).
+
+{: .recordar }
+> A diferencia del ejercicio 1, estos datos son **reales**. Los autores los reunieron de cinco fuentes oficiales: Medicina Legal (violencia y homicidios), el IDEAM (clima), la Organización de Aviación Civil Internacional (luna), el calendario oficial de Colombia (festivos y fines de semana) y la Secretaría Distrital de Movilidad (comparendos y matrículas). La base tiene licencia CC BY 4.0: se puede usar citando la fuente. Los datos llegan hasta 2016, así que no describen la situación actual de la ciudad.
+
+Estas son las variables principales:
+
+| Variable | Qué mide | Tipo |
+|:--|:--|:--|
+| fecha, dia_semana, mes, anio | Cuándo ocurrió el registro | Tiempo |
+| tipo_dia | Entre semana, Fin de semana o Festivo | Cualitativa nominal |
+| festivo, fin_de_semana | 1 si el día es festivo (o fin de semana), 0 si no | Cualitativa dicotómica codificada |
+| violencia_interpersonal | Casos de violencia no letal en el día. El 86 % son riñas | Cuantitativa discreta |
+| homicidios | Homicidios en el día | Cuantitativa discreta |
+| temp_max | Temperatura máxima (°C) | Cuantitativa continua |
+| indice_calor | Sensación de calor, combinando temperatura y humedad (°C) | Cuantitativa continua |
+| humedad | Humedad relativa promedio (%) | Cuantitativa continua |
+| lluvia | Precipitación total (mm) | Cuantitativa continua |
+| viento | Velocidad promedio del viento | Cuantitativa continua |
+| luna_iluminada | Proporción de la Luna iluminada (0 = luna nueva, 1 = luna llena) | Cuantitativa continua |
+| comparendos_embriaguez | Comparendos por conducir embriagado. Los autores la usan como aproximación al consumo de alcohol | Cuantitativa discreta |
+| matriculas_vehiculos | Matrículas de vehículos particulares. Los autores la usan como aproximación a la economía | Cuantitativa discreta |
+
+### ¿Qué vamos a hacer? {#ejercicio-2-tareas}
+
+En el ejercicio 1 practicamos la exploración variable por variable. Ahora nos concentramos en las **relaciones entre variables**: la [correlación](#correlacion), los diagramas de dispersión y las comparaciones entre grupos. La pregunta que guía el ejercicio es:
+
+> ¿En Barranquilla hay más violencia los días más calientes?
+
+Trabaje en Excel, en la hoja **Datos**. Como en el ejercicio 1, puede usar el nombre de cada columna dentro de las fórmulas, por ejemplo `=PROMEDIO(Datos[violencia_interpersonal])`.
+
+#### Paso 1. Reconocer la base
+
+1. ¿Cuál es la unidad de análisis? ¿Qué periodo cubre la base?
+2. En promedio, ¿cuántos casos de violencia interpersonal y cuántos homicidios hay por día? Use la hoja **Resumen** o calcúlelos.
+3. ¿Qué variables son cuantitativas y cuáles cualitativas? ¿Por qué `festivo` y `fin_de_semana` tienen números si son cualitativas?
+
+<details markdown="1">
+<summary>Ver respuesta</summary>
+
+1. Cada fila es un día en Barranquilla. La base cubre siete años completos, de 2010 a 2016: 2.557 días.
+2. Unos 10 casos de violencia interpersonal por día (media 9,96, mediana 9) y 1 homicidio por día (media 1,00).
+3. Son cualitativas (sí o no) codificadas con 1 y 0. Esa codificación permite calcular promedios y correlaciones con ellas: el promedio de `fin_de_semana` (0,29) es la proporción de días que son fin de semana.
+
+</details>
+
+#### Paso 2. Los días más violentos
+
+1. Ordene la tabla de mayor a menor según `violencia_interpersonal`. ¿Qué tienen en común los cinco días más violentos?
+2. Con la regla de 1,5 × RIC, calcule el límite a partir del cual un día es atípico. ¿Cuántos días lo superan y de qué tipo son?
+
+<details markdown="1">
+<summary>Ver respuesta</summary>
+
+1. Los cinco son festivos: el 8 de diciembre de 2010 (52 casos), el 25 de diciembre de 2011 (48), el 8 de diciembre de 2013 (44), el 1 de enero de 2011 (41) y el 8 de diciembre de 2015 (39). El 8 de diciembre es el Día de las Velitas. Un valor atípico no es un error: a veces es la noticia.
+2. Q1 = 6 y Q3 = 12, así que el límite es 12 + 1,5 × 6 = 21 casos. Lo superan 107 días: 67 de fin de semana, 37 festivos y solo 3 entre semana.
+
+</details>
+
+#### Paso 3. La pregunta guía: calor y violencia
+
+1. Haga un gráfico de dispersión con `temp_max` en el eje horizontal y `violencia_interpersonal` en el vertical (Insertar > Gráfico de dispersión). Agregue una línea de tendencia.
+2. Calcule la correlación: `=COEF.DE.CORREL(Datos[temp_max];Datos[violencia_interpersonal])`.
+3. Repita con `indice_calor`, que mide la sensación de calor, y con `homicidios` en lugar de violencia.
+4. Con una tabla dinámica, calcule el promedio de violencia para cada valor de `temp_max`. ¿Los días más calientes son más violentos?
+
+<details markdown="1">
+<summary>Valores para comprobar</summary>
+
+- Temperatura máxima y violencia: r = 0,04. Índice de calor y violencia: r = 0,04. Temperatura y homicidios: r = 0,00. Las tres son prácticamente nulas.
+- En la tabla dinámica, entre 30 °C y 36 °C (la gran mayoría de los días) el promedio se mantiene cerca de 10 casos. Los extremos cambian más, pero son pocos días: solo 9 días con 28 °C y 1 día con 39 °C. Un promedio calculado con tan pocos casos no es confiable.
+- **Respuesta:** en estos datos, el calor no se asocia con más violencia.
+
+</details>
+
+#### Paso 4. La matriz de correlaciones
+
+1. Active el complemento de análisis (Archivo > Opciones > Complementos > Herramientas para análisis). Luego vaya a Datos > Análisis de datos > **Coeficiente de correlación** y seleccione las columnas de `festivo` a `matriculas_vehiculos`, con la opción *Rótulos en la primera fila*.
+2. Aplique formato condicional (escala de colores) a la matriz para que se lean mejor las correlaciones.
+3. ¿Cuáles son las cinco correlaciones más fuertes, positivas o negativas? ¿Con qué variables se relaciona más la violencia?
+
+<details markdown="1">
+<summary>Valores para comprobar</summary>
+
+| Variable 1 | Variable 2 | r |
+|:--|:--|:--:|
+| fin_de_semana | comparendos_embriaguez | 0,70 |
+| temp_max | indice_calor | 0,68 |
+| humedad | viento | −0,60 |
+| fin_de_semana | matriculas_vehiculos | −0,52 |
+| comparendos_embriaguez | matriculas_vehiculos | −0,43 |
+
+La violencia se relaciona sobre todo con el fin de semana (0,38), los comparendos por embriaguez (0,37), las matrículas (−0,32), los homicidios (0,23) y los festivos (0,20). Con las variables del clima y con la luna, ninguna correlación supera |0,08|.
+
+Algunas relaciones son obvias: el índice de calor se calcula con la temperatura, así que es lógico que se parezcan.
+
+</details>
+
+#### Paso 5. ¿Una tercera variable?
+
+Las matrículas de vehículos tienen una correlación **negativa** con la violencia (−0,32): los días con más matrículas hay menos violencia. ¿Comprar carro calma a la gente?
+
+1. Con una tabla dinámica, calcule el promedio de `violencia_interpersonal`, `comparendos_embriaguez` y `matriculas_vehiculos` según `dia_semana` y según `tipo_dia`.
+2. ¿Qué pasa los domingos con cada una de las tres variables?
+3. Filtre la tabla para quedarse solo con los días **Entre semana**, copie esas filas en una hoja nueva y vuelva a calcular la correlación entre comparendos y violencia. ¿Qué ocurre con el valor de r?
+
+<details markdown="1">
+<summary>Ver respuesta</summary>
+
+| tipo_dia | Violencia | Comparendos | Matrículas |
+|:--|:--:|:--:|:--:|
+| Entre semana | 8,3 | 0,9 | 32,8 |
+| Fin de semana | 13,1 | 11,8 | 7,8 |
+| Festivo | 14,4 | 9,1 | 6,5 |
+
+- Los domingos la violencia sube a 16,4 casos (entre martes y viernes ronda 8,4), los comparendos llegan a 11,4 y las matrículas caen a 0,2: la oficina casi no matricula ese día.
+- El calendario es la **tercera variable**: mueve a las tres al mismo tiempo. Los fines de semana y festivos hay más reuniones, más alcohol y más riñas; también hay más operativos de alcoholemia y las oficinas de matrícula están cerradas.
+- Solo con los días entre semana, la correlación entre comparendos y violencia baja de 0,37 a 0,12. Buena parte de la relación venía del calendario.
+- Las matrículas no "calman" a nadie. Esta correlación es un buen ejemplo de que **correlación no es causalidad**.
+
+</details>
+
+#### Paso 6. Cambiar la escala: de días a meses
+
+1. Con una tabla dinámica, ponga `anio` y `num_mes` en las filas y el **promedio** de `violencia_interpersonal` y de `lluvia` en los valores. Obtendrá 84 meses.
+2. Copie la tabla como valores y calcule la correlación entre las dos columnas de promedios.
+3. Compare con la correlación diaria entre lluvia y violencia. ¿Por qué cambia?
+
+<details markdown="1">
+<summary>Ver respuesta</summary>
+
+- Por día, lluvia y violencia tienen r = −0,07. Por mes, r = −0,26: una relación negativa débil, pero más clara.
+- El 82 % de los días no llueve, así que la variable diaria es casi siempre cero. Al promediar por mes se reduce el ruido del día a día y aparece un patrón: los meses más lluviosos tienden a ser un poco menos violentos.
+- La lección: la correlación depende de la escala a la que se mide. Cuando una nota cite una correlación, conviene preguntar si es por día, por mes o por año.
+
+</details>
+
+#### Paso 7. Concluir
+
+1. Responda la pregunta guía con un número.
+2. Escriba los tres hallazgos más importantes sobre qué se relaciona con la violencia en Barranquilla.
+3. Proponga un titular honesto y el gráfico que usaría para acompañarlo.
+
+<details markdown="1">
+<summary>Ver respuesta</summary>
+
+1. **No**: la correlación entre temperatura máxima y violencia es 0,04, prácticamente nula.
+2. La violencia se concentra en domingos y festivos, sobre todo en fechas como el Día de las Velitas, Navidad y Año Nuevo. Los comparendos por embriaguez se mueven con la violencia, pero buena parte de esa relación viene del calendario. El clima y la luna casi no se relacionan con la violencia; la lluvia muestra una relación débil cuando se mira por meses.
+3. Por ejemplo: "No es el calor: en Barranquilla, la violencia sube los domingos y festivos", con un gráfico de barras del promedio de casos por día de la semana o un gráfico de dispersión temperatura-violencia que muestre la nube sin dirección.
+
+</details>
+
+### El mismo ejercicio en Google Colab {#ejercicio-2-colab}
+
+El cuaderno de Colab repite el análisis con Python y agrega lo que en Excel es más difícil: la matriz de correlaciones en un mapa de calor, la comparación entre Pearson y Spearman, las correlaciones calculadas dentro de cada tipo de día y la serie de tiempo mensual. Como en el ejercicio 1, lee la base directamente desde este sitio.
+
+[Abrir el ejercicio 2 en Google Colab](https://colab.research.google.com/github/nescolar/periodismo-de-precision/blob/main/notebooks/clima_violencia_barranquilla.ipynb){: .btn .btn-primary }
 
 ---
 
@@ -1180,3 +1343,5 @@ Protess, D. L., Cook, F. L., Doppelt, J. C., Ettema, J. S., Gordon, M. T., Leff,
 *Social Media vs Productivity: Realistic Behavioral Dataset (30,000 Users)* [Conjunto de datos simulado]. (s. f.). Kaggle. Consultado en noviembre de 2026.
 
 Salón Acosta, E. P. (s. f.). *Herramientas estadísticas para el mejoramiento continuo* [Material de clase]. Departamento de Matemáticas, Física y Ciencia de Datos, Universidad del Norte.
+
+Trujillo, J. C. y Howley, P. (2018). *Dataset for weather and crime in Barranquilla, Colombia* (versión 1) [Conjunto de datos]. Mendeley Data. https://doi.org/10.17632/836wyfy5rn.1
