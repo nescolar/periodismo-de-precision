@@ -8,7 +8,9 @@ Sitio: https://nescolar.github.io/periodismo-de-precision/
 
 - `index.md`: página única del cuaderno (todo el contenido publicado está aquí).
 - `_config.yml`: configuración del sitio y menú lateral, que enlaza a las secciones de `index.md`.
-- `assets/img/`: imágenes.
+- `assets/img/`: imágenes (las de `graficos/` se generan con el código de `notebooks/graficos.ipynb`).
+- `assets/datos/colombia_departamentos.geojson`: mapa de departamentos que usan los ejemplos de mapas.
+- `notebooks/graficos.ipynb`: cuaderno de Colab con los ejemplos de gráficos.
 - Los demás `.md` son borradores guardados; no se publican (ver `exclude` en `_config.yml`).
 
 ## Cómo agregar una sección al menú

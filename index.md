@@ -412,11 +412,455 @@ La metodología de la visualización de datos nos obliga a pensar qué se quiere
 
 ---
 
+## Gráficos: ¿cuál usar? {#graficos}
+
+Para visualizar datos, ya sea para explorarlos, analizarlos o explicarlos, hay múltiples opciones. Sin embargo, para cada tipo de variable y acorde a lo que se pretende contar, hay gráficos sugeridos. A continuación se presentan los más utilizados, en función de: comparar, mostrar tendencias, distribuciones, correlaciones y mapas.
+
+Cada gráfico se presenta con una descripción sencilla, el tipo de variable para el que es más común, una recomendación y un ejemplo con su código. El código funciona en Google Colab: puede copiar cada ejemplo en una celda o abrir el cuaderno con todos los ejemplos.
+
+[Abrir todos los ejemplos en Google Colab](https://colab.research.google.com/github/nescolar/periodismo-de-precision/blob/main/notebooks/graficos.ipynb){: .btn .btn-primary }
+
+### Comparar {#comparar}
+
+Sirven para poner lado a lado los valores de varias categorías y ver cuál es mayor, cuál es menor y por cuánto.
+
+#### Gráfico de barras {#barras}
+
+Cuando se quiere comparar un conjunto de valores y establecer un ranking. Como el ojo humano es muy bueno comparando distancias de elementos que están situados sobre un mismo eje, el gráfico de barras no solo descubre los valores más altos y los más bajos, sino que también ayuda a tener una intuición bastante acertada de la diferencia existente entre unos valores y otros.
+
+**Es más común para:** una variable **cualitativa** (nominal u ordinal), que va en un eje, y una **cuantitativa** (un conteo, un porcentaje o un promedio), que define la longitud de cada barra.
+
+{: .recordar }
+El eje cuantitativo debe empezar siempre en 0; si no, las diferencias se magnifican y confunden al lector. Ordene las barras de mayor a menor para comunicar el ranking y use barras horizontales cuando los nombres de las categorías sean largos.
+
+**Ejemplo.** Medio principal por el que se informan 200 estudiantes (datos ilustrativos).
+
+![Gráfico de barras: Medio principal por el que se informan 200 estudiantes (datos ilustrativos).]({{ '/assets/img/graficos/01_barras.png' | relative_url }})
+
+<details markdown="1">
+<summary>Ver el código para Colab</summary>
+
+```python
+import matplotlib.pyplot as plt
+
+# Datos ilustrativos: medio principal por el que se informan 200 estudiantes
+medios = ["Instagram", "TikTok", "WhatsApp", "Televisión", "X (Twitter)", "Radio", "Prensa digital"]
+estudiantes = [62, 48, 35, 22, 15, 10, 8]
+
+# Ordenamos de menor a mayor para que la barra más larga quede arriba
+datos = sorted(zip(estudiantes, medios))
+valores = [v for v, m in datos]
+nombres = [m for v, m in datos]
+
+fig, ax = plt.subplots(figsize=(7, 4))
+ax.barh(nombres, valores, color="#2a78d6")
+ax.set_xlim(0, 70)                       # el eje cuantitativo empieza en 0
+for i, v in enumerate(valores):
+    ax.text(v + 1, i, v, va="center")    # etiqueta con el valor de cada barra
+ax.set_title("Medio principal para informarse (200 estudiantes)", loc="left")
+ax.set_xlabel("Número de estudiantes")
+ax.spines[["top", "right"]].set_visible(False)
+plt.show()
+```
+
+</details>
+
+#### Gráfico de barras agrupadas {#barras-agrupadas}
+
+Es una versión del gráfico de barras en la que, para cada categoría, se ponen varias barras una al lado de la otra. Permite comparar cómo se reparte cada categoría entre distintos grupos y, al mismo tiempo, comparar los grupos entre sí.
+
+**Es más común para:** dos variables **cualitativas** (por ejemplo, fuente de noticias y grupo de edad) y una **cuantitativa** (el porcentaje o el conteo).
+
+{: .recordar }
+No lo sobrecargue: con más de tres o cuatro grupos por categoría se vuelve difícil de leer. En ese caso es mejor hacer varios gráficos de barras separados.
+
+**Ejemplo.** Fuente principal de noticias según la edad (datos ilustrativos).
+
+![Gráfico de barras agrupadas: Fuente principal de noticias según la edad (datos ilustrativos).]({{ '/assets/img/graficos/02_barras_agrupadas.png' | relative_url }})
+
+<details markdown="1">
+<summary>Ver el código para Colab</summary>
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Datos ilustrativos: fuente principal de noticias por grupo de edad (%)
+fuentes = ["Redes sociales", "Televisión", "Radio", "Prensa"]
+jovenes = [64, 18, 8, 10]    # 18 a 29 años
+mayores = [30, 40, 15, 15]   # 30 años o más
+
+x = np.arange(len(fuentes))  # posición de cada grupo de barras
+ancho = 0.38
+
+fig, ax = plt.subplots(figsize=(7, 4))
+ax.bar(x - ancho/2, jovenes, ancho, label="18 a 29 años", color="#2a78d6")
+ax.bar(x + ancho/2, mayores, ancho, label="30 años o más", color="#eb6834")
+ax.set_xticks(x, fuentes)
+ax.set_ylim(0, 75)                       # el eje empieza en 0
+ax.set_ylabel("Porcentaje de encuestados")
+ax.set_title("Fuente principal de noticias según la edad", loc="left")
+ax.legend(frameon=False)
+ax.spines[["top", "right"]].set_visible(False)
+plt.show()
+```
+
+</details>
+
+### Mostrar tendencias {#tendencias}
+
+Sirven para ver cómo cambia una variable cuantitativa a lo largo del tiempo.
+
+#### Gráfico de líneas {#lineas}
+
+Representa el cambio de una variable a lo largo del tiempo: el tiempo va en el eje horizontal y una línea une los valores de cada momento. Puede tener una o varias líneas para comparar la evolución de distintas categorías.
+
+**Es más común para:** una variable de **tiempo** (días, meses, años) y una o más variables **cuantitativas**.
+
+{: .recordar }
+Cuide el rango del eje vertical: si no empieza en 0, las pendientes se exageran y los cambios parecen más grandes de lo que son. Evite poner demasiadas líneas; con más de cuatro o cinco el gráfico pierde legibilidad.
+
+**Ejemplo.** Visitas mensuales a un medio digital, por canal (datos ilustrativos).
+
+![Gráfico de líneas: Visitas mensuales a un medio digital, por canal (datos ilustrativos).]({{ '/assets/img/graficos/03_lineas.png' | relative_url }})
+
+<details markdown="1">
+<summary>Ver el código para Colab</summary>
+
+```python
+import matplotlib.pyplot as plt
+
+# Datos ilustrativos: visitas mensuales a un medio digital (miles)
+meses = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
+web = [120, 118, 125, 130, 128, 135, 140, 138, 145, 150, 148, 155]
+app = [40, 45, 50, 58, 63, 70, 78, 85, 90, 98, 105, 112]
+
+fig, ax = plt.subplots(figsize=(7, 4))
+ax.plot(meses, web, color="#2a78d6", linewidth=2, marker="o")
+ax.plot(meses, app, color="#eb6834", linewidth=2, marker="o")
+ax.text(11.3, web[-1], "Sitio web", va="center")    # etiquetas directas al final
+ax.text(11.3, app[-1], "Aplicación", va="center")
+ax.set_ylim(0, 180)                     # rango honesto del eje y
+ax.set_xlim(-0.5, 13)
+ax.set_ylabel("Visitas (miles)")
+ax.set_title("Visitas mensuales al medio, por canal", loc="left")
+ax.grid(axis="y", alpha=0.3)
+ax.spines[["top", "right"]].set_visible(False)
+plt.show()
+```
+
+</details>
+
+#### Gráfico de pendientes {#pendientes}
+
+Es un gráfico de líneas con solo dos puntos: el antes y el después. Muestra de un vistazo qué categorías subieron, cuáles bajaron y cuánto.
+
+**Es más común para:** una variable **cualitativa** (las categorías) y una **cuantitativa** medida en **dos momentos**.
+
+{: .recordar }
+Los dos ejes, el del antes y el del después, deben tener el mismo mínimo y el mismo máximo; si no, la comparación es engañosa.
+
+**Ejemplo.** Porcentaje de hogares con internet en cinco municipios, 2020 y 2025 (datos ilustrativos).
+
+![Gráfico de pendientes: Porcentaje de hogares con internet en cinco municipios, 2020 y 2025 (datos ilustrativos).]({{ '/assets/img/graficos/04_pendientes.png' | relative_url }})
+
+<details markdown="1">
+<summary>Ver el código para Colab</summary>
+
+```python
+import matplotlib.pyplot as plt
+
+# Datos ilustrativos: hogares con internet (%) en cinco municipios
+municipios = ["Municipio A", "Municipio B", "Municipio C", "Municipio D", "Municipio E"]
+antes = [35, 42, 60, 25, 55]    # 2020
+despues = [58, 52, 72, 40, 47]  # 2025
+
+fig, ax = plt.subplots(figsize=(5.5, 4.5))
+for nombre, a, d in zip(municipios, antes, despues):
+    color = "#2a78d6" if d > a else "#eb6834"   # azul si sube, naranja si baja
+    ax.plot([0, 1], [a, d], color=color, linewidth=2, marker="o")
+    ax.text(-0.05, a, f"{nombre}  {a} %", ha="right", va="center")
+    ax.text(1.05, d, f"{d} %", ha="left", va="center")
+ax.set_xticks([0, 1], ["2020", "2025"])
+ax.set_xlim(-0.8, 1.3)
+ax.set_ylim(0, 100)                     # mismo rango para el antes y el después
+ax.set_yticks([])
+ax.set_title("Hogares con internet: antes y después", loc="left")
+for lado in ["top", "right", "left"]:
+    ax.spines[lado].set_visible(False)
+plt.show()
+```
+
+</details>
+
+### Distribuciones {#distribuciones}
+
+Sirven para entender cómo se reparten los valores de una variable: dónde se concentran, qué tan dispersos están y si hay valores atípicos. Es un paso previo a cualquier análisis.
+
+#### Histograma {#histograma}
+
+Es un gráfico de barras que muestra cuántas veces aparecen los valores de una variable dentro de cada intervalo. Permite ver si la distribución es simétrica (en forma de campana) o asimétrica (con una cola larga hacia un lado).
+
+**Es más común para:** una variable **cuantitativa continua**, o discreta con muchos valores posibles.
+
+{: .recordar }
+Por convención, las barras de un histograma no se separan. La forma cambia según el ancho de los intervalos: pruebe varios antes de sacar conclusiones.
+
+**Ejemplo.** Minutos que tardan 300 estudiantes en llegar a la universidad (datos simulados).
+
+![Histograma: Minutos que tardan 300 estudiantes en llegar a la universidad (datos simulados).]({{ '/assets/img/graficos/05_histograma.png' | relative_url }})
+
+<details markdown="1">
+<summary>Ver el código para Colab</summary>
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Datos simulados: minutos que tardan 300 estudiantes en llegar a la universidad
+rng = np.random.default_rng(7)
+minutos = rng.gamma(shape=4, scale=10, size=300)
+
+fig, ax = plt.subplots(figsize=(7, 4))
+ax.hist(minutos, bins=range(0, 130, 10), color="#2a78d6", edgecolor="white")
+ax.axvline(np.median(minutos), color="black", linewidth=1.5)   # línea de la mediana
+ax.set_ylim(0, 100)
+ax.text(np.median(minutos) + 2, 92, f"Mediana: {np.median(minutos):.0f} min")
+ax.set_xlabel("Minutos de desplazamiento")
+ax.set_ylabel("Número de estudiantes")
+ax.set_title("¿Cuánto tardan los estudiantes en llegar?", loc="left")
+ax.spines[["top", "right"]].set_visible(False)
+plt.show()
+```
+
+</details>
+
+#### Diagrama de caja {#caja}
+
+Resume la distribución en pocos elementos: la línea central es la mediana, los bordes de la caja son el primer y el tercer cuartil, los bigotes marcan el rango habitual y los puntos sueltos son valores atípicos. Es ideal para comparar la distribución de una variable entre varias categorías.
+
+**Es más común para:** una variable **cuantitativa** comparada entre las categorías de una variable **cualitativa**.
+
+{: .recordar }
+Exige que el lector conozca la mediana y los cuartiles, así que no es adecuado para todos los públicos sin una breve explicación. Si los nombres de las categorías son largos, póngalo en horizontal.
+
+**Ejemplo.** Minutos de desplazamiento según el medio de transporte (datos simulados).
+
+![Diagrama de caja: Minutos de desplazamiento según el medio de transporte (datos simulados).]({{ '/assets/img/graficos/06_caja.png' | relative_url }})
+
+<details markdown="1">
+<summary>Ver el código para Colab</summary>
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Datos simulados: minutos de desplazamiento según el medio de transporte
+rng = np.random.default_rng(3)
+medios = ["Bus", "Moto", "Carro", "Bicicleta", "A pie"]
+datos = [rng.gamma(6, 9, 80),    # bus
+         rng.gamma(8, 3, 80),    # moto
+         rng.gamma(6, 5, 80),    # carro
+         rng.gamma(9, 3, 40),    # bicicleta
+         rng.gamma(5, 3, 40)]    # a pie
+
+fig, ax = plt.subplots(figsize=(7, 4))
+ax.boxplot(datos, patch_artist=True,
+           boxprops=dict(facecolor="#cfe0f6", color="#2a78d6"),
+           medianprops=dict(color="black", linewidth=2))
+ax.set_xticks(range(1, len(medios) + 1), medios)
+ax.set_ylabel("Minutos de desplazamiento")
+ax.set_title("Tiempo de desplazamiento según el medio de transporte", loc="left")
+ax.spines[["top", "right"]].set_visible(False)
+plt.show()
+```
+
+</details>
+
+### Correlaciones {#correlaciones}
+
+Sirven para ver si dos o más variables se mueven juntas. Conviene recordar siempre que la correlación entre dos variables no implica que una sea causa de la otra.
+
+#### Gráfico de dispersión {#dispersion}
+
+Cada elemento es un punto ubicado según su valor en dos variables, una en cada eje. Permite ver si existe relación entre ellas, si es positiva o negativa, si hay grupos de puntos parecidos y si hay casos que se salen del patrón.
+
+**Es más común para:** dos variables **cuantitativas**.
+
+{: .recordar }
+Observe la forma (si los puntos siguen una recta hacia arriba o hacia abajo), las agrupaciones y los valores atípicos. Y no confunda correlación con causalidad.
+
+**Ejemplo.** Horas de estudio a la semana y nota final de 40 estudiantes (datos simulados).
+
+![Gráfico de dispersión: Horas de estudio a la semana y nota final de 40 estudiantes (datos simulados).]({{ '/assets/img/graficos/07_dispersion.png' | relative_url }})
+
+<details markdown="1">
+<summary>Ver el código para Colab</summary>
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Datos simulados: horas de estudio a la semana y nota final de 40 estudiantes
+rng = np.random.default_rng(11)
+horas = rng.uniform(1, 20, 40)
+nota = np.clip(2.2 + 0.12 * horas + rng.normal(0, 0.45, 40), 0, 5)
+
+r = np.corrcoef(horas, nota)[0, 1]       # coeficiente de correlación
+
+fig, ax = plt.subplots(figsize=(6, 4.5))
+ax.scatter(horas, nota, s=60, color="#2a78d6", edgecolor="white")
+ax.set_xlabel("Horas de estudio a la semana")
+ax.set_ylabel("Nota final (0 a 5)")
+ax.set_title(f"Más horas de estudio, mejores notas (r = {r:.2f})", loc="left")
+ax.grid(alpha=0.3)
+ax.spines[["top", "right"]].set_visible(False)
+plt.show()
+```
+
+</details>
+
+#### Gráfico de burbujas {#burbujas}
+
+Es un gráfico de dispersión en el que el tamaño (y a veces el color) de cada punto representa una variable adicional. Permite mostrar tres o cuatro variables a la vez.
+
+**Es más común para:** tres variables **cuantitativas**: dos en los ejes y una en el tamaño de la burbuja.
+
+{: .recordar }
+El valor debe ser proporcional al área de la burbuja, no a su diámetro. Use transparencia para que se vean las burbujas que quedan unas sobre otras.
+
+**Ejemplo.** Paraderos, espera promedio y usuarios diarios en ocho barrios (datos ilustrativos).
+
+![Gráfico de burbujas: Paraderos, espera promedio y usuarios diarios en ocho barrios (datos ilustrativos).]({{ '/assets/img/graficos/08_burbujas.png' | relative_url }})
+
+<details markdown="1">
+<summary>Ver el código para Colab</summary>
+
+```python
+import matplotlib.pyplot as plt
+
+# Datos ilustrativos: paraderos, espera y usuarios en ocho barrios
+barrios = ["Barrio A", "Barrio B", "Barrio C", "Barrio D", "Barrio E", "Barrio F", "Barrio G", "Barrio H"]
+paraderos = [12, 8, 16, 5, 10, 4, 7, 14]                # eje x
+espera = [9, 14, 5, 22, 12, 25, 16, 8]                  # eje y (minutos)
+usuarios = [5200, 3100, 7800, 2500, 4300, 1800, 3600, 6900]  # tamaño de la burbuja
+
+fig, ax = plt.subplots(figsize=(7, 4.5))
+ax.scatter(paraderos, espera, s=[u / 12 for u in usuarios],
+           color="#2a78d6", alpha=0.5, edgecolor="#2a78d6")
+for b, x, y in zip(barrios, paraderos, espera):
+    ax.text(x, y, b, ha="center", va="center", fontsize=8)
+ax.set_xlabel("Número de paraderos")
+ax.set_ylabel("Espera promedio (minutos)")
+ax.set_title("Menos paraderos, más espera (tamaño = usuarios diarios)", loc="left")
+ax.set_xlim(0, 18); ax.set_ylim(0, 30)
+ax.grid(alpha=0.3)
+ax.spines[["top", "right"]].set_visible(False)
+plt.show()
+```
+
+</details>
+
+### Mapas {#mapas}
+
+Sirven para encontrar patrones geográficos en los datos. Se deben usar para responder preguntas de tipo geográfico, no para mostrar un ranking.
+
+#### Mapa de coropletas {#coropletas}
+
+Pinta cada región (departamento, municipio, barrio) con un color cuya intensidad representa el valor de una variable. Cuanto más oscuro, mayor el valor.
+
+**Es más común para:** una variable **cuantitativa** (preferiblemente una tasa o un porcentaje) o **cualitativa** asociada a regiones.
+
+{: .recordar }
+Use tasas o porcentajes, no totales: un mapa de totales solo muestra dónde vive más gente. Si lo que interesa es el ranking de regiones, es mejor un gráfico de barras.
+
+**Ejemplo.** Cobertura de internet por departamento (valores simulados al azar, solo para practicar).
+
+![Mapa de coropletas: Cobertura de internet por departamento (valores simulados al azar, solo para practicar).]({{ '/assets/img/graficos/09_coropletas.png' | relative_url }})
+
+<details markdown="1">
+<summary>Ver el código para Colab</summary>
+
+```python
+import geopandas as gpd
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Mapa de departamentos de Colombia (archivo del repositorio del módulo)
+url = "https://raw.githubusercontent.com/nescolar/periodismo-de-precision/main/assets/datos/colombia_departamentos.geojson"
+mapa = gpd.read_file(url)
+
+# Valores SIMULADOS solo para practicar: cobertura de internet (%)
+rng = np.random.default_rng(5)
+mapa["cobertura"] = rng.integers(20, 90, len(mapa))
+
+fig, ax = plt.subplots(figsize=(6, 7))
+mapa.plot(column="cobertura", cmap="Blues", edgecolor="white", linewidth=0.5,
+          legend=True, legend_kwds={"label": "Hogares con internet (%)", "shrink": 0.6}, ax=ax)
+ax.set_title("Cobertura de internet por departamento (datos simulados)", loc="left")
+ax.axis("off")
+plt.show()
+```
+
+</details>
+
+#### Mapa de símbolos proporcionales {#simbolos}
+
+Ubica un círculo sobre cada lugar, con un tamaño proporcional al valor de la variable. A diferencia de las coropletas, no necesita áreas: basta con la latitud y la longitud de cada punto.
+
+**Es más común para:** una variable **cuantitativa** asociada a **puntos geográficos** (latitud y longitud).
+
+{: .recordar }
+Use transparencia, porque los círculos suelen superponerse. Igual que las coropletas, sirve para ver patrones geográficos, no para ordenar lugares.
+
+**Ejemplo.** Medios de comunicación locales por ciudad (datos ilustrativos).
+
+![Mapa de símbolos proporcionales: Medios de comunicación locales por ciudad (datos ilustrativos).]({{ '/assets/img/graficos/10_simbolos.png' | relative_url }})
+
+<details markdown="1">
+<summary>Ver el código para Colab</summary>
+
+```python
+import geopandas as gpd
+import matplotlib.pyplot as plt
+
+# Mapa base de Colombia
+url = "https://raw.githubusercontent.com/nescolar/periodismo-de-precision/main/assets/datos/colombia_departamentos.geojson"
+mapa = gpd.read_file(url)
+
+# Datos ilustrativos: medios de comunicación locales por ciudad (latitud y longitud aproximadas)
+ciudades = ["Bogotá", "Medellín", "Cali", "Barranquilla", "Cartagena", "Bucaramanga", "Cúcuta", "Pereira", "Santa Marta", "Pasto"]
+lat = [4.71, 6.24, 3.45, 10.96, 10.39, 7.12, 7.89, 4.81, 11.24, 1.21]
+lon = [-74.07, -75.58, -76.53, -74.80, -75.48, -73.12, -72.51, -75.69, -74.20, -77.28]
+medios = [120, 75, 60, 45, 30, 28, 22, 18, 15, 14]
+
+fig, ax = plt.subplots(figsize=(6, 7))
+mapa.plot(color="#e9e8e4", edgecolor="white", linewidth=0.5, ax=ax)
+ax.scatter(lon, lat, s=[m * 8 for m in medios], color="#eb6834",
+           alpha=0.6, edgecolor="white")          # transparencia para ver superposiciones
+for c, x, y in zip(ciudades, lon, lat):
+    ax.text(x + 0.4, y, c, fontsize=8, va="center")
+ax.set_title("Medios de comunicación locales por ciudad (ilustrativo)", loc="left")
+ax.axis("off")
+plt.show()
+```
+
+</details>
+
+Mapas: elaboración propia a partir del mapa de departamentos de Castañeda (2023), basado en el Marco Geoestadístico Nacional del DANE (licencia MIT). Para facilitar la lectura, el archipiélago de San Andrés, Providencia y Santa Catalina aparece desplazado hacia la costa.
+{: .fs-2 }
+
+---
+
 ## Referencias {#referencias}
 
 Bradshaw, P. (2012). *The inverted pyramid of data journalism*. Online Journalism Blog.
 
+Castañeda, J. A. (2023). *colombian_map: TopoJSON of Colombia's departments and towns* [Repositorio de GitHub]. https://github.com/jacasta2/colombian_map
+
 Dader, J. L. (1997). *Periodismo de precisión: la vía socioinformática de descubrir noticias*. Madrid: Síntesis.
+
+Generalitat de Catalunya. (2019). *Guía de visualización de datos*. Barcelona: Generalitat de Catalunya. Licencia CC BY 4.0.
 
 Lambeth, E. B. (1992). *Periodismo comprometido: un código de ética para la profesión*. México: Limusa.
 

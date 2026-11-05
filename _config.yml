@@ -74,6 +74,30 @@ nav_external_links:
     url: "https://nescolar.github.io/periodismo-de-precision/#validez"
     hide_icon: true
     opens_in_new_tab: false
+  - title: "Gráficos: ¿cuál usar?"
+    url: "https://nescolar.github.io/periodismo-de-precision/#graficos"
+    hide_icon: true
+    opens_in_new_tab: false
+  - title: "· Comparar"
+    url: "https://nescolar.github.io/periodismo-de-precision/#comparar"
+    hide_icon: true
+    opens_in_new_tab: false
+  - title: "· Tendencias"
+    url: "https://nescolar.github.io/periodismo-de-precision/#tendencias"
+    hide_icon: true
+    opens_in_new_tab: false
+  - title: "· Distribuciones"
+    url: "https://nescolar.github.io/periodismo-de-precision/#distribuciones"
+    hide_icon: true
+    opens_in_new_tab: false
+  - title: "· Correlaciones"
+    url: "https://nescolar.github.io/periodismo-de-precision/#correlaciones"
+    hide_icon: true
+    opens_in_new_tab: false
+  - title: "· Mapas"
+    url: "https://nescolar.github.io/periodismo-de-precision/#mapas"
+    hide_icon: true
+    opens_in_new_tab: false
   - title: "Referencias"
     url: "https://nescolar.github.io/periodismo-de-precision/#referencias"
     hide_icon: true
