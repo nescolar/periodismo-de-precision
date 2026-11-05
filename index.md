@@ -257,17 +257,9 @@ El problema es que muchas veces no conocemos estos valores porque no podemos est
 
 #### B. Estadísticos muestrales
 
-En estadística no siempre es posible estudiar a toda la población, ya sea por cuestiones de tiempo, costos o logística. Aquí es donde entra el **muestreo**, una técnica que permite extraer información valiosa a partir de un subconjunto representativo de esa población.
+Son valores calculados con los datos de la muestra. Como casi nunca conocemos los parámetros, usamos los estadísticos para estimarlos.
 
-La teoría del muestreo estadístico nos permite hacer afirmaciones probables sobre los valores de las características de la población, llamadas parámetros, mediante el uso de técnicas estadísticas inferenciales, de tal manera que obtengamos una muestra aleatoria lo suficientemente representativa de esa población.
-
-Se busca hacer inferencia sobre valores de la población objeto de estudio, llamados parámetros (θ), con un mínimo de variabilidad en los estimadores de esos parámetros. Es decir, que la estimación que procede del estimador esté lo más cerca posible del valor del parámetro.
-
-**Importancia del muestreo**
-
-1. **Eficiencia**: estudiar una muestra es mucho más práctico y rápido.
-2. **Precisión**: una muestra bien diseñada minimiza errores y sesgos.
-3. **Flexibilidad**: permite estudiar poblaciones muy grandes o complejas.
+La teoría del muestreo estadístico nos permite hacer afirmaciones probables sobre los valores de la población, llamados parámetros (θ), a partir de una muestra aleatoria lo suficientemente representativa. Se busca que la estimación que procede del estimador esté lo más cerca posible del valor del parámetro, con un mínimo de variabilidad.
 
 Ejemplos de estadísticos muestrales:
 
