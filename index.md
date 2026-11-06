@@ -40,7 +40,7 @@ El método estadístico se organiza en siete etapas que forman un ciclo de mejor
 | Etapa del método estadístico | Pregunta que orienta la etapa | Equivalente en el trabajo periodístico |
 |:--|:--|:--|
 | 1. Problema | ¿Qué situación afecta a la comunidad? | Identificar un asunto de relevancia pública, sea una sospecha, una percepción extendida o un vacío de información. |
-| 2. Pregunta | ¿Cómo se formula de manera medible? | Convertir la intuición en una pregunta que nombre población, indicador y periodo. |
+| 2. Pregunta | ¿Cómo se formula de manera medible? | Convertir la intuición en una pregunta que nombre población, [indicador](#indicador) y periodo. |
 | 3. Recolección | ¿De dónde salen los datos? | Compilar datos de fuentes primarias (encuesta propia) o secundarias (registros oficiales, portales de datos abiertos, solicitudes de información). |
 | 4. Organización | ¿Los datos son confiables? | Limpiar y depurar: duplicados, faltantes, categorías inconsistentes, valores imposibles. |
 | 5. Análisis | ¿Qué muestran los datos? | Análisis exploratorio, medidas descriptivas, tablas cruzadas y, cuando corresponde, inferencia. |
@@ -54,7 +54,90 @@ Correspondencia entre el método estadístico y el trabajo periodístico de prec
 
 ## Conocimientos previos de estadística {#conocimientos-previos}
 
-### 1. Variables y sus tipos {#variables}
+### 1. Indicador: de lo que quiero contar a lo que voy a medir {#indicador}
+
+Todo trabajo con datos empieza con un **problema** y una **pregunta**. Pero entre "quiero contar si la violencia intrafamiliar es más grave en unos departamentos que en otros" y la base de datos hay un paso que a menudo se salta: decidir **con qué número** se va a responder. Ese número es el **indicador**.
+
+Un **indicador** es una medida cuantitativa que resume un aspecto de la realidad que nos interesa y permite compararlo entre lugares, grupos o momentos. Es el puente entre lo que queremos contar y lo que vamos a medir.
+
+#### Variable e indicador no son lo mismo
+
+La **variable** es el dato que se registra de cada caso: la edad de cada persona, el departamento donde ocurrió un hecho, si una víctima es hombre o mujer. El **indicador** resume esas variables para todo un grupo, casi siempre como una división entre dos cantidades: un **numerador** (lo que contamos) y un **denominador** (con respecto a qué lo contamos).
+
+| Variable (de cada caso) | Indicador (del grupo) |
+|:--|:--|
+| Género de cada víctima | Porcentaje de víctimas mujeres = víctimas mujeres ÷ total de víctimas × 100 |
+| Departamento donde se registró cada caso | Tasa por 100.000 habitantes = casos del departamento ÷ población del departamento × 100.000 |
+| Horas de sueño de cada estudiante | Mediana de horas de sueño del grupo |
+
+#### Del problema al indicador
+
+El indicador se elige a partir de la pregunta, no al revés. Así se ve el recorrido en dos de los ejercicios del módulo:
+
+| Paso | Ejercicio 2: clima y violencia | Ejercicio 3: violencia intrafamiliar |
+|:--|:--|:--|
+| **Problema** | Se repite que el calor pone de mal genio a la gente. | La violencia intrafamiliar es uno de los delitos más denunciados del país. |
+| **¿Qué quiero contar?** | Si en Barranquilla los días más calientes son más violentos. | En qué departamentos el problema es más grave. |
+| **Pregunta medible** | ¿Los días con mayor temperatura máxima registran más casos de violencia interpersonal? (Barranquilla, 2010-2016) | ¿Qué departamentos registraron más casos por habitante entre 2018 y 2020? |
+| **Indicador** | Correlación entre la temperatura máxima y los casos de violencia del día | Tasa de casos registrados por cada 100.000 habitantes |
+| **Fórmula** | *r* de Pearson entre dos variables diarias | Casos registrados ÷ población × 100.000 |
+| **Fuentes** | Medicina Legal (casos) e IDEAM (temperatura) | Policía Nacional (numerador) y DANE (denominador) |
+
+Fíjese en que la pregunta medible ya nombra la **población o el territorio**, el **indicador** y el **periodo**. Si a la pregunta le falta alguno de los tres, todavía no está lista para buscar datos.
+
+#### Los indicadores más usados en el periodismo de datos
+
+| Indicador | Qué responde | Ejemplo |
+|:--|:--|:--|
+| Conteo o volumen | ¿Cuántos casos hubo? | 15.559 casos de violencia intrafamiliar en Antioquia en 2020 |
+| [Porcentaje o proporción](#frecuencias) | ¿Qué parte del total? El numerador está incluido en el denominador. | El 78,5 % de las víctimas fueron mujeres |
+| Razón | ¿Cuántos de un grupo por cada tantos de otro? El numerador no está en el denominador. | 93 hombres atendidos por cada 100 mujeres |
+| [Tasa](#volumen-tasa) | ¿Qué tan frecuente es, según el tamaño de la población? | 234 casos por cada 100.000 habitantes |
+| [Promedio o mediana](#tendencia-central) | ¿Cuál es el valor típico? | La mediana de horas de sueño es 6,6 |
+| Cambio | ¿Cuánto subió o bajó? | La confianza en estudiantes de otros colegios pasó de 22 % a 44 % |
+
+{: .ojo }
+> **Puntos porcentuales no es lo mismo que porcentaje.** Si un indicador pasa de 22 % a 44 %, subió **22 puntos porcentuales**, pero aumentó **100 %**, porque se duplicó. Las dos frases son correctas y dicen cosas distintas. Use "puntos porcentuales" para la diferencia entre dos porcentajes y "por ciento" para el cambio relativo.
+
+#### Indicadores de estructura, proceso y resultado
+
+En la gestión pública y en las organizaciones, los indicadores se suelen clasificar según qué parte del problema miden. La clasificación sirve también para hacer preguntas periodísticas más precisas:
+
+| Tipo | Qué mide | Ejemplo en educación |
+|:--|:--|:--|
+| **Estructura** | Los recursos con que se cuenta | Número de docentes por cada 100 estudiantes |
+| **Proceso** | Lo que se hace con esos recursos | Porcentaje de colegios con gobierno escolar activo |
+| **Resultado** | Lo que se logra | Puntaje promedio en las pruebas Saber 11 |
+
+Una historia es más sólida cuando no se queda en un solo tipo: si un resultado empeora, la pregunta siguiente es qué pasó con la estructura y con el proceso.
+
+#### ¿Qué hace un buen indicador?
+
+- **Es válido:** mide lo que queremos contar. Los casos *registrados* de violencia intrafamiliar miden denuncias, no toda la violencia que ocurre; hay que decirlo. Repase la [validez](#validez).
+- **Es comparable:** se calcula igual en todos los lugares y periodos que comparamos. Si cambia la forma de registrar los datos, el indicador puede subir o bajar sin que cambie la realidad.
+- **Declara su numerador y su denominador:** el lector debe poder saber qué se dividió entre qué y de dónde salió cada cifra.
+- **Se puede repetir:** con las mismas fuentes y el mismo cálculo, otra persona llega al mismo número.
+- **Se entiende:** "234 casos por cada 100.000 habitantes" se lee mejor que "0,00234 casos per cápita".
+
+{: .clase }
+> **Actividad rápida.** Para cada problema, escriba lo que quiere contar, una pregunta medible y un indicador con su numerador y su denominador.
+>
+> 1. "Los jóvenes no votan."
+> 2. "Cada vez más estudiantes abandonan el colegio."
+> 3. "En este barrio roban más que en el resto de la ciudad."
+
+<details markdown="1">
+<summary>Ver respuesta</summary>
+
+Hay más de una respuesta correcta. Estas son algunas posibles:
+
+1. **Qué quiero contar:** si los jóvenes votan menos que el resto. **Pregunta:** ¿qué porcentaje de las personas de 18 a 28 años habilitadas para votar lo hizo en la última elección, comparado con las mayores de 28? **Indicador:** participación electoral por grupo de edad = votantes del grupo ÷ habilitados del grupo × 100. Ojo: si solo se cuentan los votantes jóvenes, sin el denominador, no se sabe si son muchos o pocos.
+2. **Qué quiero contar:** si la deserción escolar está aumentando. **Pregunta:** ¿cómo cambió la deserción en los colegios públicos de la ciudad en los últimos cinco años? **Indicador:** tasa de deserción = estudiantes que abandonaron en el año ÷ estudiantes matriculados ese año × 100, para cada año.
+3. **Qué quiero contar:** si el riesgo de ser víctima de hurto es mayor en ese barrio. **Pregunta:** ¿cuántos hurtos se denunciaron por cada 10.000 habitantes en el barrio y en la ciudad el último año? **Indicador:** tasa de hurtos denunciados = hurtos denunciados ÷ habitantes × 10.000. Ojo: por ser denuncias, un barrio donde la gente denuncia más puede parecer más peligroso.
+
+</details>
+
+### 2. Variables y sus tipos {#variables}
 
 Una **variable** es una característica que podemos observar, registrar o medir y que puede tomar diferentes valores según la persona, el objeto o el caso que estemos estudiando. En términos sencillos, una variable es aquello que queremos conocer.
 
@@ -146,7 +229,7 @@ Una forma sencilla de diferenciarlas:
 
 </details>
 
-### 2. Unidad de análisis: ¿sobre quién o sobre qué recogemos información? {#unidad-analisis}
+### 3. Unidad de análisis: ¿sobre quién o sobre qué recogemos información? {#unidad-analisis}
 
 Es el elemento concreto que estamos estudiando, es decir, aquello sobre lo que registramos información. Por ejemplo:
 
@@ -177,7 +260,7 @@ Es el valor específico que encontramos cuando observamos una variable en una un
 
 En otras palabras, una variable es lo que queremos conocer y un dato es el valor que encontramos.
 
-### 3. Población y muestra: ¿a quiénes estamos estudiando? {#poblacion-muestra}
+### 4. Población y muestra: ¿a quiénes estamos estudiando? {#poblacion-muestra}
 
 Cuando queremos investigar un fenómeno, generalmente nos interesa conocer algo sobre un grupo de personas, países, instituciones o situaciones. Sin embargo, no siempre podemos estudiar a todos los integrantes de ese grupo. Por eso, utilizamos los conceptos de población y muestra.
 
@@ -241,7 +324,7 @@ En el caso 4, la respuesta es no: aunque son muchas respuestas, solo participaro
 
 </details>
 
-### 4. Estadísticos de la población y de la muestra {#parametros}
+### 5. Estadísticos de la población y de la muestra {#parametros}
 
 Aquí aparece una distinción importante: no es lo mismo conocer una característica de toda la población que calcularla utilizando solamente una muestra.
 
@@ -286,7 +369,7 @@ Supongamos que los resultados son:
 {: .recordar }
 El parámetro describe a toda la población; el estadístico describe a la muestra y nos ayuda a estimar el parámetro.
 
-### 5. Estadística descriptiva e inferencial {#descriptiva-inferencial}
+### 6. Estadística descriptiva e inferencial {#descriptiva-inferencial}
 
 Son dos formas de trabajar con los datos que responden a preguntas diferentes.
 
@@ -322,7 +405,7 @@ La diferencia es que no nos quedamos en describir las respuestas de las personas
 {: .clase }
 Cuando un titular dice «El 60 % de los colombianos desconfía del Congreso», debemos preguntarnos: ¿se encuestó a todos los colombianos o a una muestra? ¿Cuántas personas participaron? ¿Cómo fueron seleccionadas?
 
-### 6. Error y sesgo: ¿qué puede salir mal en una encuesta? {#error-sesgo}
+### 7. Error y sesgo: ¿qué puede salir mal en una encuesta? {#error-sesgo}
 
 Este es uno de los conceptos más importantes para el periodismo de precisión. No basta con encontrar una cifra y publicarla. También necesitamos saber qué tan confiable es y qué problemas puede tener.
 
@@ -378,7 +461,7 @@ El sesgo no desaparece por aumentar el número de encuestados. Podemos tener 10.
 
 **3. Sesgo de no respuesta.** Ocurre cuando las personas seleccionadas para participar no responden y quienes no lo hacen tienen características u opiniones diferentes de quienes sí participan. Por ejemplo, una encuesta telefónica sobre confianza en las instituciones tiene dificultades para contactar a personas jóvenes porque estas casi no contestan llamadas de números desconocidos. Si los jóvenes tienen opiniones diferentes a las de los adultos, los resultados podrían representar de manera inadecuada a la población.
 
-### 7. Error muestral frente a sesgo: no son lo mismo {#error-vs-sesgo}
+### 8. Error muestral frente a sesgo: no son lo mismo {#error-vs-sesgo}
 
 Esta diferencia es fundamental para evaluar una encuesta o una investigación.
 
@@ -400,7 +483,7 @@ Esta diferencia es fundamental para evaluar una encuesta o una investigación.
 {: .recordar }
 La cantidad de respuestas no garantiza por sí sola la calidad de una encuesta.
 
-### 8. Validez, confiabilidad y reproducibilidad {#validez}
+### 9. Validez, confiabilidad y reproducibilidad {#validez}
 
 En el lenguaje de la medición, la **validez** es el grado en que un dato representa realmente lo que pretende representar, y equivale a la ausencia de error sistemático.
 
@@ -408,7 +491,7 @@ La **confiabilidad** o precisión es el grado en que mediciones repetidas de un 
 
 La metodología de la visualización de datos nos obliga a pensar qué se quiere comunicar con ellos, qué es importante y cómo se tiene que hacer.
 
-### 9. Frecuencias y porcentajes {#frecuencias}
+### 10. Frecuencias y porcentajes {#frecuencias}
 
 A partir de aquí veremos las medidas que usamos para **describir** los datos. Son las que aparecen, de forma explícita o implícita, en casi todos los gráficos.
 
@@ -428,7 +511,7 @@ La **frecuencia** es cuántas veces aparece cada categoría. El **porcentaje** e
 
 **En el gráfico:** se muestran con un [gráfico de barras](#barras).
 
-### 10. Tablas cruzadas {#tablas-cruzadas}
+### 11. Tablas cruzadas {#tablas-cruzadas}
 
 Una **tabla cruzada** muestra cómo se combinan dos variables cualitativas. Responde preguntas como "¿el porcentaje de X es distinto según el grupo Y?". Lo importante es calcular el porcentaje **dentro de cada grupo**, no sobre el total.
 
@@ -445,7 +528,7 @@ En números absolutos la diferencia parece pequeña (20 frente a 28), pero en po
 
 **En el gráfico:** se muestran con [barras agrupadas](#barras-agrupadas) o barras apiladas al 100 %.
 
-### 11. Tendencia central: media, mediana y moda {#tendencia-central}
+### 12. Tendencia central: media, mediana y moda {#tendencia-central}
 
 Son medidas que resumen en un solo número el valor "típico" de una variable.
 
@@ -461,7 +544,7 @@ La media se deja arrastrar por los valores extremos; la mediana no. Cuando hay u
 
 **En el gráfico:** la media o la mediana se pueden agregar como una línea de referencia sobre barras o histogramas.
 
-### 12. Dispersión: qué tan distintos son los datos entre sí {#dispersion-datos}
+### 13. Dispersión: qué tan distintos son los datos entre sí {#dispersion-datos}
 
 Dos grupos pueden tener el mismo promedio y ser muy distintos. La **dispersión** mide qué tan separados están los valores.
 
@@ -478,7 +561,7 @@ Si medimos nueve esperas en un paradero, ordenadas: 6, 7, 8, 9, 10, 11, 12, 13 y
 
 **En el gráfico:** la dispersión se ve en el [histograma](#histograma) y en el [diagrama de caja](#caja), cuya caja es justamente el rango intercuartílico.
 
-### 13. Forma de los datos y valores atípicos {#forma-atipicos}
+### 14. Forma de los datos y valores atípicos {#forma-atipicos}
 
 La **forma** de una variable describe cómo se reparten sus valores. Es **simétrica** si se parece a ambos lados del centro, y **asimétrica** si tiene una cola larga hacia un lado. Por ejemplo, los ingresos tienen una cola hacia la derecha: muchos ingresos modestos y pocos muy altos. En ese caso, la media queda por encima de la mediana.
 
@@ -491,7 +574,7 @@ Un atípico puede ser un error de digitación o un caso real y excepcional, que 
 
 **En el gráfico:** el [histograma](#histograma) muestra la forma completa; el [diagrama de caja](#caja) muestra los atípicos como puntos sueltos.
 
-### 14. Relación entre variables: la correlación {#correlacion}
+### 15. Relación entre variables: la correlación {#correlacion}
 
 La **correlación** mide si dos variables cuantitativas se mueven juntas. Se resume con el coeficiente **r**, que va de −1 a 1:
 
@@ -506,7 +589,7 @@ La **correlación** mide si dos variables cuantitativas se mueven juntas. Se res
 
 **En el gráfico:** se muestra con un [gráfico de dispersión](#dispersion), o con uno de [burbujas](#burbujas) si se quiere agregar una tercera variable.
 
-### 15. Volumen frente a tasa {#volumen-tasa}
+### 16. Volumen frente a tasa {#volumen-tasa}
 
 Un **volumen** es una cifra absoluta (número de casos). Una **tasa** es esa cifra dividida por el tamaño del grupo, para poder comparar grupos de distinto tamaño (casos por cada 100 personas, por cada 10.000 habitantes). Comparar volúmenes entre grupos de distinto tamaño es uno de los errores más frecuentes del periodismo con datos.
 
