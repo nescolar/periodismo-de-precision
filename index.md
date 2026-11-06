@@ -1445,6 +1445,28 @@ Intercambie su noticia con un compañero. Cada uno revisa la del otro con la lis
 
 ---
 
+## Producto final del módulo {#producto-final}
+
+El producto final del módulo es una **nota periodística publicada en la web**, sostenida en datos. Así debe verse:
+
+[Ver la nota de ejemplo]({{ '/nota/' | relative_url }}){: .btn .btn-primary }
+
+La nota de ejemplo usa los resultados reales, agregados y anónimos, de la evaluación de un programa de liderazgo para estudiantes de colegios públicos de Barranquilla. Fíjese en sus partes:
+
+1. **Sección, titular y bajada.** El titular dice el hallazgo principal sin exagerar; la bajada lo amplía con la cifra clave.
+2. **Autor y fecha.**
+3. **Entrada.** Responde qué, quién, cuándo y dónde en el primer párrafo.
+4. **Cifras destacadas.** Tres números que el lector debe recordar.
+5. **Cuerpo con subtítulos.** Cada sección desarrolla un hallazgo, del más importante al menos importante, incluidos los que no salieron como se esperaba.
+6. **Gráficos.** Cada uno con título que dice el hallazgo, subtítulo que dice qué se mide, nota con la fuente y el tamaño de la muestra, y enlace para descargar los datos. Puede hacerlos en Datawrapper e insertarlos con el código que da la herramienta.
+7. **Una voz.** Una cita que da contexto humano a los números.
+8. **"Cómo hicimos esta nota".** Un recuadro con los datos, los cálculos, los límites del análisis y las decisiones de anonimización. Es lo que distingue al periodismo de precisión: cualquier lector puede revisar cómo se llegó a cada cifra.
+
+{: .recordar }
+> Cuando los datos son sobre personas, y sobre todo sobre menores de edad, publique solo resultados agregados, no nombre a nadie que pueda ser identificado y no use fotografías sin autorización.
+
+---
+
 ## Referencias {#referencias}
 
 Bradshaw, P. (2012). *The inverted pyramid of data journalism*. Online Journalism Blog.

@@ -1,0 +1,5 @@
+tema,preguntas,antes_pct,despues_pct,cambio_pp,p_valor,significativo
+Democracia y voto,2,61,72,11,0.044,Sí
+Gobierno escolar,3,82,90,8,0.008,Sí
+Incidencia (Modelo Lundy),7,73,77,4,0.055,No
+Participación juvenil,3,84,87,4,0.277,No

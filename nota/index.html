@@ -1,0 +1,256 @@
+---
+layout: null
+permalink: /nota/
+nav_exclude: true
+search_exclude: true
+---
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Más capaces y más exigentes: lo que cambió en 55 líderes estudiantiles</title>
+<meta name="description" content="Nota de ejemplo del módulo Periodismo de precisión: resultados agregados y anónimos de la evaluación de un programa de liderazgo escolar en Barranquilla.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tinta:#1b1f24; --suave:#5b6370; --linea:#e3e0d8; --fondo:#ffffff; --papel:#f7f4ee;
+  --acento:#c8102e; --azul:#13315c;
+  --antes:#f2a541; --despues:#a6192e; --conoc:#13315c; --perc:#f2a541; --neg:#9aa3ad;
+  --mejoro:#2e7d6b; --igual:#c9ccd1; --bajo:#c0392b;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--fondo);color:var(--tinta);font-family:"Source Serif 4",Georgia,serif;font-size:19px;line-height:1.65}
+a{color:var(--azul)}
+.aviso{background:var(--azul);color:#fff;font:600 14px/1.4 "Source Sans 3",Arial,sans-serif;text-align:center;padding:10px 16px}
+.aviso a{color:#fff}
+.marca{border-bottom:1px solid var(--linea);padding:14px 16px;text-align:center;font:700 15px "Source Sans 3",Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase}
+.marca a{color:var(--tinta);text-decoration:none}
+.portada{background:var(--papel);border-bottom:1px solid var(--linea);padding:48px 16px 40px;
+  background-image:radial-gradient(var(--linea) 1.2px,transparent 1.2px);background-size:14px 14px}
+.portada .caja{max-width:760px;margin:0 auto}
+.seccion{display:inline-block;font:700 13px "Source Sans 3",Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--acento);padding:4px 10px;margin-bottom:18px}
+h1{font-family:"Source Serif 4",Georgia,serif;font-weight:700;font-size:clamp(32px,5.2vw,50px);line-height:1.12;margin:0 0 18px;letter-spacing:-.01em}
+.bajada{font-family:"Source Sans 3",Arial,sans-serif;font-size:21px;line-height:1.5;color:#2c323a;margin:0 0 22px}
+.firma{font:15px/1.5 "Source Sans 3",Arial,sans-serif;color:var(--suave)}
+.firma strong{color:var(--tinta)}
+article{max-width:680px;margin:0 auto;padding:36px 16px 24px}
+article p{margin:0 0 1.15em}
+article h2{font-family:"Source Sans 3",Arial,sans-serif;font-size:25px;line-height:1.25;margin:1.9em 0 .6em}
+.cifra{font-family:"Source Sans 3",Arial,sans-serif;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:28px 0}
+.cifra div{border-top:4px solid var(--acento);padding-top:10px}
+.cifra b{display:block;font-size:34px;line-height:1.1}
+.cifra span{font-size:15px;color:var(--suave);line-height:1.35;display:block;margin-top:4px}
+blockquote{margin:2em 0;padding:0 0 0 22px;border-left:4px solid var(--acento);font-size:24px;line-height:1.45;font-style:italic}
+blockquote cite{display:block;margin-top:10px;font:normal 15px "Source Sans 3",Arial,sans-serif;color:var(--suave)}
+figure{margin:2.2em 0;padding:20px 0;border-top:1px solid var(--linea);border-bottom:1px solid var(--linea);font-family:"Source Sans 3",Arial,sans-serif}
+figure .tit{font-weight:700;font-size:19px;line-height:1.3;margin:0 0 4px}
+figure .sub{font-size:15px;color:var(--suave);margin:0 0 16px;line-height:1.4}
+figcaption{font-size:13px;color:var(--suave);line-height:1.45;margin-top:14px}
+.leyenda{display:flex;flex-wrap:wrap;gap:14px;font-size:14px;margin:0 0 12px}
+.leyenda i{display:inline-block;width:12px;height:12px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.fila{display:grid;grid-template-columns:minmax(120px,38%) 1fr;align-items:center;gap:10px;margin:7px 0;font-size:15px}
+.etq{line-height:1.25}
+.pista{position:relative;height:22px}
+.eje{background:linear-gradient(to right,transparent calc(50% - .5px),#8a9099 calc(50% - .5px),#8a9099 calc(50% + .5px),transparent calc(50% + .5px))}
+.barra{position:absolute;top:3px;height:16px;border-radius:2px}
+.barra.perc{background:var(--perc)} .barra.conoc{background:var(--conoc)} .barra.neg{background:var(--neg)}
+.valor{position:absolute;top:1px;font-size:14px;font-weight:600;padding:0 5px;white-space:nowrap}
+.par{display:grid;grid-template-columns:minmax(120px,38%) 1fr;grid-template-rows:auto auto;column-gap:10px;row-gap:3px;margin:12px 0;font-size:15px}
+.par .etq{grid-row:1 / span 2;align-self:center}
+.par .pista{height:20px;background:#f1efea;border-radius:2px}
+.par .barra{top:0;height:20px;position:relative;display:block;float:left}
+.barra.antes{background:var(--antes)} .barra.despues{background:var(--despues)}
+.par .num{position:absolute;top:1px;right:6px;font-size:13px;font-weight:700}
+.sig{color:var(--acento);font-weight:700}
+.apilada{display:flex;height:24px;border-radius:2px;overflow:hidden;font-size:13px;font-weight:700;color:#fff}
+.seg{display:flex;align-items:center;justify-content:center;white-space:nowrap;overflow:hidden}
+.seg.mejoro{background:var(--mejoro)} .seg.igual{background:var(--igual);color:#2c323a} .seg.bajo{background:var(--bajo)}
+.metodo{background:var(--papel);border:1px solid var(--linea);padding:22px 22px 8px;margin:2.6em 0 1.5em;font-family:"Source Sans 3",Arial,sans-serif;font-size:16px;line-height:1.55}
+.metodo h2{margin-top:0;font-size:21px}
+.metodo h3{font-size:16px;margin:1.2em 0 .3em;text-transform:uppercase;letter-spacing:.06em}
+.metodo ul{padding-left:20px;margin:0 0 1em}
+.metodo li{margin-bottom:.45em}
+.descargas a{display:inline-block;margin:0 10px 10px 0;padding:6px 12px;border:1px solid var(--azul);border-radius:3px;text-decoration:none;font-weight:600;font-size:14px}
+footer{max-width:680px;margin:0 auto;padding:10px 16px 48px;font:14px/1.5 "Source Sans 3",Arial,sans-serif;color:var(--suave);border-top:1px solid var(--linea)}
+@media (max-width:560px){
+  body{font-size:18px}
+  .bajada{font-size:19px}
+  .cifra{grid-template-columns:1fr}
+  .fila,.par{grid-template-columns:1fr}
+  .par .etq{grid-row:auto}
+  blockquote{font-size:21px}
+}
+</style>
+</head>
+<body>
+
+<div class="aviso">Nota de ejemplo del módulo <a href="{{ '/' | relative_url }}">Periodismo de precisión</a>. Los datos son reales, agregados y anónimos.</div>
+<div class="marca"><a href="{{ '/' | relative_url }}">Periodismo de precisión · Barranquilla</a></div>
+
+<header class="portada">
+  <div class="caja">
+    <span class="seccion">Participación juvenil</span>
+    <h1>Más capaces y más exigentes: lo que cambió en 55 líderes estudiantiles de colegios públicos</h1>
+    <p class="bajada">Tras 46 horas de formación en liderazgo e incidencia, el porcentaje de estudiantes que dice sentirse capaz de participar en las decisiones de su colegio pasó, en promedio, de 43&nbsp;% a 76&nbsp;%. Lo que más creció no fue lo que sabían, sino cómo se ven a sí mismos. También miran a sus colegios con ojos más críticos.</p>
+    <p class="firma">Por <strong>Equipo del módulo Periodismo de precisión</strong><br>Barranquilla · 5 de noviembre de 2026</p>
+  </div>
+</header>
+
+<article>
+
+<p>Al empezar, en promedio, menos de la mitad de los estudiantes decía sentirse capaz de explicar cómo funciona la participación en su colegio o de llevar una propuesta por la ruta institucional. Al terminar, tres de cada cuatro respondían que sí. Es el cambio más grande que registró la evaluación de un programa de formación en liderazgo e incidencia que, entre julio y agosto de 2026, reunió a 80 personeros y líderes de los grados 9.°, 10.° y 11.° de 27 colegios públicos de Barranquilla.</p>
+
+<p>La evaluación aplicó el mismo cuestionario al inicio y al final del programa. Lo respondieron ambas veces 55 de los 80 participantes, y sus resultados muestran tres movimientos: un salto grande en la confianza en sus propias capacidades, un avance moderado en conocimientos y una mirada más exigente sobre los espacios de participación de sus colegios.</p>
+
+<div class="cifra">
+  <div><b>84&nbsp;%</b><span>de los estudiantes mejoró en sentirse capaz de participar</span></div>
+  <div><b>22 → 44&nbsp;%</b><span>confía en estudiantes de otros colegios</span></div>
+  <div><b>61 → 72&nbsp;%</b><span>de acierto en preguntas sobre democracia y voto</span></div>
+</div>
+
+<h2>Sentirse capaz, el mayor cambio</h2>
+
+<p>El bloque del cuestionario que más se movió fue el que pregunta si el estudiante se siente capaz de explicar y actuar en temas de participación: diferenciar la democracia representativa de la participativa, entender el gobierno escolar, reconocer cuándo la participación tiene efecto, llevar una propuesta por la ruta institucional y conocer los espacios juveniles de la ciudad.</p>
+
+<p>En promedio, el porcentaje de respuestas "bastante" o "completamente" en esas cinco preguntas pasó de 43&nbsp;% a 76&nbsp;%. El 84&nbsp;% de los estudiantes mejoró su puntaje, el 7&nbsp;% quedó igual y el 9&nbsp;% bajó. La pregunta que más cambió fue la de explicar la diferencia entre democracia representativa y participativa: la proporción de estudiantes que se sentía capaz de hacerlo subió 64 puntos porcentuales.</p>
+
+<p>Para comparar cambios medidos en escalas distintas, la evaluación usó un indicador estadístico llamado <em>d</em> de Cohen, que expresa el tamaño del cambio en una misma unidad. Como referencia, 0,2 es un cambio pequeño; 0,5, moderado, y 0,8 o más, grande. Sentirse capaz tuvo un <em>d</em> de 1,24, más del doble que el de los conocimientos.</p>
+
+<figure>
+  <p class="tit">La brecha entre saber y sentirse capaz</p>
+  <p class="sub">Tamaño del cambio entre el inicio y el final del programa (<em>d</em> de Cohen). Valores negativos indican que el puntaje bajó.</p>
+  <div class="leyenda"><span><i style="background:var(--conoc)"></i>Conocimiento</span><span><i style="background:var(--perc)"></i>Percepción (aumento)</span><span><i style="background:var(--neg)"></i>Percepción (descenso)</span></div>
+<div class="fila"><div class="etq">Se siente capaz</div>
+<div class="pista eje"><span class="barra perc" style="left:50.00%;width:41.33%"></span><span class="valor right" style="left:91.33%">1,24 *</span></div></div>
+<div class="fila"><div class="etq">Conocimiento (test de 15 preguntas)</div>
+<div class="pista eje"><span class="barra conoc" style="left:50.00%;width:16.33%"></span><span class="valor right" style="left:66.33%">0,49 *</span></div></div>
+<div class="fila"><div class="etq">Sentido de incidencia</div>
+<div class="pista eje"><span class="barra perc" style="left:50.00%;width:7.00%"></span><span class="valor right" style="left:57.00%">0,21</span></div></div>
+<div class="fila"><div class="etq">Autoeficacia para liderar</div>
+<div class="pista eje"><span class="barra perc" style="left:50.00%;width:6.67%"></span><span class="valor right" style="left:56.67%">0,20</span></div></div>
+<div class="fila"><div class="etq">Confianza en pares</div>
+<div class="pista eje"><span class="barra perc" style="left:50.00%;width:5.00%"></span><span class="valor right" style="left:55.00%">0,15</span></div></div>
+<div class="fila"><div class="etq">Confianza interpersonal</div>
+<div class="pista eje"><span class="barra perc" style="left:50.00%;width:2.67%"></span><span class="valor right" style="left:52.67%">0,08</span></div></div>
+<div class="fila"><div class="etq">Autoconfianza e interés</div>
+<div class="pista eje"><span class="barra neg" style="left:48.67%;width:1.33%"></span><span class="valor left" style="right:51.33%">−0,04</span></div></div>
+<div class="fila"><div class="etq">Participación en el colegio</div>
+<div class="pista eje"><span class="barra neg" style="left:45.33%;width:4.67%"></span><span class="valor left" style="right:54.67%">−0,14</span></div></div>
+<div class="fila"><div class="etq">Confianza institucional</div>
+<div class="pista eje"><span class="barra neg" style="left:43.67%;width:6.33%"></span><span class="valor left" style="right:56.33%">−0,19</span></div></div>
+  <figcaption>* Cambio estadísticamente significativo (p &lt; 0,05). Referencias: 0,2 pequeño, 0,5 moderado, 0,8 grande. n = 55 estudiantes con medición al inicio y al final. Fuente: evaluación del programa. <a href="{{ '/assets/datos/nota/tamano_del_cambio.csv' | relative_url }}">Descargar datos</a></figcaption>
+</figure>
+
+<blockquote>"Me motiva aprender a liderar, nuevas cosas conmigo misma y también me parece que es una nueva experiencia muy importante."<cite>Una de las participantes, al comenzar el programa</cite></blockquote>
+
+<h2>Los conocimientos avanzaron donde el programa puso el énfasis</h2>
+
+<p>El cuestionario incluyó 15 preguntas de selección múltiple sobre democracia, gobierno escolar, incidencia y participación juvenil. El grupo llegó con un nivel alto: al inicio acertaba, en promedio, el 75&nbsp;% de las preguntas, y el 58&nbsp;% de los estudiantes ya estaba en el nivel más alto (12&nbsp;a&nbsp;15 aciertos). Con un punto de partida así, queda poco margen para subir, algo que en estadística se conoce como efecto techo.</p>
+
+<p>Aun así, hubo avances claros en dos temas. En gobierno escolar, el acierto promedio pasó de 82&nbsp;% a 90&nbsp;%, y en democracia y voto, de 61&nbsp;% a 72&nbsp;%. Ambos cambios son estadísticamente significativos. La pregunta sobre cómo funciona la democracia representativa pasó de 44&nbsp;% a 71&nbsp;% de acierto, y la que pregunta qué instancia hace parte del gobierno escolar, de 64&nbsp;% a 91&nbsp;%.</p>
+
+<p>En incidencia, el tema con más preguntas, el avance fue menor (de 73&nbsp;% a 77&nbsp;%) y no alcanzó a ser significativo. Dentro de él, sin embargo, hubo un aprendizaje puntual: los estudiantes mejoraron en identificar a quién debe llegar su voz para que una propuesta tenga efecto, al pasar de 59&nbsp;% a 70&nbsp;% de acierto en esas preguntas.</p>
+
+<figure>
+  <p class="tit">Dónde avanzaron los conocimientos</p>
+  <p class="sub">Porcentaje promedio de acierto por tema, al inicio y al final del programa</p>
+  <div class="leyenda"><span><i style="background:var(--antes)"></i>Al inicio</span><span><i style="background:var(--despues)"></i>Al final</span></div>
+<div class="par"><div class="etq">Democracia y voto <span class="sig">*</span></div>
+<div class="pista"><span class="barra antes" style="width:61%"></span><span class="num">61&nbsp;%</span></div>
+<div class="pista"><span class="barra despues" style="width:72%"></span><span class="num">72&nbsp;%</span></div></div>
+<div class="par"><div class="etq">Gobierno escolar <span class="sig">*</span></div>
+<div class="pista"><span class="barra antes" style="width:82%"></span><span class="num">82&nbsp;%</span></div>
+<div class="pista"><span class="barra despues" style="width:90%"></span><span class="num">90&nbsp;%</span></div></div>
+<div class="par"><div class="etq">Incidencia (Modelo Lundy)</div>
+<div class="pista"><span class="barra antes" style="width:73%"></span><span class="num">73&nbsp;%</span></div>
+<div class="pista"><span class="barra despues" style="width:77%"></span><span class="num">77&nbsp;%</span></div></div>
+<div class="par"><div class="etq">Participación juvenil</div>
+<div class="pista"><span class="barra antes" style="width:84%"></span><span class="num">84&nbsp;%</span></div>
+<div class="pista"><span class="barra despues" style="width:87%"></span><span class="num">87&nbsp;%</span></div></div>
+  <figcaption>* Cambio estadísticamente significativo (prueba t pareada, p &lt; 0,05). n = 55. Fuente: evaluación del programa. <a href="{{ '/assets/datos/nota/acierto_por_tema.csv' | relative_url }}">Descargar datos</a></figcaption>
+</figure>
+
+<h2>Más confianza entre colegios</h2>
+
+<p>Uno de los propósitos del programa era que los líderes de distintos colegios trabajaran juntos. En ese punto, la evaluación registró un cambio significativo: la proporción de estudiantes que confía en jóvenes de otros colegios se duplicó, de 22&nbsp;% a 44&nbsp;%.</p>
+
+<p>Esa confianza no se extendió a las personas en general. Ante preguntas como si se puede confiar en la mayoría de la gente, las respuestas favorables siguieron siendo pocas y no cambiaron de forma significativa.</p>
+
+<h2>¿Más críticos con su propio colegio?</h2>
+
+<p>No todos los indicadores subieron. Al final del programa, menos estudiantes estuvieron de acuerdo con que en su colegio hay espacios para opinar (16 puntos porcentuales menos), con que pueden expresar posturas distintas a las de los adultos (11 menos) y con que las propuestas estudiantiles han cambiado decisiones (7 menos). La confianza en los docentes, en el consejo estudiantil y en el consejo directivo bajó 13 puntos en cada caso.</p>
+
+<p>Ninguno de estos descensos es estadísticamente significativo, así que pueden deberse al azar. Pero van en la misma dirección: en participación en el colegio y en confianza institucional, son más los estudiantes que bajaron que los que mejoraron. El equipo del programa plantea una hipótesis: tras aprender qué condiciones debe cumplir la participación para ser real, los estudiantes podrían estar evaluando a sus colegios con más exigencia. Los datos de esta evaluación no permiten confirmarlo.</p>
+
+<figure>
+  <p class="tit">Quiénes mejoraron y quiénes bajaron</p>
+  <p class="sub">Porcentaje de estudiantes según cómo cambió su puntaje en cada dimensión</p>
+  <div class="leyenda"><span><i style="background:var(--mejoro)"></i>Mejoró</span><span><i style="background:var(--igual)"></i>Igual</span><span><i style="background:var(--bajo)"></i>Bajó</span></div>
+<div class="fila"><div class="etq">Se siente capaz</div>
+<div class="apilada"><span class="seg mejoro" style="width:84%">84&nbsp;%</span><span class="seg igual" style="width:7%"></span><span class="seg bajo" style="width:9%">9&nbsp;%</span></div></div>
+<div class="fila"><div class="etq">Sentido de incidencia</div>
+<div class="apilada"><span class="seg mejoro" style="width:47%">47&nbsp;%</span><span class="seg igual" style="width:33%">33&nbsp;%</span><span class="seg bajo" style="width:20%">20&nbsp;%</span></div></div>
+<div class="fila"><div class="etq">Autoeficacia para liderar</div>
+<div class="apilada"><span class="seg mejoro" style="width:45%">45&nbsp;%</span><span class="seg igual" style="width:22%">22&nbsp;%</span><span class="seg bajo" style="width:33%">33&nbsp;%</span></div></div>
+<div class="fila"><div class="etq">Confianza interpersonal</div>
+<div class="apilada"><span class="seg mejoro" style="width:44%">44&nbsp;%</span><span class="seg igual" style="width:25%">25&nbsp;%</span><span class="seg bajo" style="width:31%">31&nbsp;%</span></div></div>
+<div class="fila"><div class="etq">Participación en el colegio</div>
+<div class="apilada"><span class="seg mejoro" style="width:41%">41&nbsp;%</span><span class="seg igual" style="width:13%">13&nbsp;%</span><span class="seg bajo" style="width:46%">46&nbsp;%</span></div></div>
+<div class="fila"><div class="etq">Confianza institucional</div>
+<div class="apilada"><span class="seg mejoro" style="width:40%">40&nbsp;%</span><span class="seg igual" style="width:9%">9&nbsp;%</span><span class="seg bajo" style="width:51%">51&nbsp;%</span></div></div>
+<div class="fila"><div class="etq">Confianza en pares</div>
+<div class="apilada"><span class="seg mejoro" style="width:40%">40&nbsp;%</span><span class="seg igual" style="width:31%">31&nbsp;%</span><span class="seg bajo" style="width:29%">29&nbsp;%</span></div></div>
+<div class="fila"><div class="etq">Autoconfianza e interés</div>
+<div class="apilada"><span class="seg mejoro" style="width:38%">38&nbsp;%</span><span class="seg igual" style="width:33%">33&nbsp;%</span><span class="seg bajo" style="width:29%">29&nbsp;%</span></div></div>
+  <figcaption>n = 55. Fuente: evaluación del programa. <a href="{{ '/assets/datos/nota/mejoro_igual_bajo.csv' | relative_url }}">Descargar datos</a></figcaption>
+</figure>
+
+<h2>Lo que no cambió</h2>
+
+<p>En otros aspectos, los estudiantes ya empezaron con respuestas muy favorables, y así siguieron. Entre 96&nbsp;% y 100&nbsp;% se sentía seguro de alcanzar sus objetivos y con ganas de seguir en espacios de liderazgo, antes y después del programa. El 96&nbsp;% cree que las acciones estudiantiles pueden influir en las decisiones del colegio, y el 95&nbsp;% dice saber cómo convertir una idea en una propuesta.</p>
+
+<p>Que estos indicadores no se movieran no significa que el programa no funcionara en ellos: cuando casi todos parten del nivel más alto, no hay espacio para medir una mejora. Lo que sí muestran es que los participantes ya llegaron motivados.</p>
+
+<section class="metodo">
+<h2>Cómo hicimos esta nota</h2>
+
+<h3>Los datos</h3>
+<p>La nota se basa en los resultados agregados de la evaluación de un programa de formación en liderazgo e incidencia para estudiantes de colegios públicos de Barranquilla, realizado entre julio y agosto de 2026. Al programa se inscribieron 118 estudiantes de 32 colegios; se seleccionaron 27 colegios y 80 estudiantes, priorizando instituciones con menos acceso previo a programas de liderazgo y con población de estratos 1, 2 y 3.</p>
+<p>El mismo cuestionario se aplicó al inicio y al final. Tenía 15 preguntas de conocimiento con una sola respuesta correcta y 39 afirmaciones de percepción, agrupadas en ocho dimensiones, que se responden en escalas de 1&nbsp;a&nbsp;4, de 1&nbsp;a&nbsp;5 o de 1&nbsp;a&nbsp;7. Los resultados corresponden a los <strong>55 estudiantes que respondieron las dos veces</strong>.</p>
+
+<h3>Los cálculos</h3>
+<ul>
+<li><strong>Respuesta favorable:</strong> "de acuerdo" o "totalmente de acuerdo" en las escalas de 1&nbsp;a&nbsp;4; "bastante" o "completamente" en las de 1&nbsp;a&nbsp;5, y 5 o más en la de 1&nbsp;a&nbsp;7. En las afirmaciones redactadas en negativo, favorable es estar en desacuerdo.</li>
+<li><strong>Cambio en puntos porcentuales:</strong> diferencia entre el porcentaje del final y el del inicio.</li>
+<li><strong>¿El cambio es real o puede deberse al azar?</strong> Para cada pregunta se usó la prueba de McNemar, y para cada tema o dimensión, la prueba t pareada, que compara a cada estudiante consigo mismo. Un cambio es estadísticamente significativo si p es menor que 0,05.</li>
+<li><strong>Tamaño del cambio:</strong> <em>d</em> de Cohen para muestras pareadas.</li>
+</ul>
+
+<h3>Los límites</h3>
+<ul>
+<li><strong>No hay grupo de comparación.</strong> Sin un grupo de estudiantes similares que no hiciera el programa, no se puede atribuir todo el cambio al programa: también influyen el paso del tiempo, otras experiencias y el hecho de responder dos veces el mismo cuestionario.</li>
+<li><strong>Faltan 25 de los 80 participantes.</strong> Si quienes no respondieron ambas veces son distintos de quienes sí lo hicieron, por ejemplo, estudiantes de grado 11 que faltaron por la preparación de las pruebas Saber 11, los resultados podrían no representar a todo el grupo.</li>
+<li><strong>Son percepciones.</strong> Las dimensiones distintas al conocimiento miden lo que los estudiantes dicen sentir o creer, no lo que hacen.</li>
+<li><strong>Muchas comparaciones.</strong> Con decenas de preguntas comparadas, es posible que alguna salga significativa por azar.</li>
+<li><strong>Efecto techo.</strong> Varios indicadores empezaron cerca del 100&nbsp;% y no podían subir mucho más.</li>
+</ul>
+
+<h3>Anonimización</h3>
+<p>Los participantes son, en su mayoría, menores de edad. Por eso la nota no nombra al programa, a las instituciones que lo realizaron ni a los colegios, y solo presenta resultados agregados del grupo completo. La cita se publica sin nombre y no se incluyen fotografías de los estudiantes.</p>
+
+<h3>Descargue los datos</h3>
+<p class="descargas"><a href="{{ '/assets/datos/nota/tamano_del_cambio.csv' | relative_url }}">Tamaño del cambio</a><a href="{{ '/assets/datos/nota/acierto_por_tema.csv' | relative_url }}">Acierto por tema</a><a href="{{ '/assets/datos/nota/mejoro_igual_bajo.csv' | relative_url }}">Mejoró, igual o bajó</a></p>
+</section>
+
+</article>
+
+<footer>
+Esta es una nota de ejemplo del módulo <a href="{{ '/' | relative_url }}">Periodismo de precisión y visualización de datos</a>. Muestra cómo debe verse el producto final: una historia sostenida en datos, con gráficos, fuentes y un recuadro que explica cómo se hizo.
+</footer>
+
+</body>
+</html>
