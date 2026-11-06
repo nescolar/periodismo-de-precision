@@ -1291,6 +1291,154 @@ Al final del cuaderno hay un espacio para escribir la respuesta a la pregunta gu
 
 ---
 
+## Ejercicio práctico 3: del mapa a la noticia {#ejercicio-3}
+
+### Contexto {#ejercicio-3-contexto}
+
+La violencia intrafamiliar es uno de los delitos que más se denuncian en Colombia. Cada año, las cifras de la Policía aparecen en titulares como "Antioquia, uno de los departamentos con más casos" o "Bogotá encabeza la lista". Pero ¿qué tan justa es esa comparación entre departamentos con poblaciones tan distintas?
+
+En este ejercicio vamos a hacer un **mapa** con esas cifras y luego a **escribir una noticia** a partir de él. Usaremos dos fuentes oficiales:
+
+- **Policía Nacional de Colombia.** *Reporte Delito Violencia Intrafamiliar*, publicado como datos abiertos. Cada registro dice dónde y cuándo ocurrió el hecho, con qué arma o medio, y el género y grupo de edad de la víctima.
+- **DANE.** *Proyecciones de población departamental por área, 2018-2050* (actualizadas el 30 de julio de 2025). De aquí sale la población de cada departamento, que necesitamos para calcular tasas.
+
+[Descargar la base en Excel]({{ '/assets/datos/Violencia_intrafamiliar_Colombia_2018_2021.xlsx' | relative_url }}){: .btn .btn-primary }
+
+El archivo tiene cinco hojas: **Leeme** (fuentes, depuración y advertencias), **Datos** (cada registro depurado, de enero de 2018 a mayo de 2021), **Mapa_departamentos** (una fila por departamento, lista para el mapa), **Municipios** y **Serie_mensual** (casos por mes en todo el país).
+
+### Cómo se prepararon los datos {#ejercicio-3-datos}
+
+Antes de hacer un mapa hay que **depurar** los datos. Estas fueron las decisiones que tomamos con la base original de la Policía:
+
+- **Bogotá venía dentro de Cundinamarca.** La separamos como Bogotá, D.C., porque es una entidad territorial propia y los mapas de Colombia la dibujan aparte.
+- **Códigos.** El código DANE del departamento quedó con 2 dígitos y el del municipio con 5, como texto, para no perder el cero inicial (05 = Antioquia). Agregamos el código ISO de cada departamento (CO-ATL), que usan las herramientas de mapas.
+- **Categorías.** Unificamos categorías equivalentes. Por ejemplo, "cortopunzantes", "cortantes" y "punzantes" pasan a "Arma blanca / cortopunzante", y todas las variantes de "no reporta" pasan a "No reportado".
+- **Fechas.** Ocho fechas venían como números de serie de Excel (44335); las convertimos a fecha.
+- **Periodo.** El archivo original va de 2010 a mayo de 2021. Dejamos 2018 a 2021 porque esos años tienen proyecciones de población del DANE con la misma metodología.
+
+### Las columnas de la hoja Mapa_departamentos {#ejercicio-3-columnas}
+
+Cada fila es un departamento. El ejemplo es Antioquia:
+
+| Columna | Qué significa | Antioquia |
+|:--|:--|:--|
+| `cod_dep` | Código DANE del departamento, de 2 dígitos. | 05 |
+| `iso` | Código internacional del departamento (ISO 3166-2). Datawrapper lo usa para ubicar cada departamento en el mapa. | CO-ANT |
+| `departamento` | Nombre oficial. | Antioquia |
+| `casos_2018`, `casos_2019`, `casos_2020` | Casos de violencia intrafamiliar registrados por la Policía en cada año. | 13.485, 16.889, 15.559 |
+| `casos_2021_ene_may` | Casos de enero a mayo de 2021. El año está incompleto: no se compara con los anteriores. | 6.290 |
+| `casos_2018_2020` | Suma de los casos de 2018, 2019 y 2020. | 45.933 |
+| `poblacion_2018` a `poblacion_2021` | Habitantes del departamento en cada año, según el DANE. | 6.642.072 en 2020 |
+| `tasa_2018`, `tasa_2019`, `tasa_2020` | Casos por cada 100.000 habitantes en ese año. | 210,5; 259,1; 234,2 |
+| `tasa_promedio_2018_2020` | Tasa anual promedio de los tres años. **Es la que usamos en el mapa.** | 234,7 |
+| `pct_victimas_mujeres_2018_2020` | Porcentaje de víctimas mujeres sobre el total de casos de 2018 a 2020. | 80,4 % |
+| `pct_victimas_menores_adolesc_2018_2020` | Porcentaje de víctimas que la Policía clasificó como "Menores" o "Adolescentes". | 7,5 % |
+
+**Los cálculos.** La tasa de un año es:
+
+> tasa = casos del año ÷ población del año × 100.000
+
+Por ejemplo, en Antioquia en 2020: 15.559 ÷ 6.642.072 × 100.000 = 234,2 casos por cada 100.000 habitantes.
+
+La tasa promedio suma los casos de los tres años y los divide por la suma de la población de los tres años:
+
+> tasa promedio = casos 2018-2020 ÷ (población 2018 + población 2019 + población 2020) × 100.000
+
+No calculamos tasa para 2021, porque con solo cinco meses saldría artificialmente baja. Los porcentajes, en cambio, no necesitan la población: se calculan dentro de los casos de cada departamento.
+
+{: .recordar }
+> **¿Por qué tasa y no casos?** Bogotá y Antioquia siempre tendrán más casos porque tienen más habitantes. Un mapa de casos solo muestra dónde vive más gente. Al dividir por la población, comparamos departamentos de tamaños distintos en igualdad de condiciones. Repase la sección [Volumen frente a tasa](#volumen-tasa).
+
+### ¿Qué vamos a hacer? {#ejercicio-3-tareas}
+
+> ¿Dónde se registra más violencia intrafamiliar en Colombia cuando se tiene en cuenta el tamaño de la población?
+
+#### Paso 1. Hacer el mapa en Datawrapper
+
+1. Entre a [Datawrapper](https://www.datawrapper.de) y cree una cuenta gratuita.
+2. Elija **New Map > Choropleth map** y busque el mapa de **Colombia por departamentos**.
+3. En la hoja **Mapa_departamentos** del Excel, copie la tabla completa y péguela en Datawrapper. Empareje los datos por la columna `iso` (o por `departamento`).
+4. Elija `tasa_promedio_2018_2020` como valor que colorea el mapa. Use una escala de un solo color, del claro (tasa baja) al oscuro (tasa alta).
+5. En **Annotate**, complete los textos del mapa:
+
+| Campo | Qué escribir |
+|:--|:--|
+| **Title** | Violencia intrafamiliar: casos por cada 100.000 habitantes, 2018-2020 |
+| **Description** | Tasa anual promedio de casos registrados por la Policía Nacional en cada departamento. Bogotá registra la tasa más alta; Vichada, La Guajira y Chocó, las más bajas. |
+| **Notes** | Tasa = casos registrados ÷ población × 100.000 (promedio de 2018 a 2020). Son casos denunciados o reportados a la Policía, no todos los hechos ocurridos: una tasa baja puede reflejar menos denuncia. Bogotá aparece separada de Cundinamarca. |
+| **Data source** | Policía Nacional (datos abiertos); DANE, proyecciones de población |
+| **Link to data source** | El enlace a la página de datos abiertos de la Policía desde donde se descargó la base |
+| **Byline** | Su nombre |
+| **Alternative description** | Mapa de Colombia por departamentos coloreado según la tasa de violencia intrafamiliar por cada 100.000 habitantes entre 2018 y 2020. Bogotá tiene la tasa más alta (468), seguida de Boyacá (299) y Meta (265). Las más bajas son las de Vichada (46), La Guajira (49) y Chocó (50). |
+
+6. Haga una segunda versión del mapa con `casos_2018_2020` y compárelas. ¿Qué departamentos cambian más de posición?
+
+<details markdown="1">
+<summary>Ver respuesta</summary>
+
+- Con la tasa, los primeros lugares son Bogotá (468 por 100.000), Boyacá (299), Meta (265), Cundinamarca (239), Santander (236) y Antioquia (235).
+- Con los casos, Antioquia es segunda (45.933) y Valle del Cauca, tercero (25.360). Con la tasa, Antioquia baja al sexto lugar y Valle del Cauca al duodécimo (186).
+- Boyacá y Meta, que no destacan por número de casos, suben al segundo y tercer lugar con la tasa.
+- Atlántico tiene 8.561 casos y una tasa de 109 por 100.000: está en el puesto 27 de 33.
+
+</details>
+
+#### Paso 2. Escribir la noticia
+
+Con el mapa y la tabla, escriba una **noticia breve de 300 a 400 palabras**. Debe tener:
+
+1. **Titular:** una frase que diga el hallazgo principal, sin exagerar.
+2. **Entrada (primer párrafo):** qué, dónde, cuándo y según quién, en dos o tres líneas.
+3. **Cuerpo:** las cifras que sostienen el hallazgo (tasas, comparaciones, porcentajes), de la más importante a la menos importante.
+4. **Contexto y límites:** qué no dicen los datos.
+5. **Fuentes:** quién publicó los datos y cómo se calcularon las tasas.
+6. **El mapa**, con su título, nota y fuente.
+
+**Antes de entregarla, revise que la noticia cumpla estas precisiones:**
+
+- **Casos registrados, no hechos ocurridos.** Las cifras son denuncias o reportes a la Policía. Escriba "se registraron" o "se denunciaron", no "ocurrieron". Muchos casos de violencia intrafamiliar nunca se denuncian.
+- **Una tasa baja no prueba que haya menos violencia.** Puede haber menos denuncia, menos presencia de la Policía o más dificultad para acceder a ella. Esto pesa en departamentos como Vichada, La Guajira o Chocó.
+- **Compare con tasas, no con casos.** Si menciona casos, acompáñelos de la tasa. "Antioquia tiene 45.933 casos" no dice si es mucho o poco para su población.
+- **Diga qué tasa usa:** "casos por cada 100.000 habitantes, promedio anual de 2018 a 2020".
+- **No compare 2021 con los años anteriores.** Solo tiene datos de enero a mayo.
+- **Tenga en cuenta la pandemia.** 2020 incluye el confinamiento por la COVID-19, que pudo cambiar tanto la violencia como la posibilidad de denunciarla.
+- **Correlación no es causalidad.** El mapa muestra dónde se registran más casos, no por qué. No atribuya las diferencias a una causa que los datos no miden.
+- **Cite las dos fuentes:** Policía Nacional (casos) y DANE (población).
+- **Respete las categorías de la fuente.** "Menores" y "Adolescentes" son grupos definidos por la Policía; use esos nombres.
+- **Redondee para el lector.** "Casi 8 de cada 10 víctimas son mujeres" se entiende mejor que "78,5 %". Pero no cambie el sentido del dato.
+- **Cuide el lenguaje.** Hable de "víctimas" y de "casos"; evite adjetivos que dramaticen o que culpen a la víctima.
+
+<details markdown="1">
+<summary>Ver un ejemplo de noticia</summary>
+
+**Bogotá, Boyacá y Meta registran las tasas más altas de violencia intrafamiliar del país**
+
+*Entre 2018 y 2020, la Policía registró en promedio 223 casos de violencia intrafamiliar por cada 100.000 habitantes en Colombia. Bogotá duplicó ese promedio.*
+
+Bogotá es el territorio del país donde más casos de violencia intrafamiliar se registran en proporción a su población. Entre 2018 y 2020, la Policía Nacional recibió en la capital un promedio de 468 casos por cada 100.000 habitantes al año, más del doble del promedio nacional (223). Le siguen Boyacá (299), Meta (265), Cundinamarca (239) y Santander (236).
+
+Las cifras cambian el orden que suele aparecer en los titulares. Por número de casos, Antioquia ocupa el segundo lugar, con 45.933 en tres años, pero al tener en cuenta su población baja al sexto (235 por 100.000). Boyacá, en cambio, tiene menos de la cuarta parte de los casos de Antioquia, pero su tasa es mayor.
+
+En el otro extremo están Vichada (46 por 100.000), La Guajira (49) y Chocó (50). Atlántico, con 109, ocupa el puesto 27 entre 33 departamentos.
+
+En todo el país, casi 8 de cada 10 víctimas fueron mujeres, y alrededor de 1 de cada 10 fue clasificada por la Policía como menor de edad o adolescente.
+
+Estas cifras corresponden a casos denunciados o reportados a la Policía, no a todos los hechos ocurridos. Una tasa baja puede reflejar menos violencia, pero también menos denuncia o menos presencia institucional. Además, 2020 incluye los meses de confinamiento por la pandemia, que pudieron afectar tanto la violencia en los hogares como la posibilidad de denunciarla.
+
+*Fuentes: Policía Nacional de Colombia, Reporte Delito Violencia Intrafamiliar (datos abiertos); DANE, proyecciones de población departamental 2018-2050. La tasa se calculó dividiendo los casos registrados entre la población de cada año y multiplicando por 100.000.*
+
+</details>
+
+#### Paso 3. Revisar entre pares
+
+Intercambie su noticia con un compañero. Cada uno revisa la del otro con la lista de precisiones y marca:
+
+1. Una cifra que no esté bien explicada o que no tenga fuente.
+2. Una frase que afirme más de lo que muestran los datos.
+3. Una pregunta que la noticia deja abierta y que valdría la pena investigar, por ejemplo hablando con una fuente en el departamento.
+
+---
+
 ## Referencias {#referencias}
 
 Bradshaw, P. (2012). *The inverted pyramid of data journalism*. Online Journalism Blog.
@@ -1299,6 +1447,8 @@ Castañeda, J. A. (2023). *colombian_map: TopoJSON of Colombia's departments and
 
 Dader, J. L. (1997). *Periodismo de precisión: la vía socioinformática de descubrir noticias*. Madrid: Síntesis.
 
+DANE. (2025). *Proyecciones de población departamental por área, 2018-2050* (actualización del 30 de julio de 2025). Departamento Administrativo Nacional de Estadística. https://www.dane.gov.co/index.php/estadisticas-por-tema/demografia-y-poblacion/proyecciones-de-poblacion
+
 Generalitat de Catalunya. (2019). *Guía de visualización de datos*. Barcelona: Generalitat de Catalunya. Licencia CC BY 4.0.
 
 Lambeth, E. B. (1992). *Periodismo comprometido: un código de ética para la profesión*. México: Limusa.
@@ -1306,6 +1456,8 @@ Lambeth, E. B. (1992). *Periodismo comprometido: un código de ética para la pr
 López, P. J. (2016). Antecedentes y fundamentos del periodismo de datos. En *Periodismo de datos. Nuevas narrativas para el periodismo especializado* (pp. 5-26). Madrid: Universidad Complutense de Madrid.
 
 Meyer, P. (2002). *Precision journalism: A reporter's introduction to social science methods* (4.ª ed.). Lanham: Rowman & Littlefield.
+
+Policía Nacional de Colombia. (s. f.). *Reporte Delito Violencia Intrafamiliar* [Conjunto de datos]. Datos abiertos. Consultado en noviembre de 2026.
 
 Protess, D. L., Cook, F. L., Doppelt, J. C., Ettema, J. S., Gordon, M. T., Leff, D. R. y Miller, P. (1991). *The journalism of outrage: Investigative reporting and agenda building in America*. Nueva York: Guilford Press.
 
