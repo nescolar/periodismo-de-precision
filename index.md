@@ -1338,7 +1338,14 @@ En el ejercicio 1 practicamos la exploración variable por variable. Ahora nos c
 
 > ¿En Barranquilla hay más violencia los días más calientes?
 
-Todo el ejercicio se hace en **Google Colab**. El cuaderno lee la base directamente desde este sitio, así que no necesita descargar nada ni instalar programas. Ejecute las celdas en orden, de arriba hacia abajo, y responda las preguntas *Para comentar* que aparecen después de cada resultado.
+El ejercicio tiene dos puntos:
+
+1. **El análisis en Google Colab:** explorar las variables y buscar correlaciones.
+2. **Los gráficos en Datawrapper:** contar con dos gráficos interactivos lo que encontramos.
+
+### Primer punto: el análisis en Google Colab {#ejercicio-2-colab}
+
+Este punto se hace en **Google Colab**. El cuaderno lee la base directamente desde este sitio, así que no necesita descargar nada ni instalar programas. Ejecute las celdas en orden, de arriba hacia abajo, y responda las preguntas *Para comentar* que aparecen después de cada resultado.
 
 [Abrir el ejercicio 2 en Google Colab](https://colab.research.google.com/github/nescolar/periodismo-de-precision/blob/main/notebooks/clima_violencia_barranquilla.ipynb){: .btn .btn-primary }
 
@@ -1437,6 +1444,87 @@ Al final del cuaderno hay un espacio para escribir la respuesta a la pregunta gu
 3. Las matrículas parecen "reducir" la violencia, pero es el calendario: los domingos no se matricula y hay más riñas.
 4. Por ejemplo: "No es el calor: en Barranquilla, la violencia sube los domingos y festivos", con un gráfico de barras del promedio de casos por día de la semana.
 5. Los datos llegan hasta 2016. Además, los comparendos y las matrículas dependen de cuándo trabajan las instituciones, no solo del consumo de alcohol o de la economía.
+
+</details>
+
+### Segundo punto: los gráficos en Datawrapper {#ejercicio-2-datawrapper}
+
+En el cuaderno vimos que la violencia en Barranquilla tiene un calendario: sube en algunos días y en algunos meses del año. Ahora vamos a contarlo con dos gráficos interactivos en [Datawrapper](https://www.datawrapper.de), como hicimos con el mapa del ejercicio 3:
+
+1. **Una serie de tiempo** con los casos de cada día, de 2010 a 2016.
+2. **Un gráfico de promedio por mes**, con un año por línea, para ver qué meses se repiten como picos.
+
+Descargue los dos archivos:
+
+[Datos por día (CSV)]({{ '/assets/datos/ejercicio2/clima_violencia_diario.csv' | relative_url }}){: .btn .btn-primary }
+[Datos por mes del año (CSV)]({{ '/assets/datos/ejercicio2/clima_violencia_por_mes_del_anio.csv' | relative_url }}){: .btn .btn-primary }
+
+{: .recordar }
+> **¿Por qué dos archivos?** Datawrapper no calcula promedios ni agrupa datos: dibuja las filas tal como llegan. El archivo diario tiene una fila por día; el promedio por mes tiene que venir ya calculado, en otro archivo con una fila por mes.
+
+#### Gráfico 1. La violencia día a día
+
+1. **Subir el archivo.** En Datawrapper, haga clic en **New Chart**. En *Upload data*, elija **XLS/CSV upload**, seleccione `clima_violencia_diario.csv` y haga clic en **Proceed**.
+2. **Revisar los datos (Check & Describe).** Datawrapper pinta cada columna según el tipo que reconoce: los números en azul, las fechas en verde y el texto en negro. Compruebe que *Fecha* aparezca como fecha y *Casos de violencia* como número.
+3. **Quedarse con lo que va en el gráfico.** El archivo trae todas las variables. Haga clic en el encabezado de cada columna que no va a usar y elija la opción para ocultarla. Deje visibles solo **Fecha**, **Casos de violencia** y **Promedio de los últimos 30 días**. Haga clic en **Proceed**.
+4. **Elegir el tipo de gráfico.** En **Chart type**, elija **Lines** (líneas).
+5. **Ajustar el gráfico (Refine).**
+   - El eje vertical empieza en 0.
+   - *Casos de violencia* en gris claro y delgada: es el ruido del día a día.
+   - *Promedio de los últimos 30 días* en un color fuerte y más gruesa: es la tendencia.
+   - En lugar de una leyenda, muestre el nombre de cada línea al final de la línea.
+6. **Anotar los picos.** Pase el cursor por los picos más altos y averigüe qué fecha es cada uno. En la pestaña **Annotate**, haga clic sobre el gráfico para agregar dos o tres anotaciones, por ejemplo: "8 de diciembre de 2010: 52 casos (Día de las Velitas)".
+7. **Completar los textos (Annotate):**
+
+| Campo | Qué escribir |
+|:--|:--|
+| **Title** | En Barranquilla, la violencia se dispara en fechas festivas |
+| **Description** | Casos de violencia interpersonal registrados cada día, 2010-2016. La línea de color es el promedio de los últimos 30 días. |
+| **Notes** | Casos no letales registrados por Medicina Legal; el 86 % son riñas. |
+| **Data source** | Medicina Legal, vía Trujillo y Howley (2018), Mendeley Data |
+| **Link to data source** | https://data.mendeley.com/datasets/836wyfy5rn/1 |
+| **Byline** | Su nombre |
+| **Alternative description** | Gráfico de líneas con los casos diarios de violencia interpersonal en Barranquilla entre 2010 y 2016, alrededor de 10 por día. Los picos más altos corresponden a festivos como el 8 de diciembre, Navidad y Año Nuevo. |
+
+8. **Idioma y publicación.** En **Layout**, cambie el idioma de salida (*Output locale*) a español, para que los decimales salgan con coma y las fechas en español. Haga clic en **Publish** y copie el código de inserción (*Responsive iframe*).
+
+#### Gráfico 2. El promedio por mes, un año por línea
+
+1. **Subir el archivo.** **New Chart** > **XLS/CSV upload** > `clima_violencia_por_mes_del_anio.csv` > **Proceed**.
+2. **Revisar los datos.** Verá una columna *Mes* y una columna por año, más *Promedio 2010-2016*. Todas las fechas de *Mes* son de 2016: es un truco, porque los gráficos de líneas de Datawrapper necesitan fechas en el eje horizontal. El 2016 no significa nada; solo sirve para ordenar los meses. Haga clic en **Proceed**.
+3. **Elegir el tipo de gráfico.** En **Chart type**, elija **Lines**.
+4. **Ocultar el año de referencia.** En **Refine**, cambie el formato de fecha del eje horizontal para que muestre solo el mes. Revise en la vista previa que "2016" no aparezca ni en el eje ni al pasar el cursor por las líneas; si aparece al pasar el cursor, cambie también el formato de fecha de los *tooltips*.
+5. **Destacar lo importante.**
+   - Las líneas de 2010 a 2016 en gris claro.
+   - *Promedio 2010-2016* en un color fuerte y más gruesa.
+   - El eje vertical empieza en 0.
+6. **Anotar.** En febrero: "Carnaval". En mayo: "Día de la Madre". En octubre y noviembre: "Caídas de 2012 y 2014".
+7. **Completar los textos (Annotate):**
+
+| Campo | Qué escribir |
+|:--|:--|
+| **Title** | La violencia en Barranquilla sube en febrero y en mayo |
+| **Description** | Casos de violencia interpersonal por día, promedio de cada mes. Cada línea gris es un año entre 2010 y 2016; la línea de color es el promedio. |
+| **Notes** | Casos no letales registrados por Medicina Legal; el 86 % son riñas. El Carnaval cae en febrero o a comienzos de marzo, según el año. |
+| **Data source** | Medicina Legal, vía Trujillo y Howley (2018), Mendeley Data |
+| **Link to data source** | https://data.mendeley.com/datasets/836wyfy5rn/1 |
+| **Byline** | Su nombre |
+| **Alternative description** | Gráfico de líneas con un año por línea, de enero a diciembre, entre 2010 y 2016. El promedio sube en febrero (11,2 casos por día) y en mayo (11,3) y baja en octubre y noviembre. Mayo de 2015 es el mes más alto de la serie (14,4). |
+
+8. **Idioma y publicación.** Igual que en el gráfico 1.
+
+#### Para comentar
+
+1. ¿Qué muestra el gráfico 1 que un promedio mensual esconde?
+2. ¿Qué meses se repiten como picos en el gráfico 2? ¿Con qué fechas coinciden?
+3. Las caídas de octubre y noviembre de 2012 y 2014 no se repiten en otros años. ¿Las publicaría como "bajó la violencia"? ¿Qué le preguntaría a la fuente?
+
+<details markdown="1">
+<summary>Ver respuesta</summary>
+
+1. Los días atípicos. Los picos más altos de la serie son festivos: el 8 de diciembre (Día de las Velitas) aparece tres veces entre los cinco días más violentos, junto con el 25 de diciembre y el 1 de enero. Al promediar un mes de 31 días, uno o dos días extremos se diluyen: por eso diciembre no destaca en el gráfico 2.
+2. Febrero y mayo aparecen entre los tres meses más violentos del año en 4 de los 7 años. En los cuatro días de Carnaval hay en promedio 21,4 casos por día, más del doble que el resto del año (9,8); como el Carnaval cae a veces en marzo, en 2011 y 2014 el pico se corre a ese mes. El Día de la Madre (segundo domingo de mayo) registró entre 24 y 35 casos en 6 de los 7 años, cerca del doble de un domingo normal.
+3. No sin verificar. Una caída tan brusca y tan corta, que no se repite en otros años, suele tener una explicación administrativa: un cambio en el sistema de registro, una suspensión del servicio u otra razón. Antes de publicar habría que preguntarle a Medicina Legal qué pasó en esos meses. Los datos, por sí solos, no permiten saberlo.
 
 </details>
 
