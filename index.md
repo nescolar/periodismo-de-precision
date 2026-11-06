@@ -1307,7 +1307,7 @@ Mapas: elaboración propia a partir del mapa de departamentos de Castañeda (202
 
 ### Contexto {#ejercicio-2-contexto}
 
-"Con este calor, la gente anda de mal genio." En una ciudad como Barranquilla, la frase se oye a menudo, y algunas notas de prensa sugieren que los días más calientes son también los más violentos. Antes de repetirlo, un periodista de precisión se pregunta qué dicen los datos.
+"Con este calor, la gente anda de mal genio." En una ciudad como Barranquilla, la frase se oye a menudo, y algunas notas de prensa sugieren que los días más calientes son también los más violentos.
 
 Para comprobarlo vamos a usar una base publicada por Juan C. Trujillo y Peter Howley en Mendeley Data: *Dataset for weather and crime in Barranquilla, Colombia*. Tiene **2.557 días seguidos**, del 1 de enero de 2010 al 31 de diciembre de 2016, sin valores faltantes. Cada fila es **un día** en Barranquilla, con el número de casos de violencia y de homicidios, el clima de ese día, la fase de la luna y otras variables del calendario y de la ciudad.
 
