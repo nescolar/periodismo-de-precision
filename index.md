@@ -1383,6 +1383,14 @@ No calculamos tasa para 2021, porque con solo cinco meses saldría artificialmen
 
 </details>
 
+##### Así queda el mapa
+
+Después de hacer su versión, compárela con este mapa. Pase el cursor por cada departamento para ver su tasa.
+
+<div markdown="0" class="mapa-datawrapper">
+<iframe title="Violencia intrafamiliar: casos por cada 100.000 habitantes, 2018-2020" aria-label="Choropleth map" id="datawrapper-chart-tGNQL" src="https://datawrapper.dwcdn.net/tGNQL/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="825" data-external="1"></iframe><script type="text/javascript">(function(){function e(){window.addEventListener(`message`,function(e){if(e.data[`datawrapper-height`]!==void 0){var t=document.querySelectorAll(`iframe`);for(var n in e.data[`datawrapper-height`])for(var r=0,i;i=t[r];r++)if(i.contentWindow===e.source){var a=e.data[`datawrapper-height`][n]+`px`;i.style.height=a}}})}e()})();</script>
+</div>
+
 #### Paso 2. Escribir la noticia
 
 Con el mapa y la tabla, escriba una **noticia breve de 300 a 400 palabras**. Debe tener:
