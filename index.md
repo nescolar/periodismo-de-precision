@@ -623,20 +623,6 @@ Antes de los ejercicios, conviene ver hacia dónde vamos. El producto final del 
 
 [Ver la nota de ejemplo]({{ '/nota/' | relative_url }}){: .btn .btn-primary }
 
-Fíjese en sus partes:
-
-1. **Sección, titular y bajada.** El titular dice el hallazgo principal sin exagerar; la bajada lo amplía con la cifra clave.
-2. **Autor y fecha.**
-3. **Entrada.** Responde qué, quién, cuándo y dónde en el primer párrafo.
-4. **Cifras destacadas.** Tres números que el lector debe recordar.
-5. **Cuerpo con subtítulos.** Cada sección desarrolla un hallazgo, del más importante al menos importante, incluidos los que no salieron como se esperaba.
-6. **Gráficos.** Cada uno con un título que dice el hallazgo, un subtítulo que dice qué se mide, una nota con la fuente y el tamaño de la muestra, y un enlace para descargar los datos. Puede hacerlos en Datawrapper e insertarlos con el código que da la herramienta.
-7. **Una voz.** Una cita que da contexto humano a los números.
-8. **"Cómo hicimos esta nota".** Un recuadro con los datos, los cálculos, los límites del análisis y las decisiones de anonimización. Es lo que distingue al periodismo de precisión: cualquier lector puede revisar cómo se llegó a cada cifra.
-
-{: .recordar }
-> Cuando los datos son sobre personas, y sobre todo sobre menores de edad, publique solo resultados agregados, no nombre a nadie que pueda ser identificado y no use fotografías sin autorización.
-
 {: .clase }
 > **Lectura guiada.** Lea la nota y responda: ¿cuál es el problema?, ¿qué pregunta responde?, ¿qué [indicadores](#indicador) usa?, ¿de dónde salen los datos? y ¿qué límites reconoce?
 
