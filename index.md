@@ -1521,6 +1521,14 @@ Después de hacer su versión, compárela con este gráfico. Pase el cursor por 
 
 8. **Idioma y publicación.** Igual que en el gráfico 1.
 
+##### Así queda el gráfico 2
+
+Después de hacer su versión, compárela con este gráfico. Pase el cursor por las líneas para ver el valor de cada año.
+
+<div markdown="0" class="grafico-datawrapper">
+<iframe title="El promedio por mes: un año por línea" aria-label="Line chart" id="datawrapper-chart-y7aQs" src="https://datawrapper.dwcdn.net/y7aQs/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="493" data-external="1"></iframe><script type="text/javascript">(function(){function e(){window.addEventListener(`message`,function(e){if(e.data[`datawrapper-height`]!==void 0){var t=document.querySelectorAll(`iframe`);for(var n in e.data[`datawrapper-height`])for(var r=0,i;i=t[r];r++)if(i.contentWindow===e.source){var a=e.data[`datawrapper-height`][n]+`px`;i.style.height=a}}})}e()})();</script>
+</div>
+
 #### Para comentar
 
 1. ¿Qué muestra el gráfico 1 que un promedio mensual esconde?
