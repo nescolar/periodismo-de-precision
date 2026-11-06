@@ -617,6 +617,42 @@ Un **volumen** es una cifra absoluta (número de casos). Una **tasa** es esa cif
 
 ---
 
+## Ejemplo: así se ve una nota con datos {#ejemplo}
+
+Antes de los ejercicios, conviene ver hacia dónde vamos. El producto final del módulo es una **nota periodística publicada en la web**, sostenida en datos. Esta nota de ejemplo usa los resultados reales, agregados y anónimos, de la evaluación de un programa de liderazgo para estudiantes de colegios públicos de Barranquilla:
+
+[Ver la nota de ejemplo]({{ '/nota/' | relative_url }}){: .btn .btn-primary }
+
+Fíjese en sus partes:
+
+1. **Sección, titular y bajada.** El titular dice el hallazgo principal sin exagerar; la bajada lo amplía con la cifra clave.
+2. **Autor y fecha.**
+3. **Entrada.** Responde qué, quién, cuándo y dónde en el primer párrafo.
+4. **Cifras destacadas.** Tres números que el lector debe recordar.
+5. **Cuerpo con subtítulos.** Cada sección desarrolla un hallazgo, del más importante al menos importante, incluidos los que no salieron como se esperaba.
+6. **Gráficos.** Cada uno con un título que dice el hallazgo, un subtítulo que dice qué se mide, una nota con la fuente y el tamaño de la muestra, y un enlace para descargar los datos. Puede hacerlos en Datawrapper e insertarlos con el código que da la herramienta.
+7. **Una voz.** Una cita que da contexto humano a los números.
+8. **"Cómo hicimos esta nota".** Un recuadro con los datos, los cálculos, los límites del análisis y las decisiones de anonimización. Es lo que distingue al periodismo de precisión: cualquier lector puede revisar cómo se llegó a cada cifra.
+
+{: .recordar }
+> Cuando los datos son sobre personas, y sobre todo sobre menores de edad, publique solo resultados agregados, no nombre a nadie que pueda ser identificado y no use fotografías sin autorización.
+
+{: .clase }
+> **Lectura guiada.** Lea la nota y responda: ¿cuál es el problema?, ¿qué pregunta responde?, ¿qué [indicadores](#indicador) usa?, ¿de dónde salen los datos? y ¿qué límites reconoce?
+
+<details markdown="1">
+<summary>Ver respuesta</summary>
+
+- **Problema:** saber si un programa de formación cambia a los líderes estudiantiles que participan en él.
+- **Pregunta:** ¿qué cambió en los conocimientos y en las percepciones de los participantes entre el inicio y el final del programa?
+- **Indicadores:** porcentaje de acierto en las preguntas de conocimiento; porcentaje de respuestas favorables en las de percepción; cambio en puntos porcentuales; porcentaje de estudiantes que mejoró, quedó igual o bajó; y el tamaño del cambio (*d* de Cohen).
+- **Fuente:** el mismo cuestionario aplicado al inicio y al final, respondido por 55 de los 80 participantes.
+- **Límites:** no hay grupo de comparación, faltan 25 participantes, las percepciones son autorreportadas, se hicieron muchas comparaciones y varios indicadores empezaron cerca del techo.
+
+</details>
+
+---
+
 ## Ejercicio práctico 1: redes sociales y productividad {#ejercicio-1}
 
 ### Contexto {#ejercicio-1-contexto}
@@ -1525,28 +1561,6 @@ Intercambie su noticia con un compañero. Cada uno revisa la del otro con la lis
 1. Una cifra que no esté bien explicada o que no tenga fuente.
 2. Una frase que afirme más de lo que muestran los datos.
 3. Una pregunta que la noticia deja abierta y que valdría la pena investigar, por ejemplo hablando con una fuente en el departamento.
-
----
-
-## Producto final del módulo {#producto-final}
-
-El producto final del módulo es una **nota periodística publicada en la web**, sostenida en datos. Así debe verse:
-
-[Ver la nota de ejemplo]({{ '/nota/' | relative_url }}){: .btn .btn-primary }
-
-La nota de ejemplo usa los resultados reales, agregados y anónimos, de la evaluación de un programa de liderazgo para estudiantes de colegios públicos de Barranquilla. Fíjese en sus partes:
-
-1. **Sección, titular y bajada.** El titular dice el hallazgo principal sin exagerar; la bajada lo amplía con la cifra clave.
-2. **Autor y fecha.**
-3. **Entrada.** Responde qué, quién, cuándo y dónde en el primer párrafo.
-4. **Cifras destacadas.** Tres números que el lector debe recordar.
-5. **Cuerpo con subtítulos.** Cada sección desarrolla un hallazgo, del más importante al menos importante, incluidos los que no salieron como se esperaba.
-6. **Gráficos.** Cada uno con título que dice el hallazgo, subtítulo que dice qué se mide, nota con la fuente y el tamaño de la muestra, y enlace para descargar los datos. Puede hacerlos en Datawrapper e insertarlos con el código que da la herramienta.
-7. **Una voz.** Una cita que da contexto humano a los números.
-8. **"Cómo hicimos esta nota".** Un recuadro con los datos, los cálculos, los límites del análisis y las decisiones de anonimización. Es lo que distingue al periodismo de precisión: cualquier lector puede revisar cómo se llegó a cada cifra.
-
-{: .recordar }
-> Cuando los datos son sobre personas, y sobre todo sobre menores de edad, publique solo resultados agregados, no nombre a nadie que pueda ser identificado y no use fotografías sin autorización.
 
 ---
 
