@@ -663,7 +663,7 @@ Para practicar vamos a usar una base publicada en Kaggle, *Social Media vs Produ
 
 [Descargar la base en Excel]({{ '/assets/datos/Dataset_redes_sociales_productividad_muestra500.xlsx' | relative_url }}){: .btn .btn-primary }
 
-El archivo tiene tres hojas: **Leeme** (origen de los datos, cómo se tomó la muestra y diccionario de variables), **Datos** (los 500 registros, en formato de tabla) y **Resumen** (medidas descriptivas ya calculadas, para comprobar resultados).
+El archivo tiene tres hojas: **Descripción** (origen de los datos, cómo se tomó la muestra y diccionario de variables, con la columna *Tipo* en blanco para que usted la complete), **Datos** (los 500 registros, en formato de tabla) y **Resumen** (medidas descriptivas de las variables cuantitativas y cinco tablas para graficar a mano).
 
 {: .ojo }
 > Los datos son **simulados**. Según su ficha en Kaggle, los registros imitan patrones de comportamiento y su autor les agregó a propósito datos faltantes, ruido y valores atípicos para que sirvan de práctica. No describen a personas reales: los usamos para entrenar el método, no para sacar conclusiones sobre la población.
@@ -672,17 +672,17 @@ Estas son las variables principales:
 
 | Variable | Qué mide | Tipo |
 |:--|:--|:--|
-| edad | Edad en años | Cuantitativa discreta |
-| genero | Hombre, Mujer, Otro | Cualitativa nominal |
-| sector_laboral | Estudiante, Educación, Salud, Finanzas, Tecnología, Desempleado | Cualitativa nominal |
-| horas_redes_dia | Horas diarias en redes sociales | Cuantitativa continua |
-| red_preferida | Facebook, Instagram, TikTok, Telegram, Twitter | Cualitativa nominal |
-| notificaciones_dia | Notificaciones recibidas al día | Cuantitativa discreta |
-| productividad_percibida | Qué tan productiva se cree la persona (0 a 10) | Cuantitativa continua |
-| productividad_real | Productividad medida (0 a 10) | Cuantitativa continua |
-| nivel_estres | Estrés autorreportado (1 a 10) | Cualitativa ordinal codificada con números |
-| horas_sueno | Horas de sueño por noche | Cuantitativa continua |
-| usa_apps_concentracion | Usa aplicaciones de concentración (Sí o No) | Cualitativa nominal |
+| edad | Edad en años | |
+| genero | Hombre, Mujer, Otro | |
+| sector_laboral | Estudiante, Educación, Salud, Finanzas, Tecnología, Desempleado | |
+| horas_redes_dia | Horas diarias en redes sociales | |
+| red_preferida | Facebook, Instagram, TikTok, Telegram, Twitter | |
+| notificaciones_dia | Notificaciones recibidas al día | |
+| productividad_percibida | Qué tan productiva se cree la persona (0 a 10) | |
+| productividad_real | Productividad medida (0 a 10) | |
+| nivel_estres | Estrés autorreportado (1 a 10) | |
+| horas_sueno | Horas de sueño por noche | |
+| usa_apps_concentracion | Usa aplicaciones de concentración (Sí o No) | |
 
 ### ¿Qué vamos a hacer? {#ejercicio-1-tareas}
 
@@ -696,33 +696,49 @@ Trabaje en Excel, en la hoja **Datos**. Como los datos están en formato de tabl
 
 1. ¿Cuántas filas y cuántas variables tiene la hoja Datos?
 2. ¿Cuál es la unidad de análisis?
-3. Clasifique cada variable de la tabla anterior según su tipo y compare con la columna *Tipo*. ¿Está de acuerdo con que `nivel_estres` se trate como ordinal?
+3. Complete la columna *Tipo* de la tabla anterior (y de la hoja **Descripción**): ¿cada variable es cualitativa nominal, cualitativa ordinal, cuantitativa discreta o cuantitativa continua? Repase la sección [Variables y sus tipos](#variables).
 
 <details markdown="1">
 <summary>Ver respuesta</summary>
 
 1. 500 filas y 20 columnas: 19 variables más `fila_original`, que solo sirve para ubicar el registro en el archivo de Kaggle.
 2. Cada persona (simulada). Cada fila es una persona.
-3. Es discutible, y vale la pena discutirlo: el estrés tiene números del 1 al 10, pero son categorías ordenadas de una escala de autorreporte. La distancia entre 2 y 3 no es necesariamente igual a la distancia entre 8 y 9.
+3. Estos son los tipos:
+
+| Variable | Tipo |
+|:--|:--|
+| edad | Cuantitativa discreta (se registra en años cumplidos) |
+| genero | Cualitativa nominal |
+| sector_laboral | Cualitativa nominal |
+| horas_redes_dia | Cuantitativa continua |
+| red_preferida | Cualitativa nominal |
+| notificaciones_dia | Cuantitativa discreta |
+| productividad_percibida | Cuantitativa continua |
+| productividad_real | Cuantitativa continua |
+| nivel_estres | Cualitativa ordinal codificada con números |
+| horas_sueno | Cuantitativa continua |
+| usa_apps_concentracion | Cualitativa nominal (dicotómica: sí o no) |
+
+`nivel_estres` es discutible, y vale la pena discutirlo: tiene números del 1 al 10, pero son categorías ordenadas de una escala de autorreporte. La distancia entre 2 y 3 no es necesariamente igual a la distancia entre 8 y 9.
 
 </details>
 
 #### Paso 2. Frecuencias: ¿cuántos hay en cada categoría?
 
-1. Con una tabla dinámica (Insertar > Tabla dinámica), calcule el porcentaje de personas por `red_preferida`, por `sector_laboral` y por `usa_apps_concentracion`. En Valores, elija *Mostrar valores como > % del total general*.
-2. Haga un gráfico de barras de `red_preferida`, ordenado de mayor a menor y con el eje desde cero.
+1. Con una tabla dinámica (Insertar > Tabla dinámica), calcule el porcentaje de personas por `sector_laboral` y por `usa_apps_concentracion`. En Valores, elija *Mostrar valores como > % del total general*.
+2. Compare con las tablas 2 y 3 de la hoja **Resumen**, que ya traen las frecuencias de `genero` y `red_preferida`.
 
 <details markdown="1">
 <summary>Valores para comprobar</summary>
 
-| red_preferida | % | sector_laboral | % |
-|:--|:--:|:--|:--:|
-| Facebook | 25,2 | Estudiante | 18,0 |
-| TikTok | 20,8 | Educación | 18,0 |
-| Instagram | 19,4 | Desempleado | 17,6 |
-| Telegram | 19,4 | Tecnología (TI) | 16,2 |
-| Twitter | 15,2 | Salud | 16,0 |
-| | | Finanzas | 14,2 |
+| sector_laboral | % |
+|:--|:--:|
+| Estudiante | 18,0 |
+| Educación | 18,0 |
+| Desempleado | 17,6 |
+| Tecnología (TI) | 16,2 |
+| Salud | 16,0 |
+| Finanzas | 14,2 |
 
 El 30,6 % usa aplicaciones de concentración.
 
@@ -786,7 +802,38 @@ En las cuatro variables la media y la mediana son casi iguales: hay pocos valore
 
 </details>
 
-#### Paso 6. Relaciones entre variables
+#### Paso 6. Al tablero: graficar a mano
+
+En la hoja **Resumen**, debajo de la tabla de medidas descriptivas, hay cinco tablas. En grupos, tomen una tabla cada uno y, en el tablero, con marcador:
+
+1. Decidan qué gráfico usar. Repasen la sección [Gráficos: ¿cuál usar?](#graficos).
+2. Definan qué va en cada eje y en qué orden van las categorías.
+3. Escriban un título que diga el hallazgo, no solo el tema.
+4. Agreguen la fuente y el número de personas.
+5. Dibújenlo y expliquen al resto del grupo por qué lo hicieron así.
+
+| Tabla | Qué muestra |
+|:--|:--|
+| 2 | Personas según género |
+| 3 | Personas según la red social que más usan |
+| 4 | Productividad real promedio según las horas diarias en redes |
+| 5 | Nivel de productividad real (baja, media, alta) según las horas diarias en redes |
+| 6 | Productividad percibida y real según la red social que más usan |
+
+<details markdown="1">
+<summary>Ver respuesta</summary>
+
+- **Tabla 2. Género.** Barras, con el eje desde cero. Mujeres 49,6 %, hombres 47,4 % y otro 3,0 % (15 personas). Con tres categorías que suman 100 % una torta también funciona, pero las barras se comparan mejor. Ojo: con 15 personas, no conviene sacar conclusiones sobre el grupo "Otro".
+- **Tabla 3. Red social.** Barras horizontales **ordenadas de mayor a menor**: la tabla viene en orden alfabético y hay que reordenarla. Facebook 25,2 %, TikTok 20,8 %, Instagram y Telegram 19,4 % cada una, Twitter 15,2 %.
+- **Tabla 4. Productividad según horas en redes.** Barras verticales, con los grupos de horas en su orden natural (de menos a más horas, sin reordenar por valor) y el eje vertical de 0 a 10. Las cuatro barras quedan casi iguales: 5,06 (menos de 2 horas), 5,00 (2 a 4), 5,15 (4 a 6) y 4,96 (6 o más). Título posible: "La productividad es casi la misma sin importar las horas en redes".
+- **Tabla 5. Nivel de productividad según horas en redes.** Barras apiladas al 100 %: una barra por grupo de horas, dividida en baja, media y alta. Si más horas en redes significaran menos productividad, la parte "baja" crecería a medida que aumentan las horas. No pasa: va de 27,8 % a 35,0 %, 35,4 % y vuelve a 27,8 %. El grupo de 4 a 6 horas es, incluso, el que tiene más personas con productividad alta (26,2 %).
+- **Tabla 6. Percibida y real según red social.** Barras agrupadas: dos barras por red, una para la productividad percibida y otra para la real, con el eje de 0 a 10. En todas las redes las personas se creen más productivas de lo que son, por 0,5 a 0,6 puntos. Las diferencias entre redes son pequeñas (la real va de 4,77 en Instagram a 5,35 en Twitter): un titular como "Los usuarios de Instagram, los menos productivos" exageraría lo que muestran los datos.
+
+</details>
+
+#### Paso 7. Responder la pregunta guía
+
+Las tablas 4 y 5 ya dan una primera respuesta. Ahora compruébela con los 500 datos individuales:
 
 1. Haga un gráfico de dispersión con `horas_redes_dia` en el eje horizontal y `productividad_real` en el vertical. Calcule la correlación con `=COEF.DE.CORREL(Datos[horas_redes_dia];Datos[productividad_real])`.
 2. Repita con `productividad_percibida` y `productividad_real`.
@@ -795,13 +842,14 @@ En las cuatro variables la media y la mediana son casi iguales: hay pocos valore
 <details markdown="1">
 <summary>Valores para comprobar</summary>
 
-- Horas en redes y productividad real: r = −0,004, prácticamente cero. Los puntos forman una nube sin dirección.
+- **Respuesta a la pregunta guía: no.** En estos datos, quienes pasan más horas en redes no tienen una productividad real menor. El promedio se mantiene cerca de 5 en los cuatro grupos de horas (tabla 4), la proporción de personas con productividad baja no aumenta con las horas (tabla 5) y la correlación es prácticamente cero.
+- Horas en redes y productividad real: r = −0,004. Los puntos forman una nube sin dirección.
 - Productividad percibida y real: r = 0,96, una relación muy fuerte.
 - El 84,6 % de las personas tiene una brecha positiva; en promedio, se califican 0,56 puntos por encima de su productividad real.
 
 </details>
 
-#### Paso 7. Concluir
+#### Paso 8. Concluir
 
 1. Escriba los tres hallazgos más importantes de su exploración.
 2. Responda la pregunta guía con los datos.
@@ -811,7 +859,7 @@ En las cuatro variables la media y la mediana son casi iguales: hay pocos valore
 <summary>Ver respuesta</summary>
 
 1. Las horas en redes no se relacionan con la productividad real; las personas se califican por encima de su productividad real; hay pocos valores atípicos, concentrados en horas en redes y notificaciones.
-2. En estos datos, **no**: quienes pasan más horas en redes no tienen una productividad real menor. La sospecha no se confirma, y eso también es un hallazgo. Como los datos son simulados, el resultado refleja cómo se construyó la simulación, no cómo se comporta la gente.
+2. En estos datos, **no**: quienes pasan más horas en redes no tienen una productividad real menor. La productividad promedio es casi la misma con menos de 2 horas (5,06) que con 6 horas o más (4,96), y la correlación es de −0,004. La sospecha no se confirma, y eso también es un hallazgo. Como los datos son simulados, el resultado refleja cómo se construyó la simulación, no cómo se comporta la gente.
 3. Por ejemplo: "En 500 registros simulados, pasar más horas en redes no se asocia con menor productividad", acompañado de un gráfico de dispersión con una nota que aclare que los datos son simulados.
 
 </details>
