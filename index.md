@@ -406,8 +406,6 @@ En el lenguaje de la medición, la **validez** es el grado en que un dato repres
 
 La **confiabilidad** o precisión es el grado en que mediciones repetidas de un fenómeno estable producen resultados similares, y equivale a la ausencia de error aleatorio. Una medición puede ser precisa sin ser válida, como una báscula que siempre marca dos kilos de más, y por ello el investigador no debe confundir la exactitud aparente de una cifra con decimales con su correspondencia con la realidad.
 
-El sexto rasgo de Dader, la **transparencia del método**, coincide con un principio que el material de *Herramientas estadísticas* formula para la gestión institucional, según el cual un indicador que no se puede repetir no es auditable. Para que una cifra sea defendible ante un auditor, una junta directiva o el público, deben estar disponibles los datos crudos separados de los cálculos, un diccionario de variables, el numerador y el denominador declarados y una bitácora de los cambios realizados en la depuración. López recoge la misma idea desde el periodismo de datos, al señalar que algunos periodistas consideran su práctica cercana a la ciencia porque otra persona, con las mismas fuentes, debería llegar a la misma conclusión.
-
 La metodología de la visualización de datos nos obliga a pensar qué se quiere comunicar con ellos, qué es importante y cómo se tiene que hacer.
 
 ### 9. Frecuencias y porcentajes {#frecuencias}
