@@ -1480,13 +1480,21 @@ Descargue los dos archivos:
 |:--|:--|
 | **Title** | En Barranquilla, la violencia se dispara en fechas festivas |
 | **Description** | Casos de violencia interpersonal registrados cada día, 2010-2016. La línea de color es el promedio de los últimos 30 días. |
-| **Notes** | Casos no letales registrados por Medicina Legal; el 86 % son riñas. |
+| **Notes** | Casos no letales registrados por Medicina Legal; el 86 % son riñas. El promedio de 30 días empieza el 30 de enero de 2010, cuando ya hay 30 días de datos. |
 | **Data source** | Medicina Legal, vía Trujillo y Howley (2018), Mendeley Data |
 | **Link to data source** | https://data.mendeley.com/datasets/836wyfy5rn/1 |
 | **Byline** | Su nombre |
 | **Alternative description** | Gráfico de líneas con los casos diarios de violencia interpersonal en Barranquilla entre 2010 y 2016, alrededor de 10 por día. Los picos más altos corresponden a festivos como el 8 de diciembre, Navidad y Año Nuevo. |
 
 8. **Idioma y publicación.** En **Layout**, cambie el idioma de salida (*Output locale*) a español, para que los decimales salgan con coma y las fechas en español. Haga clic en **Publish** y copie el código de inserción (*Responsive iframe*).
+
+##### Así queda el gráfico 1
+
+Después de hacer su versión, compárela con este gráfico. Pase el cursor por los picos para ver la fecha y el número de casos.
+
+<div markdown="0" class="grafico-datawrapper">
+<iframe title="En Barranquilla, la violencia se dispara en fechas festivas" aria-label="Líneas" id="datawrapper-chart-JIYhy" src="https://datawrapper.dwcdn.net/JIYhy/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="416" data-external="1"></iframe><script type="text/javascript">(function(){function e(){window.addEventListener(`message`,function(e){if(e.data[`datawrapper-height`]!==void 0){var t=document.querySelectorAll(`iframe`);for(var n in e.data[`datawrapper-height`])for(var r=0,i;i=t[r];r++)if(i.contentWindow===e.source){var a=e.data[`datawrapper-height`][n]+`px`;i.style.height=a}}})}e()})();</script>
+</div>
 
 #### Gráfico 2. El promedio por mes, un año por línea
 
