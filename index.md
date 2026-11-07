@@ -1303,6 +1303,58 @@ plt.show()
 Mapas: elaboración propia a partir del mapa de departamentos de Castañeda (2023), basado en el Marco Geoestadístico Nacional del DANE (licencia MIT). Para facilitar la lectura, el archipiélago de San Andrés, Providencia y Santa Catalina aparece desplazado hacia la costa.
 {: .fs-2 }
 
+### ¿La diferencia es real? Pruebas estadísticas {#pruebas}
+
+Un gráfico muestra diferencias entre grupos o relaciones entre variables. Pero cuando los datos vienen de una [muestra](#descriptiva-inferencial), parte de esas diferencias puede deberse al azar: con otra muestra, el resultado cambiaría un poco. Las pruebas estadísticas responden si la diferencia que vemos es lo bastante grande como para no atribuirla al azar.
+
+**La lógica es siempre la misma:**
+
+1. **Hipótesis nula (H₀):** no hay diferencia o no hay relación. Es la posición escéptica.
+2. **Hipótesis alternativa (H₁):** sí hay diferencia o relación.
+3. **Valor p:** si H₀ fuera cierta, ¿qué tan probable sería encontrar una diferencia como la de la muestra, o mayor? Si p es menor que 0,05, se rechaza H₀ y se dice que la diferencia es **estadísticamente significativa**.
+
+**Ejemplo.** En el ejercicio 1, los hombres toman en promedio 1,93 tazas de café al día y las mujeres, 1,88. La prueba da p = 0,64: si no hubiera ninguna diferencia real, veríamos una diferencia igual o mayor en el 64 % de las muestras. No se rechaza H₀: no hay evidencia de que hombres y mujeres tomen distinta cantidad de café.
+
+#### 1. Pruebas de comparación
+
+Sirven para saber si hay diferencias estadísticamente significativas entre grupos.
+
+| Técnica | ¿Qué compara? | Hipótesis | Ejemplo |
+|:--|:--|:--|:--|
+| **Diferencia de medias**<br>Prueba t de Student | El promedio de una variable numérica en dos grupos distintos | H₀: los dos promedios son iguales.<br>H₁: son distintos. | ¿Hombres y mujeres dedican distinto tiempo a consumir noticias en redes sociales?<br>*Gráfico:* [diagrama de caja](#caja) |
+| **Diferencia de medias, antes y después**<br>Prueba t pareada | El promedio de las mismas personas en dos momentos | H₀: el promedio no cambió.<br>H₁: cambió. | ¿Mejoró el conocimiento de los participantes después de un taller? Es la prueba de la [nota de ejemplo]({{ '/nota/' | relative_url }}).<br>*Gráfico:* [pendientes](#pendientes) o barras antes y después |
+| **Diferencia de proporciones**<br>Prueba z de dos proporciones | El porcentaje de personas que tienen una característica (sí o no) en dos grupos | H₀: los dos porcentajes son iguales.<br>H₁: son distintos. | ¿El porcentaje de mujeres que se informa por Instagram es distinto del porcentaje de hombres?<br>*Gráfico:* [barras](#barras) con el porcentaje de cada grupo |
+| **Diferencia de proporciones, antes y después**<br>Prueba de McNemar | El porcentaje de las mismas personas en dos momentos | H₀: el porcentaje no cambió.<br>H₁: cambió. | ¿Cambió el porcentaje de participantes que confía en estudiantes de otros colegios? En la nota de ejemplo pasó de 22 % a 44 %. |
+| **ANOVA**<br>Análisis de varianza | El promedio de una variable numérica en tres o más grupos | H₀: todos los promedios son iguales.<br>H₁: al menos uno es distinto. | ¿El tiempo de consumo de noticias cambia según el grupo de edad?<br>*Gráfico:* un [diagrama de caja](#caja) por grupo |
+| **Chi-cuadrado (χ²)**<br>Prueba de independencia | Si dos variables cualitativas están asociadas | H₀: las variables son independientes: no hay asociación.<br>H₁: están asociadas. | ¿La plataforma preferida para informarse depende del género?<br>*Gráfico:* barras apiladas al 100 % o una [tabla cruzada](#tablas-cruzadas) |
+
+Dos aclaraciones:
+
+- **¿Medias o proporciones?** Depende de la variable. Si es numérica (minutos, tazas, puntaje), se comparan promedios. Si es de sí o no (se informa por Instagram o no), se comparan porcentajes. Cuando la tabla es de dos grupos por dos respuestas, la prueba de proporciones y el chi-cuadrado dan el mismo resultado.
+- **ANOVA dice que hay diferencia, no dónde.** Si sale significativa, al menos un grupo es distinto. Para saber cuál, se hacen comparaciones posteriores (pruebas *post hoc*), como la de Tukey.
+
+#### 2. Pruebas de asociación y relación
+
+Permiten saber si dos variables están relacionadas y cómo.
+
+| Técnica | ¿Para qué sirve? | Hipótesis | Ejemplo |
+|:--|:--|:--|:--|
+| **Correlación de Pearson** | Mide la fuerza y la dirección de una relación lineal entre dos variables numéricas, de −1 a 1 | H₀: no hay relación lineal (r = 0).<br>H₁: sí la hay. | ¿A mayor tiempo de consumo de noticias, mayor conocimiento de la actualidad?<br>*Gráfico:* [dispersión](#dispersion) |
+| **Correlación de Spearman** | Mide la relación según el orden de los datos. Sirve con escalas ordinales (de 1 a 5) o con valores atípicos | H₀: no hay relación.<br>H₁: sí la hay. | ¿Quienes tienen más interés en las noticias consultan más fuentes?<br>*Gráfico:* [dispersión](#dispersion) |
+| **Regresión lineal** | Estima cuánto cambia una variable numérica por cada unidad que cambia otra | H₀: la variable explicativa no cambia el resultado (la pendiente es 0).<br>H₁: sí lo cambia. | ¿Cuántos segundos más tarda la lectura por cada 100 palabras adicionales de una noticia?<br>*Gráfico:* dispersión con línea de tendencia |
+| **Regresión logística** | Estima la probabilidad de un resultado de sí o no según varias características | H₀: la característica no cambia la probabilidad.<br>H₁: sí la cambia. | ¿Qué características se relacionan con la probabilidad de compartir una noticia?<br>*Gráfico:* barras con la probabilidad estimada para cada grupo |
+
+#### ¿Y si los datos no tienen forma de campana?
+
+La prueba t, el ANOVA y la correlación de Pearson funcionan mejor cuando la variable numérica es más o menos simétrica y no tiene atípicos extremos, o cuando la muestra es grande. Si no es así, hay pruebas que comparan el orden de los datos en lugar de sus valores: **Mann-Whitney** en lugar de la t de Student, **Wilcoxon** en lugar de la t pareada, **Kruskal-Wallis** en lugar del ANOVA y **Spearman** en lugar de Pearson.
+
+#### Cuatro cuidados al escribir
+
+- **Significativo no es lo mismo que importante.** Con muestras grandes, diferencias muy pequeñas salen significativas. Diga también de qué tamaño es la diferencia.
+- **No significativo no prueba que sean iguales.** Escriba "no hay evidencia de diferencia", no "son iguales".
+- **Relación no es causa.** Ni la correlación ni la regresión prueban que una variable cause la otra.
+- **Muchas pruebas, algún falso hallazgo.** Si hace 20 pruebas, es esperable que alguna salga significativa por puro azar.
+
 ---
 
 ## Ejercicio práctico 2: clima y violencia en Barranquilla {#ejercicio-2}
