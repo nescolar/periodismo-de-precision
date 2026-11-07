@@ -1348,12 +1348,74 @@ Permiten saber si dos variables están relacionadas y cómo.
 
 La prueba t, el ANOVA y la correlación de Pearson funcionan mejor cuando la variable numérica es más o menos simétrica y no tiene atípicos extremos, o cuando la muestra es grande. Si no es así, hay pruebas que comparan el orden de los datos en lugar de sus valores: **Mann-Whitney** en lugar de la t de Student, **Wilcoxon** en lugar de la t pareada, **Kruskal-Wallis** en lugar del ANOVA y **Spearman** en lugar de Pearson.
 
+#### Los ejemplos en Colab
+
+Todos los ejemplos de esta sección, con su código en Python y datos reales del ejercicio 2, están en un cuaderno de Colab. Cada prueba muestra su pregunta, sus hipótesis y cómo leer el resultado.
+
+[Abrir los ejemplos en Google Colab](https://colab.research.google.com/github/nescolar/periodismo-de-precision/blob/main/notebooks/pruebas_y_modelos.ipynb){: .btn .btn-primary }
+
 #### Cuatro cuidados al escribir
 
 - **Significativo no es lo mismo que importante.** Con muestras grandes, diferencias muy pequeñas salen significativas. Diga también de qué tamaño es la diferencia.
 - **No significativo no prueba que sean iguales.** Escriba "no hay evidencia de diferencia", no "son iguales".
 - **Relación no es causa.** Ni la correlación ni la regresión prueban que una variable cause la otra.
 - **Muchas pruebas, algún falso hallazgo.** Si hace 20 pruebas, es esperable que alguna salga significativa por puro azar.
+
+### ¿Qué explica Y? Modelos de regresión {#modelos}
+
+Las pruebas responden si hay una diferencia o una relación. Un **modelo** va un paso más allá: intenta explicar una variable que nos interesa (**Y**, la variable dependiente) a partir de varias variables explicativas (**X**) al mismo tiempo. Su ventaja es que estima el efecto de cada X **manteniendo las demás constantes**, y eso ayuda a detectar terceras variables, como el calendario en el [ejercicio 2](#ejercicio-2).
+
+| Si Y es… | Modelo | Qué responde |
+|:--|:--|:--|
+| Numérica (casos, minutos, puntaje) | Regresión lineal | Cuánto cambia Y por cada unidad que cambia X |
+| De sí o no (comparte o no, aprueba o no) | Regresión logística | Cómo cambia la probabilidad de que ocurra |
+| Un conteo de eventos (casos por día) | Regresión de Poisson | Cuánto cambia el número esperado de eventos |
+
+**Cómo se leen los resultados:**
+
+- **Coeficiente:** cuánto cambia Y por cada unidad de X, con lo demás constante.
+- **Valor p:** si es menor que 0,05, ese coeficiente es significativamente distinto de cero.
+- **R²:** qué parte de la variación de Y explica el modelo, de 0 a 1.
+
+**Ejemplo con el ejercicio 2.** Un modelo con solo los comparendos por embriaguez dice que cada comparendo adicional se asocia con 0,31 casos más de violencia. Al agregar el tipo de día, el coeficiente baja a 0,14: la mitad de la relación venía del calendario. El modelo con tipo de día, comparendos, temperatura y lluvia explica el 20 % de las diferencias entre días (R² = 0,20). La temperatura sale significativa, pero cada grado adicional se asocia con apenas 0,16 casos más por día.
+
+```python
+import statsmodels.formula.api as smf
+modelo = smf.ols("violencia_interpersonal ~ comparendos_embriaguez + C(tipo_dia) + temp_max", data=df).fit()
+modelo.summary()
+```
+
+{: .ojo }
+> **Explicar no es causar.** El modelo solo tiene en cuenta las variables que le damos. Si falta una tercera variable importante, los coeficientes pueden engañar.
+
+### Clasificación: ¿en qué grupo cae cada caso? {#clasificacion}
+
+Un modelo de **clasificación** aprende de datos pasados a asignar cada caso a una categoría: sí o no, alto, medio o bajo. Es una de las formas más comunes de aprendizaje automático (*machine learning*) y se usa más para **predecir** que para explicar.
+
+Los modelos más frecuentes:
+
+- **Regresión logística:** la misma de la tabla anterior, usada para predecir.
+- **Árbol de decisión:** reglas del tipo "si… entonces…", fáciles de leer.
+- **Bosque aleatorio** (*random forest*): muchos árboles que votan. Suele acertar más, pero es más difícil de explicar.
+- **K vecinos más cercanos:** clasifica cada caso según los casos más parecidos.
+- **Agrupamiento** (*k-means*): cuando no hay categorías definidas de antemano, busca grupos de casos parecidos. Sirve, por ejemplo, para segmentar audiencias.
+
+**¿Cómo saber si funciona?** Se entrena el modelo con una parte de los datos y se prueba con otra que no ha visto. Los resultados se resumen en una **matriz de confusión**: aciertos, falsas alarmas (predijo sí y era no) y casos perdidos (predijo no y era sí).
+
+**La trampa de la exactitud.** En el ejercicio 2, solo el 4 % de los días son muy violentos. Un modelo que dijera siempre "no" acertaría el 96 % de las veces sin servir para nada. Un árbol de decisión entrenado con esos datos acierta el 96 % de los días, pero detecta solo 4 de 32 días muy violentos. Si se ajusta para dar más peso a los días raros, acierta menos en total (82 %), pero detecta 27 de 32, a cambio de 133 falsas alarmas.
+
+```python
+from sklearn.tree import DecisionTreeClassifier
+arbol = DecisionTreeClassifier(max_depth=3, class_weight="balanced").fit(X_entrenamiento, y_entrenamiento)
+arbol.predict(X_prueba)
+```
+
+**En periodismo,** la clasificación sirve para ordenar miles de documentos o denuncias, encontrar contratos o gastos atípicos y decidir qué revisar primero. También es un tema de cobertura: cada vez más decisiones sobre personas, como un crédito, una inspección o una beca, las toma o las sugiere un algoritmo.
+
+{: .ojo }
+> **Antes de reportar sobre un algoritmo,** pregunte con qué datos se entrenó, cuántas falsas alarmas y cuántos casos perdidos tiene, y a quién afectan sus errores.
+
+[Abrir los ejemplos en Google Colab](https://colab.research.google.com/github/nescolar/periodismo-de-precision/blob/main/notebooks/pruebas_y_modelos.ipynb){: .btn .btn-primary }
 
 ---
 
