@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- 1. TÍTULO DE LA PESTAÑA DEL NAVEGADOR: escriba aquí su titular -->
+<title>Escriba aquí su titular</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,700&family=Source+Sans+3:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+  /* COLORES: cambie --acento por el color de su medio (código hexadecimal) */
+  :root { --acento: #c8102e; --tinta: #1b1f24; --suave: #5b6370; --linea: #e3e0d8; --papel: #f7f4ee; }
+
+  body { margin: 0; color: var(--tinta); background: #ffffff;
+         font-family: "Source Serif 4", Georgia, serif; font-size: 19px; line-height: 1.65; }
+  header { background: var(--papel); border-bottom: 1px solid var(--linea); padding: 40px 16px; }
+  header div, article, footer { max-width: 680px; margin: 0 auto; }
+  article { padding: 32px 16px; }
+  footer { padding: 16px; border-top: 1px solid var(--linea); color: var(--suave);
+           font-family: "Source Sans 3", Arial, sans-serif; font-size: 14px; }
+
+  .seccion { display: inline-block; background: var(--acento); color: #ffffff; padding: 4px 10px;
+             font: 700 13px "Source Sans 3", Arial, sans-serif; text-transform: uppercase; letter-spacing: .1em; }
+  h1 { font-size: 40px; line-height: 1.15; margin: 16px 0; }
+  .bajada { font-family: "Source Sans 3", Arial, sans-serif; font-size: 21px; line-height: 1.5; margin: 0 0 16px; }
+  .firma { font-family: "Source Sans 3", Arial, sans-serif; font-size: 15px; color: var(--suave); margin: 0; }
+  h2 { font-family: "Source Sans 3", Arial, sans-serif; font-size: 25px; line-height: 1.25; margin: 1.8em 0 .5em; }
+
+  .cifras { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 28px 0;
+            font-family: "Source Sans 3", Arial, sans-serif; }
+  .cifras div { border-top: 4px solid var(--acento); padding-top: 8px; font-size: 15px; color: var(--suave); }
+  .cifras b { display: block; font-size: 32px; color: var(--tinta); }
+
+  blockquote { margin: 2em 0; padding-left: 20px; border-left: 4px solid var(--acento); font-size: 23px; font-style: italic; }
+  blockquote cite { display: block; margin-top: 8px; font: normal 15px "Source Sans 3", Arial, sans-serif; color: var(--suave); }
+
+  figure { margin: 2em 0; padding: 16px 0; border-top: 1px solid var(--linea); border-bottom: 1px solid var(--linea); }
+  figure img { width: 100%; height: auto; }
+  figcaption { font-family: "Source Sans 3", Arial, sans-serif; font-size: 13px; color: var(--suave); margin-top: 8px; }
+
+  .metodo { background: var(--papel); border: 1px solid var(--linea); padding: 4px 20px 12px; margin-top: 2.5em;
+            font-family: "Source Sans 3", Arial, sans-serif; font-size: 16px; }
+  .metodo h2 { margin-top: .8em; font-size: 21px; }
+
+  a { color: var(--acento); }
+
+  /* En pantallas de celular: letra un poco menor y cifras una debajo de otra */
+  @media (max-width: 560px) {
+    body { font-size: 18px; }
+    h1 { font-size: 31px; }
+    .cifras { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- ============ ENCABEZADO ============ -->
+<header>
+  <div>
+    <!-- 2. SECCIÓN: el tema general (por ejemplo, Educación, Seguridad, Salud) -->
+    <span class="seccion">Sección</span>
+
+    <!-- 3. TITULAR: el hallazgo principal, sin exagerar -->
+    <h1>Escriba aquí su titular</h1>
+
+    <!-- 4. BAJADA: amplía el titular con la cifra clave -->
+    <p class="bajada">Escriba aquí la bajada: una o dos frases que amplían el titular y dan la cifra más importante.</p>
+
+    <!-- 5. FIRMA Y FECHA -->
+    <p class="firma">Por <strong>Su nombre</strong><br>Ciudad · fecha de publicación</p>
+  </div>
+</header>
+
+<!-- ============ CUERPO DE LA NOTA ============ -->
+<article>
+
+  <!-- 6. ENTRADA: qué, quién, cuándo, dónde y según quién -->
+  <p>Escriba aquí la entrada. En dos o tres líneas, cuente el hallazgo principal: qué pasó, a quién, cuándo, dónde y según qué fuente.</p>
+
+  <p>Escriba aquí el segundo párrafo. Dé contexto: de dónde salen los datos y por qué importa la historia.</p>
+
+  <!-- 7. CIFRAS DESTACADAS: tres números que el lector debe recordar -->
+  <div class="cifras">
+    <div><b>00 %</b>qué significa la primera cifra</div>
+    <div><b>00</b>qué significa la segunda cifra</div>
+    <div><b>00 → 00</b>qué significa la tercera cifra</div>
+  </div>
+
+  <!-- 8. CUERPO: un subtítulo (h2) por cada hallazgo. Para agregar otro, copie desde <h2> hasta el último </p> -->
+  <h2>Subtítulo del primer hallazgo</h2>
+  <p>Desarrolle aquí el primer hallazgo, con sus cifras y su fuente.</p>
+
+  <!-- 9. GRÁFICO: pegue el código completo de Datawrapper en lugar del comentario -->
+  <figure>
+    <!-- Pegue aquí el código del gráfico 1 de Datawrapper -->
+    <figcaption>Fuente: nombre de la fuente. n = número de casos.</figcaption>
+  </figure>
+
+  <h2>Subtítulo del segundo hallazgo</h2>
+  <p>Desarrolle aquí el segundo hallazgo.</p>
+
+  <!-- 10. CITA: una voz que da contexto humano a los números -->
+  <blockquote>
+    "Escriba aquí la cita textual."
+    <cite>Nombre o descripción de quien habla</cite>
+  </blockquote>
+
+  <h2>Subtítulo del tercer hallazgo</h2>
+  <p>Desarrolle aquí el tercer hallazgo, incluso si no salió como esperaba.</p>
+
+  <!-- 11. IMAGEN (opcional): para que aparezca, borre la línea que dice INICIO y la que dice FIN -->
+  <!-- INICIO
+  <figure>
+    <img src="nombre-de-la-imagen.jpg" alt="Describa lo que se ve en la imagen">
+    <figcaption>Descripción de la imagen. Foto: nombre del autor.</figcaption>
+  </figure>
+  FIN -->
+
+  <!-- 12. CÓMO HICIMOS ESTA NOTA: datos, cálculos, límites y decisiones -->
+  <section class="metodo">
+    <h2>Cómo hicimos esta nota</h2>
+    <p><strong>Los datos.</strong> Qué fuente usó, qué periodo cubre y cuántos casos tiene.</p>
+    <p><strong>Los cálculos.</strong> Qué indicadores calculó: numerador, denominador y fórmula.</p>
+    <p><strong>Los límites.</strong> Qué no dicen los datos.</p>
+    <p><strong>Descargue los datos:</strong> <a href="nombre-del-archivo.csv">nombre del archivo</a></p>
+  </section>
+
+</article>
+
+<!-- ============ PIE DE PÁGINA ============ -->
+<footer>
+  Nota elaborada para el módulo Periodismo de Precisión y visualización de datos.
+</footer>
+
+</body>
+</html>

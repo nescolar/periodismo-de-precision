@@ -637,6 +637,8 @@ Antes de los ejercicios, conviene ver hacia dónde vamos. El producto final del 
 
 </details>
 
+Para hacer su propia nota, siga la guía de la sección [Producto final](#producto-final).
+
 ---
 
 ## Ejercicio práctico 1: redes sociales y productividad {#ejercicio-1}
@@ -1699,6 +1701,326 @@ Intercambie su noticia con un compañero. Cada uno revisa la del otro con la lis
 1. Una cifra que no esté bien explicada o que no tenga fuente.
 2. Una frase que afirme más de lo que muestran los datos.
 3. Una pregunta que la noticia deja abierta y que valdría la pena investigar, por ejemplo hablando con una fuente en el departamento.
+
+---
+
+## Producto final: publique su nota en la web {#producto-final}
+
+El producto final del módulo es una **nota periodística sostenida en datos y publicada en la web**, como la [nota de ejemplo]({{ '/nota/' | relative_url }}). En esta guía la va a construir desde cero: creará una cuenta en GitHub, un repositorio y una página publicada con GitHub Pages, con su propia dirección en internet.
+
+No necesita instalar nada ni saber programar: todo se hace desde el navegador. Dejar la página publicada toma alrededor de una hora; el resto del tiempo es para escribir la nota.
+
+{: .ojo }
+> **Este ejercicio se hace sin herramientas de inteligencia artificial.** Usted escribe la nota, arma la página y hace los gráficos. Si algo no funciona, revise la sección [Si algo sale mal](#pf-problemas) o pregunte en clase.
+
+### Antes de empezar {#pf-antes}
+
+Tenga listo:
+
+- **Su nota escrita** en un documento: sección, titular, bajada, entrada, cuerpo con subtítulos, una cita y el recuadro "Cómo hicimos esta nota".
+- **Tres cifras destacadas**: los tres números que el lector debe recordar.
+- **Sus gráficos publicados en Datawrapper**, con los códigos de inserción.
+- **Los datos que va a ofrecer para descargar**, en CSV.
+- **Una imagen** (opcional), con autorización y crédito.
+
+{: .recordar }
+> Todo lo que suba a un repositorio público lo puede ver cualquier persona. Suba solo datos agregados y anónimos, no publique nombres de personas que puedan ser identificadas y no use fotografías sin autorización.
+
+### Paso 1. Crear la cuenta en GitHub {#pf-cuenta}
+
+GitHub es una plataforma para guardar y publicar archivos. La usan programadores, pero también medios de comunicación que publican sus datos y sus gráficos.
+
+1. Entre a [github.com](https://github.com) y haga clic en **Sign up**.
+2. Escriba su correo, una contraseña y un **nombre de usuario**.
+3. Confirme su correo con el código que le llega.
+
+**Elija bien su nombre de usuario:** será parte de la dirección de su página, que tendrá la forma `https://su-usuario.github.io/...`. Use minúsculas, sin espacios ni tildes; por ejemplo, `mariaperez-periodista`.
+
+### Paso 2. Crear el repositorio {#pf-repositorio}
+
+Un **repositorio** es la carpeta donde vivirán los archivos de su nota: la página, los datos y las imágenes.
+
+1. Arriba a la derecha, haga clic en el botón **+** y elija **New repository**.
+2. En **Repository name**, escriba un nombre corto, en minúsculas y con guiones, por ejemplo: `nota-violencia-barranquilla`. También será parte de la dirección de su página.
+3. En **Description** (opcional), escriba de qué trata la nota.
+4. Elija **Public**. Con una cuenta gratuita, GitHub Pages solo publica repositorios públicos.
+5. Active la opción para agregar un archivo **README**.
+6. Haga clic en **Create repository**.
+
+### Paso 3. Crear la página: el archivo index.html {#pf-index}
+
+Una página web es un archivo de texto escrito en **HTML**, un lenguaje que usa etiquetas para decirle al navegador qué es cada cosa: un titular, un párrafo, una cita. El archivo principal de una página se llama siempre `index.html`: es el que se abre cuando alguien entra a la dirección.
+
+1. En su repositorio, haga clic en **Add file** y luego en **Create new file**.
+2. En el campo del nombre, escriba exactamente `index.html`, en minúsculas.
+3. Copie la plantilla de abajo y péguela en el espacio grande.
+4. Haga clic en **Commit changes…** y, en la ventana que aparece, otra vez en **Commit changes**.
+
+En GitHub, **commit** significa guardar una versión. Cada vez que cambie algo, hará un commit, y GitHub guardará el historial de todas las versiones.
+
+[Ver cómo se ve la plantilla]({{ '/assets/plantilla/plantilla-nota.html' | relative_url }}){: .btn }
+
+<details markdown="1">
+<summary>Ver la plantilla para copiar</summary>
+
+{% raw %}
+```html
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- 1. TÍTULO DE LA PESTAÑA DEL NAVEGADOR: escriba aquí su titular -->
+<title>Escriba aquí su titular</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,700&family=Source+Sans+3:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+  /* COLORES: cambie --acento por el color de su medio (código hexadecimal) */
+  :root { --acento: #c8102e; --tinta: #1b1f24; --suave: #5b6370; --linea: #e3e0d8; --papel: #f7f4ee; }
+
+  body { margin: 0; color: var(--tinta); background: #ffffff;
+         font-family: "Source Serif 4", Georgia, serif; font-size: 19px; line-height: 1.65; }
+  header { background: var(--papel); border-bottom: 1px solid var(--linea); padding: 40px 16px; }
+  header div, article, footer { max-width: 680px; margin: 0 auto; }
+  article { padding: 32px 16px; }
+  footer { padding: 16px; border-top: 1px solid var(--linea); color: var(--suave);
+           font-family: "Source Sans 3", Arial, sans-serif; font-size: 14px; }
+
+  .seccion { display: inline-block; background: var(--acento); color: #ffffff; padding: 4px 10px;
+             font: 700 13px "Source Sans 3", Arial, sans-serif; text-transform: uppercase; letter-spacing: .1em; }
+  h1 { font-size: 40px; line-height: 1.15; margin: 16px 0; }
+  .bajada { font-family: "Source Sans 3", Arial, sans-serif; font-size: 21px; line-height: 1.5; margin: 0 0 16px; }
+  .firma { font-family: "Source Sans 3", Arial, sans-serif; font-size: 15px; color: var(--suave); margin: 0; }
+  h2 { font-family: "Source Sans 3", Arial, sans-serif; font-size: 25px; line-height: 1.25; margin: 1.8em 0 .5em; }
+
+  .cifras { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 28px 0;
+            font-family: "Source Sans 3", Arial, sans-serif; }
+  .cifras div { border-top: 4px solid var(--acento); padding-top: 8px; font-size: 15px; color: var(--suave); }
+  .cifras b { display: block; font-size: 32px; color: var(--tinta); }
+
+  blockquote { margin: 2em 0; padding-left: 20px; border-left: 4px solid var(--acento); font-size: 23px; font-style: italic; }
+  blockquote cite { display: block; margin-top: 8px; font: normal 15px "Source Sans 3", Arial, sans-serif; color: var(--suave); }
+
+  figure { margin: 2em 0; padding: 16px 0; border-top: 1px solid var(--linea); border-bottom: 1px solid var(--linea); }
+  figure img { width: 100%; height: auto; }
+  figcaption { font-family: "Source Sans 3", Arial, sans-serif; font-size: 13px; color: var(--suave); margin-top: 8px; }
+
+  .metodo { background: var(--papel); border: 1px solid var(--linea); padding: 4px 20px 12px; margin-top: 2.5em;
+            font-family: "Source Sans 3", Arial, sans-serif; font-size: 16px; }
+  .metodo h2 { margin-top: .8em; font-size: 21px; }
+
+  a { color: var(--acento); }
+
+  /* En pantallas de celular: letra un poco menor y cifras una debajo de otra */
+  @media (max-width: 560px) {
+    body { font-size: 18px; }
+    h1 { font-size: 31px; }
+    .cifras { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- ============ ENCABEZADO ============ -->
+<header>
+  <div>
+    <!-- 2. SECCIÓN: el tema general (por ejemplo, Educación, Seguridad, Salud) -->
+    <span class="seccion">Sección</span>
+
+    <!-- 3. TITULAR: el hallazgo principal, sin exagerar -->
+    <h1>Escriba aquí su titular</h1>
+
+    <!-- 4. BAJADA: amplía el titular con la cifra clave -->
+    <p class="bajada">Escriba aquí la bajada: una o dos frases que amplían el titular y dan la cifra más importante.</p>
+
+    <!-- 5. FIRMA Y FECHA -->
+    <p class="firma">Por <strong>Su nombre</strong><br>Ciudad · fecha de publicación</p>
+  </div>
+</header>
+
+<!-- ============ CUERPO DE LA NOTA ============ -->
+<article>
+
+  <!-- 6. ENTRADA: qué, quién, cuándo, dónde y según quién -->
+  <p>Escriba aquí la entrada. En dos o tres líneas, cuente el hallazgo principal: qué pasó, a quién, cuándo, dónde y según qué fuente.</p>
+
+  <p>Escriba aquí el segundo párrafo. Dé contexto: de dónde salen los datos y por qué importa la historia.</p>
+
+  <!-- 7. CIFRAS DESTACADAS: tres números que el lector debe recordar -->
+  <div class="cifras">
+    <div><b>00 %</b>qué significa la primera cifra</div>
+    <div><b>00</b>qué significa la segunda cifra</div>
+    <div><b>00 → 00</b>qué significa la tercera cifra</div>
+  </div>
+
+  <!-- 8. CUERPO: un subtítulo (h2) por cada hallazgo. Para agregar otro, copie desde <h2> hasta el último </p> -->
+  <h2>Subtítulo del primer hallazgo</h2>
+  <p>Desarrolle aquí el primer hallazgo, con sus cifras y su fuente.</p>
+
+  <!-- 9. GRÁFICO: pegue el código completo de Datawrapper en lugar del comentario -->
+  <figure>
+    <!-- Pegue aquí el código del gráfico 1 de Datawrapper -->
+    <figcaption>Fuente: nombre de la fuente. n = número de casos.</figcaption>
+  </figure>
+
+  <h2>Subtítulo del segundo hallazgo</h2>
+  <p>Desarrolle aquí el segundo hallazgo.</p>
+
+  <!-- 10. CITA: una voz que da contexto humano a los números -->
+  <blockquote>
+    "Escriba aquí la cita textual."
+    <cite>Nombre o descripción de quien habla</cite>
+  </blockquote>
+
+  <h2>Subtítulo del tercer hallazgo</h2>
+  <p>Desarrolle aquí el tercer hallazgo, incluso si no salió como esperaba.</p>
+
+  <!-- 11. IMAGEN (opcional): para que aparezca, borre la línea que dice INICIO y la que dice FIN -->
+  <!-- INICIO
+  <figure>
+    <img src="nombre-de-la-imagen.jpg" alt="Describa lo que se ve en la imagen">
+    <figcaption>Descripción de la imagen. Foto: nombre del autor.</figcaption>
+  </figure>
+  FIN -->
+
+  <!-- 12. CÓMO HICIMOS ESTA NOTA: datos, cálculos, límites y decisiones -->
+  <section class="metodo">
+    <h2>Cómo hicimos esta nota</h2>
+    <p><strong>Los datos.</strong> Qué fuente usó, qué periodo cubre y cuántos casos tiene.</p>
+    <p><strong>Los cálculos.</strong> Qué indicadores calculó: numerador, denominador y fórmula.</p>
+    <p><strong>Los límites.</strong> Qué no dicen los datos.</p>
+    <p><strong>Descargue los datos:</strong> <a href="nombre-del-archivo.csv">nombre del archivo</a></p>
+  </section>
+
+</article>
+
+<!-- ============ PIE DE PÁGINA ============ -->
+<footer>
+  Nota elaborada para el módulo Periodismo de Precisión y visualización de datos.
+</footer>
+
+</body>
+</html>
+```
+{% endraw %}
+
+</details>
+
+### Paso 4. Publicar la página con GitHub Pages {#pf-pages}
+
+1. En su repositorio, haga clic en la pestaña **Settings**.
+2. En el menú de la izquierda, haga clic en **Pages**.
+3. En **Build and deployment**, en **Source**, elija **Deploy from a branch**.
+4. En **Branch**, elija **main** y la carpeta **/ (root)**. Haga clic en **Save**.
+5. Espere uno o dos minutos y recargue la página de Settings. Arriba aparecerá un aviso con la dirección de su sitio, de la forma `https://su-usuario.github.io/nota-violencia-barranquilla/`.
+6. Abra la dirección. Verá la plantilla con los textos de ejemplo.
+
+**Guarde esa dirección:** es la que entregará al final. Cada vez que guarde un cambio, la página se actualiza en uno o dos minutos. Para ver la versión nueva, recargue con **Ctrl + F5** (en Mac, **Cmd + Shift + R**).
+
+### Paso 5. Escribir la nota en la plantilla {#pf-escribir}
+
+Para cambiar los textos:
+
+1. En su repositorio, haga clic en `index.html`.
+2. Haga clic en el ícono del lápiz (**Edit this file**).
+3. Cambie los textos de ejemplo por los suyos.
+4. Haga clic en **Commit changes…** y otra vez en **Commit changes**.
+
+**Las etiquetas que va a encontrar:**
+
+| Etiqueta | Para qué sirve |
+|:--|:--|
+| `<title>...</title>` | El texto que aparece en la pestaña del navegador |
+| `<h1>...</h1>` | El titular |
+| `<h2>...</h2>` | Un subtítulo |
+| `<p>...</p>` | Un párrafo |
+| `<strong>...</strong>` | Texto en negrita |
+| `<em>...</em>` | Texto en cursiva |
+| `<a href="...">...</a>` | Un enlace: entre las comillas va la dirección; entre `>` y `</a>`, el texto que se ve |
+| `<blockquote>...</blockquote>` | Una cita destacada |
+| `<figure>...</figure>` | Un gráfico o una imagen, con su pie de foto en `<figcaption>` |
+| `<!-- ... -->` | Un comentario: una instrucción para usted que no se ve en la página |
+
+**Tres reglas para no dañar la página:**
+
+1. **Cambie solo el texto que está entre las etiquetas.** No borre los signos `<` y `>`.
+2. **Toda etiqueta que se abre se cierra.** Si escribe `<p>`, el párrafo termina en `</p>`.
+3. **Para agregar un párrafo o un subtítulo, copie uno que ya exista**, con sus etiquetas, y péguelo debajo.
+
+La plantilla está numerada con comentarios, en el mismo orden de la nota:
+
+1. **Título de la pestaña:** su titular, o una versión más corta.
+2. **Sección:** el tema general (Educación, Seguridad, Salud).
+3. **Titular:** el hallazgo principal, sin exagerar.
+4. **Bajada:** una o dos frases que amplían el titular con la cifra clave.
+5. **Firma y fecha.**
+6. **Entrada:** qué, quién, cuándo, dónde y según quién.
+7. **Cifras destacadas:** cambie `00 %` por la cifra y el texto de abajo por lo que significa.
+8. **Cuerpo:** un subtítulo por cada hallazgo, del más importante al menos importante.
+9. **Gráficos** (vea el paso 6).
+10. **Cita.**
+11. **Imagen** (opcional; vea el paso 7).
+12. **Cómo hicimos esta nota:** los datos, los cálculos y los límites.
+
+Para cambiar el color de la página, busque al comienzo del archivo la línea `--acento: #c8102e;` y cambie el código por otro. Puede buscar códigos de colores escribiendo "selector de color" en un buscador.
+
+### Paso 6. Insertar los gráficos de Datawrapper {#pf-graficos}
+
+1. En Datawrapper, publique el gráfico y copie el código de inserción (**Responsive iframe**). Copie el código **completo**: empieza con `<iframe` y termina con `</script>`.
+2. En `index.html`, busque el comentario `<!-- Pegue aquí el código del gráfico 1 de Datawrapper -->`.
+3. Borre ese comentario y pegue el código en su lugar, entre `<figure>` y `<figcaption>`.
+4. Cambie el texto de `<figcaption>` por la fuente y el número de casos.
+5. Para agregar otro gráfico, copie el bloque completo, desde `<figure>` hasta `</figure>`, y péguelo donde lo quiera en la nota.
+
+El título y la descripción del gráfico van en Datawrapper, no en la página. Si después corrige el gráfico en Datawrapper y lo vuelve a publicar, la página se actualiza sola.
+
+### Paso 7. Subir los datos y las imágenes {#pf-archivos}
+
+1. En su repositorio, haga clic en **Add file** y luego en **Upload files**.
+2. Arrastre el archivo (un CSV o una imagen) y haga clic en **Commit changes**.
+
+**Nombre los archivos en minúsculas, sin espacios ni tildes**, por ejemplo: `datos-violencia.csv` o `foto-carnaval.jpg`. GitHub distingue mayúsculas de minúsculas: `Foto.JPG` y `foto.jpg` son archivos distintos.
+
+**Para ofrecer los datos:** en el recuadro "Cómo hicimos esta nota", cambie `nombre-del-archivo.csv` por el nombre de su archivo:
+
+```html
+<a href="datos-violencia.csv">Descargar los datos (CSV)</a>
+```
+
+**Para agregar una imagen:** en el comentario 11 de la plantilla, borre la línea que dice `<!-- INICIO` y la que dice `FIN -->`. Luego cambie `nombre-de-la-imagen.jpg` por el nombre de su archivo, describa la imagen en `alt` (lo leen las personas que usan lectores de pantalla) y escriba el crédito en `<figcaption>`. Use imágenes de menos de 1 MB para que la página cargue rápido.
+
+### Paso 8. Revisar y entregar {#pf-revisar}
+
+Antes de entregar, abra su página en el computador y en el celular, y revise:
+
+- El titular dice el hallazgo principal, sin exagerar.
+- La entrada responde qué, quién, cuándo, dónde y según quién.
+- Cada cifra tiene fuente, y se entiende cuál es el numerador y cuál el denominador.
+- Si compara lugares o grupos de distinto tamaño, usa tasas o porcentajes, no conteos.
+- Cada gráfico tiene un título que dice el hallazgo, la fuente y el número de casos.
+- El recuadro "Cómo hicimos esta nota" explica los datos, los cálculos y los límites.
+- La nota no afirma causas que los datos no muestran.
+- Los datos sobre personas son agregados y anónimos.
+- Los enlaces para descargar los datos funcionan.
+- No quedan textos de la plantilla ("Escriba aquí…", "00 %").
+- La ortografía está revisada.
+
+**Para entregar**, envíe la dirección de su página: `https://su-usuario.github.io/nombre-del-repositorio/`.
+
+### Si algo sale mal {#pf-problemas}
+
+| Lo que pasa | Causa probable | Qué hacer |
+|:--|:--|:--|
+| Aparece "404: There isn't a GitHub Pages site here" | GitHub Pages no está activado o todavía no termina de publicar | Revise el paso 4 y espere dos minutos. En la pestaña **Actions** del repositorio puede ver si la publicación terminó (marca verde) |
+| Aparece el README en lugar de su nota | El archivo no se llama exactamente `index.html` | Revise el nombre: no puede ser `Index.html` ni `index.html.txt`. Para cambiarlo, edite el archivo y corrija el nombre en el campo de arriba |
+| Sus cambios no aparecen | La página todavía no se actualiza, o no hizo commit | Espere dos minutos y recargue con Ctrl + F5. Revise que guardó con **Commit changes** |
+| Las tildes y la ñ se ven como símbolos raros | Se borró la línea `<meta charset="utf-8">` | Vuelva a ponerla al comienzo del archivo, como está en la plantilla |
+| El gráfico no aparece o se ve cortado | El código de Datawrapper quedó incompleto | Copie otra vez el código completo, desde `<iframe` hasta `</script>` |
+| La imagen no aparece | El nombre en el código no coincide con el del archivo | Compare letra por letra, incluidas mayúsculas y extensión (`.jpg`, `.png`) |
+| La página se ve desordenada o el texto sale en otro lugar | Se borró una etiqueta de cierre | Compare con la plantilla. Si no encuentra el error, vuelva a una versión anterior: abra `index.html`, haga clic en **History** y copie el contenido de la última versión que funcionaba |
 
 ---
 
